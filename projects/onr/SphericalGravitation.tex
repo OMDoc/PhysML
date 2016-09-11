@@ -1,0 +1,196 @@
+
+% - submitted to ... .
+
+\documentclass[10pt]{article}
+%\documentstyle[10pt, fullpage]{article}
+% international A4 paper-size settings
+\paperheight = 11.68 in
+\paperwidth = 8.25 in
+\hoffset = -0.21 in
+\voffset = 0.0 in
+
+% following to set section spacings
+\makeatletter
+\newlength{\mySpaceUnder}
+\newlength{\mySpaceOver}
+%\setlength{\mySpaceUnder}{4cm plus .2ex}  % 4cm as an example ;-)
+\setlength{\mySpaceUnder}{1pt plus .2ex}  % 4cm as an example ;-)
+%\setlength{\mySpaceOver}{3cm plus -1ex minus-.2ex}   % 3cm as an example
+\setlength{\mySpaceOver}{-1pt plus -1ex minus-.2ex}   % 3cm as an example
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {\mySpaceOver}%
+                                   {\mySpaceUnder}%
+                                   {\normalfont\Large\bfseries}}
+\makeatother
+% END to set section spacings
+
+\pagestyle{empty} % to suppress page numbering
+
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+\pdffalse % we are not running PDFLaTeX
+\else
+\pdfoutput=1 % we are running PDFLaTeX
+\pdftrue
+\fi
+
+\ifpdf
+\usepackage[pdftex]{graphicx}
+\else
+\usepackage{graphicx}
+\fi
+
+\usepackage{cite}
+\usepackage{amsthm} %AMS theorem package
+\usepackage{textcomp} % used for trademark symbol
+
+% international A4 paper-size settings: 2cm L/R margins, 8.25x11.68 papersize
+\textwidth = 6.67 in
+\textheight = 8.99 in
+\oddsidemargin = 0.0 in
+\evensidemargin = 0.0 in
+\topmargin = 0.0 in
+\headheight = 0.0 in
+\parskip = 0.2in
+\parindent = 0.0in
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}
+
+\title{\fontseries{b}\fontsize{14}{16}\selectfont Semantic Elements of Vectors in Physics}
+\date{}
+\author{\fontsize{10}{12}\selectfont
+\it Dr. Joseph B. Collins \\
+\fontsize{10}{12}\selectfont Naval Research Laboratory\\
+\fontsize{10}{12}\selectfont 4555 Overlook Ave., SW\\
+\fontsize{10}{12}\selectfont Washington, DC  20375\\
+\fontsize{10}{12}\selectfont collins@ait.nrl.navy.mil, (202) 404-7041
+}
+
+\begin{document}
+\headsep = 0.0 in
+\maketitle
+\thispagestyle{empty}  % no number on the title page
+
+ % Modification of the abstract environment to conform to SIW, incl fully justifying abstract
+\def\abstractname{\fontseries{b}\fontsize{10}{12}\selectfont Keywords
+\fontseries{m}\fontsize{10}{12}\selectfont ontology, physics, dynamics, equation}
+\def\abstract{{\centering{\large\bf\abstractname}\par}
+        \begin{list}{}{%
+                \setlength{\rightmargin}{0.0 in}
+                \setlength{\leftmargin}{\rightmargin}}
+                        \item[]}
+\def\endabstract{\end{list}\normalsize}
+
+\begin{abstract} {
+{\fontseries{b}\fontsize{10}{12}\selectfont Abstract:}
+}
+\end{abstract}
+
+
+Universe:
+Arbitrary locations in space-time: $({\bf r}, t)$
+Newtonian gravitational constant: $G$
+
+Spherically Symmetric Rigid Massive Earth:
+name: Earth
+position in Universe: ${\bf r}_E(t)$
+mass density: $\rho_E({\bf r}, t)$
+velocity: ${\bf v}_E({\bf r},t)$
+rigidity constraints:
+$\rho_E({\bf r}, t) = \rho_E({\bf r}-{\bf r}_E(t))$
+${\bf v}_E({\bf r},t) = {d{\bf r}_E\over{dt}} + {\bf
+  \omega}_E \times {\bf r}$
+Momentum: $p_E = \int_{\bf r} {\bf v}_E({\bf r}) \rho_E({\bf r}-{\bf r}_E) d^3{\bf r}$
+
+spherical symmetry constraint: $\rho_E({\bf x}) = \rho_E(\left|{\bf x}\right|)$
+ball constraint:  $\left|{\bf x}\right|>R_E > 0$, $\rho_E({\bf x}) = 0$
+mass: $m_E = \int_{\bf r} \rho_E({\bf r}-{\bf r}_E) d^3{\bf r}$
+
+
+Spherically Symmetric Rigid Massive Moon:
+name: Moon
+position in Universe: ${\bf r}_M(t)$
+mass density: $\rho_M({\bf r}, t)$
+rigidity constraints: 
+$\rho_M({\bf r}, t) = \rho_M({\bf r}-{\bf
+  r}_M(t))$
+spherical symmetry constraint: $\rho_M({\bf x}) = \rho_M(\left|{\bf x}\right|)$
+ball constraint:  $\left|{\bf x}\right|>R_M > 0$, $\rho_M({\bf x}) = 0$
+mass: $m_M = \int_{\bf r} \rho_M({\bf r}-{\bf r}_M) d^3{\bf r}$
+
+ ${{d \rho_E({\bf r}, t)}\over{dt}} = {d{\bf r}_E\over{dt}}\cdot {{d\rho_E(u)}\over{du}}|_{({\bf r}-{\bf r}_E(t))}$
+ ${{d \rho_M({\bf r}, t)}\over{dt}} = {d{\bf r}_M\over{dt}}\cdot {{d\rho_M(u)}\over{du}}|_{({\bf r}-{\bf r}_M(t))}$
+
+Inertial Universe / Closed System Constraint
+The linear and angular momenta of the total combined system of objects is constant.
+
+Gravitational Interaction
+From Newton's Law of Universal Gravitation applied to two particles,
+masses $m_1$ and $m_2$, positions ${\bf r}_1$ and ${\bf r}_2$
+$F_{m_1} = G m_2m_1 {{({\bf r}_2- {\bf r}_1)} \over {\left|{\bf
+        r}_2-{\bf r}_1\right|^3}}$
+$F_{m_2} = G m_1m_2 {{({\bf r}_1- {\bf r}_2)} \over {\left|{\bf
+        r}_1-{\bf r}_2\right|^3}}$
+
+The force on an infinitesimal element of the Earth is the sum over
+contributions from infinitesimal elements of the Moon
+$d{\bf F}_E = \int_{{\bf r}'}G \rho_M({\bf r}'-{\bf r}_M)d{\bf r}'
+    \rho_E({\bf r}''-{\bf r}_E)d{\bf r}'' \cdot {{{({\bf r}'-{\bf
+        r}_M) - ({\bf r}''-{\bf r}_E )}} \over {\left|{({\bf r}'-{\bf
+        r}_M) - ({\bf r}''-{\bf r}_E )}\right|^3}} $
+
+When $\left|{\bf r}_M-{\bf r}_E\right| >
+R_M+R_E$, and due to the spherically symmetric mass distribution of both the Earth and Moon, the total force on the Earth due to the Moon reduces to
+${\bf F}_E = \int_{{\bf r}''} d{\bf F}_E = G m_Mm_E {{({\bf r}_M- {\bf
+      r}_E)} \over {\left|{\bf r}_M-{\bf r}_E\right|^3}}$
+Similarly,
+${\bf F}_M = G m_Em_M {{({\bf r}_E- {\bf
+      r}_M)} \over {\left|{\bf r}_E-{\bf r}_M\right|^3}}$
+
+Application of Newton's Second Law gives the coupled pair of second order
+differential equations
+
+${{d^2{\bf r}_E}\over{dt^2}} = G m_M {{({\bf r}_M- {\bf
+      r}_E)} \over {\left|{\bf r}_M-{\bf r}_E\right|^3}}$
+
+${{d^2{\bf r}_M}\over{dt^2}} = G m_E {{({\bf r}_E- {\bf
+      r}_M)} \over {\left|{\bf r}_E-{\bf r}_M\right|^3}}$
+
+Collision Interaction
+Slippery collision
+Impulse transfer (general and specific)
+
+Solution: 
+Given initial values for positions and velocities:
+
+${\bf r}_E(t=0)$, ${d{\bf r}_E\over{dt}} |_{t=0}$, ${\bf r}_M(t=0)$, ${d{\bf r}_M\over{dt}} |_{t=0}$
+
+find:
+
+ ${\bf r}_E(t)$, ${\bf r}_M(t)$ for all $t>0$
+
+
+?PhysML requires a binding construct local to described objects?
+
+
+
+
+\ifpdf
+\DeclareGraphicsExtensions{.pdf, .jpg, .tif}
+\else
+\DeclareGraphicsExtensions{.eps, .jpg}
+\fi
+
+\begin{thebibliography}{99}
+
+
+\end{thebibliography}
+
+
+ \end{document}
+ \end
+
+

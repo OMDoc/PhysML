@@ -1,0 +1,582 @@
+\documentclass[12pt]{article}
+\usepackage{stex,physml}
+\usepackage{color}
+\usepackage[latin1]{inputenc}
+\usepackage{epsfig}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\textheight23cm
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%
+% Silbentrennung
+\hyphenation{
+        mak-ro-sko-pischen
+}
+%\setcounter{errorcontextlines}{\maxdimen}
+ \parindent 0pt
+\title{Seminar: Statistical Physics\\``Negative Temperatures''}
+\author{J"orn Otten\and Heinrich Stamerjohanns\and Jan Kickstein}
+\date{12. Februar 1995}
+\maketitle
+%\tableofcontents 
+%\newpage
+\section{Introduction}
+We will talk about the phenomenon of \textsl{Negative Temperatures}.
+At first, we will repeat the statistical notion of temperature. Then
+we will explain the ideal paramagnetic crystal, whose temperature may
+become negative, as the most simple system, that can be applied by statistical
+mechanics as an introductory example.
+Finally we will look at the theoretical impact of negative temperatures,
+as well at the experimental conditions, to obtain these.
+
+\section{Statististical Definition of Temperature}
+
+\subsection{Thermal Interaction between two 
+            Macroscopic Systems $A_1$ and $A_2$}
+
+\requiremodules[exclude]{background}
+\begin{module}[id=mytemparature,uses=probability-intro]
+\symdef{sumofstates}[2]{\Omega_{#1}(#2)}
+
+We define the temperature of the thermal interaction between two 
+macroscopic systems $A_1$ und $A_2$.
+
+May the energies of the system be $E_1$ und $E_2$. 
+
+The energy-scale is divided into intervals of $\delta E_1$ and $\delta
+E_2$ respectively.
+
+\begin{definition}[display=flow]
+  $\sumofstates{1}{E}$ is the number of states in the range $E_1+\delta E_1$, similarly for
+  $A_2$.
+\end{definition}
+
+Both systems are not thermally isolated, i.e. heat transfer to exchange
+energy is possible (it is assumed that the external parameters of the system 
+are fixed invariable, therefore the energy exchange occurs as heat transfer)
+But the compound system $A=A_1+A_2$ is isolated, i.e. $E=E_1+E_2$ is constant.
+It it assumed that both systems are in equilibrium.
+The energies of $A_1$ may take a value in a big range,
+but these do not appear with the same probability.
+If $A_1$ carries energy $E_1$, then $A_2$ has energy $E_2=E-E_1$.
+The number of accessible states to system A can be seen as a function of $E_1$
+i.e. $\sumofstates{}{E_1}$ is the number of states of A, if $A_1$ has energy $E_1$.
+ The fundamental postulate requires: In equilibrium A is equally probable
+in each of its states. The probability $\probability{E_1}$, that $A_1$ 
+has the energy $E_1$ proportional to $\sumofstates{}{E_1}$.
+\begin{equation}
+\probability{}{E_1} = \constant \cdot \sumofstates{}{E_1}=\frac{\sumofstates{}{E_1}}{\sumofstates{tot.}{}}
+\end{equation}
+Here $\sumofstates{tot.}{}$ is the total number of the accessible states to A.
+\begin{equation}
+\sum{tot.}=\sum_{E_1}\sumofstates{}{E_1}
+\end{equation}
+If $A_1$ has the energy $E_1$,
+then this system may reside in any of its states
+$\sumofstates{1}{E_1}$. Simultaneously $A_2$ has to carry the  
+energy $E-E_1$, and is in one of its $\sumofstates{2}{E-E_1}$ states.
+
+Since each of the states $A_1$ can be combined with each of $A_2$ 
+to form a states A, is the number of accessible states to A, 
+if $A_1$ has the $E_1$ 
+
+\begin{equation}
+\sumofstates{}{E_1}=\sumofstates{1}{E_1} \cdot \sumofstates{2}{E-E_1}\Rightarrow P(E_1)=C \cdot \sumofstates{1}{E_1}
+  \cdot \sumofstates{2}{E-E_1}
+\end{equation}
+
+Now we analyze the dependability of $P(E_1)$ of $E_1$.
+If $E_1$ and $E_2$ have very many degrees of freedom, then 
+$\sumofstates{1}{E_1}$ and $\sumofstates{2}{E_2}$ are rapid growing functions 
+(for large f: $\sumofstates{}{E}\sim E^f$).
+If $E_1$ grows, then $\sumofstates{1}{E_1}$ grows rapidly, 
+while $\sumofstates{2}{E-E_1}$ rapidly decreases. 
+$P(E_1)$ there has a strong maximum for a $E_1=\bar{E}$. 
+This maximum we would like to determine.
+
+For this we determine the maximum of $lnP(E_1)$:
+\begin{equation}
+ \frac{\partial lnP}{\partial E_1}=\frac{1}{P} \cdot \frac{\partial P}{\partial E_1}=0
+\end{equation}
+With\\
+\begin{equation}
+ lnP(E_1)=lnC+ln\sumofstates{1}{E_1}+\ln\sumofstates{2}{E_2}
+\end{equation}
+the result is\\
+\begin{equation}
+ \frac{\partial \ln\sumofstates{1}{E_1}}{\partial E_1}+\frac{\partial \ln\sumofstates{2}{E_2}}
+{\partial E_2} \cdot (-1)=0 \mbox{ mit }dE_1=-1 \cdot dE_2
+\end{equation}
+or\\
+\begin{equation}
+ \beta_1(\bar{E_1})=\beta_2(\bar{E_2})
+\end{equation}
+Here $\bar{E_1}$ and $\bar{E_2}$ are energies of $A_1$ and $A_2$ 
+at the maximum and 
+\begin{equation}
+\beta (\bar{E_{1,2}})=\frac{\partial \ln\sumofstates{}{}}{\partial E}
+\end{equation} with  
+the dimension reziprocal energy.\\
+
+Now we define the dimensionless parameter \textbf{temperature T}:
+\begin{equation}
+kT:=\frac{1}{\beta}
+\end{equation} \\
+Here k is a positive constant with the dimension energy.\\
+Further on the \textbf{Entropie S} is defined by:
+\begin{equation}
+S=k \cdot \ln\sumofstates{}{}
+\end{equation}
+From this it follows:
+\begin{equation}
+\frac{1}{T}=\frac{\partial S}{\partial E}
+\end{equation}
+The conditions for a maximum can be rewritten as:
+\begin{equation}
+S_1+S_2=Max \mbox{ oder } T_1=T_2
+\end{equation}
+Therefore we derive two basic principles:
+\begin{itemize}
+\item If two systems are in equilibrium apart, and $\beta$ has the same
+value in both systems, they will stay in equilibrium on thermal contact
+\item If $\beta$ has a different value in both system, they will not
+stay in equilibrium if brough into thermal contact.
+\end{itemize}
+
+Regarding three systems A, B, C, which are apart in equilibrium.
+Then:
+\begin{equation}
+\beta_A=\beta_C \mbox{, } \beta_B=\beta_C\, \Rightarrow \beta_A=\beta_B
+\end{equation}
+
+This is also known as the \textbf{Zeroeth Theorem}:\\[0.5cm]
+If two equilibrium systems are in equlibrium with a third, then
+they are also with each other.\\[0.5cm]
+
+Therefore we can deduce the possibility of test systems (thermometer).\\
+This should suffice as a repetition of the statistical definition of temperature.
+\footnote{see F. Reif: Statistische Physik und Theorie der 
+W"arme}.
+\\
+Recapulating the \textbf{Absolute Temperature T} is given by
+\begin{equation}
+\frac{1}{kT}=\beta=\frac{\partial \ln\sumofstates{}{}}{\partial E}
+\end{equation}
+.\\
+Since in general $\sumofstates{}{E}$ rapidliy growing function of E, 
+it is true that: 
+\begin{equation}
+\beta>1 \mbox{ bzw. } T>O
+\end{equation}
+But that this is not always true, will be now shown.
+
+\section{Analysis of an ideal paramagnetic crystal in an external magnetic field}
+\subsection{Model for the ideal paramagnetic crystal with spin 1/2}
+
+Since the definition of a spin temperature for a systems that allow more than
+two spin states is quite elaborate, we restrict our description of
+a system with spin $\frac{1}{2}$. We analyze a paramagnetic crystal
+inside a magnetic field $\vec B$. We differentiate between the 
+lattice system and the spin system. 
+Because of the magnetic field there is a magnetic moment $\mu_{i}$ 
+at each point of the lattice.
+
+\begin{equation}
+\mu_{i}=\gamma \vec S
+d\end{equation}
+$\gamma $ is the ''gyromagnetic ratio'', which describe the 
+proportion between spin and magnetic moment.
+The macroscopic stabilization of the spin system is accomplished 
+by the spin-spin-coupling, which is negligible with regards to
+the coupling of the magnetic moment and the applied field.
+
+Such a system can be describe by the Hamiltion operator:
+\begin{equation}
+H=-\sum_{i=1}^{N} \vec \mu_{i} \cdot \vec B_{i}=-B \sum_{i=1}^{N} \mu_{iz}
+\end{equation}
+
+Since we neglect all other degrees of freedom, the system is fully determined,
+if the spin state is known at each point of the lattice. In this case
+only two states are possible per lattice point., which we denote
+by $|+\rangle $ und $ |-\rangle $.
+The Eigenstates of the system have a well-defined energy:
+ 
+\begin{eqnarray}
+\epsilon_{+}= - \frac{\gamma}{2}B=-\mu B
+\epsilon_{-}= - \frac{\gamma}{2}B=+\mu B
+\end{eqnarray}
+
+The absolute frequencies of the individual states are described by $n_{+}$,$n_{-}$
+the the total energy of the system can be described by:
+\begin{equation}
+E=(n_{-}+n{+})\mu B
+\end{equation}
+
+Let $N$ be the total number of lattice points, the the range of values
+of the energy lies between $-N\mu B$ snd $+N\mu B$. 
+If we denote this energy interval by $E$, the the absolute frequencies
+are fully determined by $N$ and $E$.
+Then
+\begin{eqnarray}
+n_{+}+n_{-}=N\\
+(n_{-}-n_{+})\mu B =E \\ 
+\Rightarrow
+n_{+}=\frac{1}{2}(N-\frac{E}{\mu B})\\
+n_{-}=\frac{1}{2}(N+\frac{E}{\mu B})
+\end{eqnarray}
+applies.
+
+Of course the equations above apply only, if the system is isolated.
+This, as often in our nature, a not existing ideal case, because in 
+reality states of the energetically higher $|-\rangle$ can turn into
+$|+\rangle$ state and send off a photon with the 
+momentum  $\frac{1}{\hbar}\mu B$. But the probability of such an event
+is relatively low, since the grequency of the photon lie within the 
+radio frequencies and transitions in this range have a very low
+probability.
+
+If we neglect this effect of \textsl{spontanous emission}, the we can regard 
+the energy as constant. As a sum, the absolute frequencies are constant in this 
+approximation. We can see from eq. \ref{spintemp}, that we can easily 
+define the temperature of the spin-dystem. 
+
+\subsection{Calculation of the entropy}
+The entropie of a system, whose energy E is determined, is therefore:
+\begin{equation}
+S=k \cdot \ln\sumofstates{}{}
+\end{equation}
+Hierbei ist $\sumofstates{}{}$ die Anzahl der Zust"ande, die bei gegebener Teilchenzahl 
+N und einem gegebenen Magnetfeld $\vec{B}$ die Energie E besitzen. Alle 
+Zust"ande gleicher Energie E haben die gleiche Anzahl $n_-$ von Spins in dem
+Zustand $|-\rangle$; sie unterscheiden sich untereinander nur durch die
+Lage der Spins $|-\rangle$  
+in dem Kristall. Die Anzahl dieser Zust"ande ist daher
+\begin{equation}
+\sumofstates{}{}=C^{n_-}_N=\frac{N!}{n_-!n_+!}.
+\end{equation}
+Daraus ergibt sich f"ur die Entropie
+\begin{equation}
+S=k \cdot \ln\frac{N!}{n_-!n_+!}=k \cdot \ln\frac{N!}{[\frac{N+E/\mu B}{2}]![\frac{N-E/\mu B}
+  {2}]!}.
+\end{equation}
+Au"ser in den begrenzten F"allen, wo eine der Zahlen $n_+$ und $n_-$ in der N"ahe 
+von 1 liegen, kann man die Logarithmen der Faktoren in der Stirling-N"aherung 
+schreiben:
+\begin{equation}
+lnN!\simeq N \cdot\ln N-N \mbox{ bzw. }\simeq n \cdot \ln N
+\end{equation}
+Man erh"alt damit
+\begin{equation}
+S=k \cdot (N \cdot \ln N-\frac{N+E/\mu B}{2} \cdot \ln\frac{N+E/\mu B}{2}-\frac{N-E/\mu B}{2}\cdot
+  \ln\frac{N-E/\mu B}{2})
+\end{equation}
+F"ur einen gegebenen Kristall (bestimmtes N) und ein konstantes Magnetfeld 
+$\vec{B}$ ist die Entropie eine Funktion der Energie.
+Wenn die Energie den Minimalwert $-N\mu B$ annimmt, befinden sich alle Spins 
+in dem Zustand $|+\rangle$; das System hat dann nur einen zug"anglichen Zustand und 
+seine Entropie ist Null. Die gleiche "Uberlegung ist g"utig, wenn die Energie 
+den Maximalwert $+N\mu B$ annimmt. Die Entropie ist daher eine zun"achst wachsende 
+und dann fallende Funktion der Energie. Die Kurve ist symmetrisch, ihr Maximum 
+wird f"ur E=0 erreicht und betr"agt 
+\begin{equation}
+S_m=N\cdot k\cdot\ln 2.
+\end{equation}
+
+\subsection{Berechnung der Temperatur}
+
+Wie bereits gezeigt, gilt f"ur die mikrokanonische Temperatur $T^*$ 
+\begin{equation}
+\frac{1}{T^*} =\frac{\partial S}{\partial E}.
+\end{equation}
+F"ur den idealen Paramagneten erh"alt man also
+\begin{equation}
+\frac{1}{T^*} = \frac{k}{2 \mu B} \ln \frac{N - E/\mu B}{N+E/\mu B} =
+\frac{k}{2\mu B} \ln \frac{n_+}{n_-}.
+\end{equation} 
+\begin{figure} 
+\centerline{\epsfig{file=figures/entropie.eps,height=3in}}
+\caption{Die Entropie S in einem System von $N$ unabh"angigen Spins $\frac{1}{2}$
+in einem Magnetfeld $\vec B$.}
+\label{entr}
+\end{figure}
+Sind $\mu$, $N$, $B$ konstant, so ist die Temperatur nur noch von E abh"angig.
+$T^* = T(E)$. Wird E positiv, dann ist das Argument des Logarithmus $<1$. Die
+Temperatur $T^*$ wird negativ. Abb. \ref{entr} zeigt den Zusammenhang deutlich.
+Ab $E>0$ f"allt die Entropiekurve ab. $\frac{\partial S}{\partial E}$ ist dann
+negativ.
+\begin{figure} 
+\centerline{\epsfig{file=figures/t_von_e.eps,height=3in}}
+\caption{T als Funktion von E in einem System von $N$ unabh"angigen Spins
+$\frac{1}{2}$}
+\label{t}
+\end{figure}
+In Abb. \ref{t} ist $T^*$ als Funktion von E aufgetragen. Bei E = 0 hat die 
+Funktion eine senkrechte Asymptote. 
+\begin{table} 
+\begin{center}
+%\begin{tabular}{|r|r|r|r|r|}
+\begin{tabular}{|c|c|c|c|c|}
+     \hline
+                  &                  &           &           &\\
+     E & Zustand & $n_+ /  n_-$ & $\ln n_+ / n_-$ & T \\
+                  &                  &           &           &\\
+     \hline     
+     \hline
+                  &                  &           &           &\\
+     $E_{min}    $&alle   $|+\rangle$&$\infty$   &$\infty$   &$0_+$\\
+                  &keine   $|-\rangle$&          &           &     \\
+     \hline     
+                  &                  &           &           &\\
+     $E_{min}<E<0$&viele  $|+\rangle$&$>1$       &$>0$       &$\to\infty$ \\
+     $(steigend) $&wenige $|-\rangle$&$(fallend)$&$(fallend)$&$(steigend)$\\ 
+     \hline
+                  &                  &           &           &\\
+     $0$          &$50\%\;|+\rangle$ &$1$        &$0$        &$Sprungstelle$\\
+                  &$50\%\;|-\rangle$ &           &           &\\
+     \hline 
+                  &                  &           &           &\\
+     $0<E<E_{max}$&wenige $|+\rangle$&$<1$       &$<0$       &$von\;-\infty$\\
+     $(steigend)$ &viele  $|-\rangle$&$(fallend)$&$(fallend)$&$(steigend)$\\
+     \hline     
+                  &                  &           &           &\\
+     $E_{max}    $&keine  $|+\rangle$&$0$       &$-\infty$  &$0_-$      \\
+                  &alle   $|-\rangle$&          &           &            \\ 
+     \hline
+         
+\end{tabular}
+\caption{"Ubersicht "uber Zustand und Temperatur eines Systems von $N$ 
+unabh"angigen Spins $\frac{1}{2}$ bei verschiedenen Energien}
+\label{uebersicht}
+\end{center}
+\end{table}
+Tabelle \ref{uebersicht} beschreibt den Verlauf der Kurve aus Abb. \ref{t}. 
+
+Negative Temperaturen treten in diesem System auf, wenn das Verh"altnis 
+von $n_+/n_- < 1$ ist. Die Besetzungen sind in diesem Falle vertauscht. 
+Bei $T=0_+$ sind alle Spins im $|+\rangle$ Zustand, w"ahrend bei $T=0_-$
+alle Spins sich im $|-\rangle$ Zustand befinden. Obwohl die Differenz zwischen
+diesen beiden Temperaturen
+klein ist, repr"asentieren sie jedoch v"ollig verschiedene physikalische
+Zust"ande. F"ur $T=\infty$ und $T=-\infty$ ist dagegen der Unterschied der
+physikalischen Zust"ande gering, obwohl die Temperaturen auf der Skala weit
+auseinanderliegen. 
+ 
+\begin{figure} 
+\centerline{\epsfig{file=figures/1_durch_t.eps,height=3in}}
+\caption{1/T als Funktion von E in einem System von $N$ unabh"angigen Spins 
+$\frac{1}{2}$
+\label{1t}}
+\end{figure}
+
+Tr"agt man dagegen $1/T^*$ "uber $E$ auf, so entspricht diese Kurve viel mehr
+der physikalischen Situation. Gro"se physikalische Unterschiede 
+liegen auf der Abzisse weit entfernt, w"ahrend geringe Unterschiede nahe
+beieinander liegen. Die Kurve ist zudem bei $E=0$ stetig.
+
+\section{Negative Temperaturen}
+
+Wenn die Entropie eine fallende Funktion der Energie ist, treten negative
+Temperaturen auf. Diese Situation ist nicht auf das Beispiel des idealen
+Paramagneten beschr"ankt, sondern gilt f"ur alle Systeme mit
+{\bf endlicher Zahl von Einzelzust"anden}. 
+F"ur alle diese Systeme gilt: $E_{min}\leq E \leq E_{max}$. Zur Vereinfachung
+kann man nun annnehmen, das der jeweils h"ochste und niedrigste Energiezustand
+nur einmal auftreten kann; daraus folgt, da"s $S=0$ sowohl f"ur $E=E_{min}$ als
+auch f"ur $E=E_{max}$ f"ur den mikroskopischen Zustand des Systems gilt.
+
+Zwischen $E_{min}$ und $E_{max}$ ist S eine steigende Funktion mit E,
+dann eine fallende Funktion,
+woraus folgt, das f"ur diesen Bereich $T<0$ ist. 
+Damit die Temperatur aber wirklich negativ werden kann, mu"s jedes Element
+des betrachteten Systems "uber eine endliche Anzahl von Zust"anden verf"ugen.
+Deshalb darf keines der Teilchen "uber kinetische Energie verf"ugen, da dort
+das Energiespektrum nicht nach oben beschr"ankt ist.
+Selbst Elektronen oder Kerne besitzen jedoch einen Spin, so da"s es scheint,
+da"s kein reelles System diese Bedingung erf"ullen kann.
+Wir werden sp"ater sehen, da"s bei gewissen Spinsystemen, die "uber eine
+gen"ugend lange Relaxationszeit verf"ugen, es jedoch m"oglich ist,
+die Freiheitsgerade durch eine negative Temperatur zu beschreiben.
+
+\subsection{Negative Temperaturen sind ``hei"ser'' als positive}
+
+F"ur den Begriff ``hei"ser'' und ``k"alter'' gibt es alternative m"ogliche
+Definitionen, welche f"ur positive Temperaturen in Einklang miteinander
+stehen, f"ur negative jedoch nicht zutreffen.
+So k"onnte man sagen, da"s derjenige K"orper der hei"sere ist, dessen 
+Temperatur T den gr"o"seren algebraischen Wert hat. In diesem Falle w"aren
+alle positiven T hei"ser als negative T.
+Wenn ein K"orper mit positivem T und negativem T miteinander in thermischen
+Kontakt stehen, w"urde jedoch die W"arme des K"orpers mit negativem T
+zu dem mit positven T flie"sen.
+Die Definiton, die am besten mit der normalen Bedeutung "ubereinstimmt,
+ist dann auch die die, da"s der hei"sere von zwei K"orpern derjenige ist,
+dessen W"arme abgegeben wird, wenn zwei K"orper in thermischen Kontakt 
+kommen, w"ahrend der k"altere derjenige ist, der W"arme aufnimmt.
+
+Mit dieser Definition ist jede negative Temperatur hei"ser als jede positive,
+w"ahrend f"ur zwei Temperaturen mit dem gleichen Vorzeichen der gr"o"sere
+algebraische Wert der hei"sere ist.
+Die Skala l"auft dann wie folgt von kalten zu warmen Temperaturen
+$0_+ ,\; T>0 ,\; +\infty ,\; -\infty , \; T<0 , \; 0_-$.
+So liegt dann z.B. $T=500$ K zwischen $+200$ K und $-200$ K.
+
+Man k"onnte versucht sein, diese sehr verwunderliche Anordnung der 
+Temperaturskala als Argument gegen die G"ultigkeit von negativen Temperaturen 
+anzuf"uhren. Diese K"unstlichkeit dieser Ordnung ist aber eher ein zuf"alliges
+Ergebnis der willk"urlichen historischen Definition der Temperatur in
+der Thermodynamik.
+
+H"atte man zur Charakterisierung von ``k"alter''-``w"armer'' die
+sich aus der statisischen Mechanik anbietende Gr"o"se
+$\frac{1}{T} = \frac{\partial S}{\partial E}$ gew"ahlt, so w"are die
+Funktion stetig. Noch besser w"are sogar $-\frac{1}{T}$, weil dann der Wert
+umso gr"o"ser ist, je hei"ser der K"orper ist.
+
+
+\section{Spintemperatur}
+Das Existieren von negativen Temperaturen ist nicht auf 
+Spinsysteme beschr"ankt (zumindest theoretisch).
+Wichtig ist lediglich die Forderung nach der Endlichkeit der
+Energiezust"ande und damit nach einer endlichen Energie. Aus der Definition 
+der Temperatur "uber die Innere Energie
+und der Entropie ist leicht zu sehen, das f"ur jedes System, welches eine 
+fallende Entropiefunktion "uber die Innere Energie aufweist, 
+die entsprechenden Temperaturen negativ sind.\\
+Die Spinsysteme, insbesondere die mit dem Spin $\frac{1}{2}$, sind jedoch
+wegen ihrer endlichen Energieniveaus f"ur die Betrachtung negativen 
+Temperaturen pr"adestiniert. Gasmolek"ule z.B. haben aufgrund ihrer kinetischen 
+Energie ein kontinuierliches Energiespektrum, ohne obere Grenze. Diese Systeme 
+sind f"ur die Erzeugung von negativer Temperatur ungeeignet, da man unendlich 
+viel Energie ben"otigen w"urde.
+Aus der Gleichung
+\begin{equation}
+\label{spintemp}
+\frac{1}{T}= \frac{k}{2\mu B}\; ln \frac{n_{+}}{n_{-}}
+\end{equation}
+sieht man leicht, da"s f"ur Systeme mit endlicher Energie eine Temperatur 
+"uber  die Besetzungzahlen der einzelnen Zust"ande definierbar ist.
+Experimentell bedeutet die Forderung der endlichen Energie ein Fehlen der 
+kinetischen Energie. 
+Das System mu"s also vollkommen station"ar sein, um die obige Bedingung 
+erf"ullen zu k"onnen. \\
+Wie schon oben beschrieben, besteht unser System aus den zwei entkoppelten 
+Systemen des Spins und des Gitters. Die einzigen Zust"ande des Spinsystems
+sind $|+\rangle$ und $|-\rangle$ und damit sind die zugeh"origen Energien ebenfalls
+endlich. Will man jetzt die Temperatur des Spinsystems bestimmen, so mu"s
+man dieses von dem Gittersystem als vollkommen entkoppelt betrachten. 
+Experimentell ist dies bei geeigneten Stoffen genau dann m"oglich, wenn die
+Relaxationszeit des Spinsystems klein gegen"uber der Spin-Gitter-Relaxationszeit 
+ist. F"ur Experimente dieser Art eignet sich Lithiumfluorid besonders, da 
+hier Spin-Gitterrelaxationszeiten $\tau$ bis zu 5 min betragen k"onnen
+und damit gro"s gegen"uber den Spinrelaxationszeiten $\tau_{S}$ mit weniger
+als $10^{-5}$ s sind. Innerhalb des Zeitraumes $\tau$ findet zwischen dem 
+Spinsystem und dem Gittersystem praktisch kein Energieaustausch statt. 
+Die Systeme sind innerhalb des Zeitraumes $\tau$ adiabatisch isoliert.\\
+Innerhalb des Zeitraumes $\tau$ kann sich das Spinsystem also mehrmals in
+einen makroskopischen Gleichgewichtszustand einpegeln, so da"s die Temperatur
+des Spinsystems unterschiedlich von der Gittertemperatur sein kann. Der
+makroskopische Gleichgewichtszustand ist aber zudem notwendig, um "uberhaupt 
+von einer Temperatur des Systems reden zu k"onnen. Die Temperatur des 
+Gittersystem ist hierbei immer positiv, w"ahrend die Spintemperatur positiv 
+oder negativ sein kann.
+
+
+\subsection{"Anderung der Spintemperatur}
+
+Aus der Definition der Spintemperatur in der Gleichung \ref{spintemp}
+lassen sich zwei M"oglichkeiten entnehmen die Spintemperatur zu beeinflussen:
+\begin{itemize}
+\item Ver"anderung der Verh"altnisses $\frac{n_{+}}{n_{-}}$ bei konstantem 
+Magnetfeld
+\item Ver"anderung des Magnetfeldes bei konstantem Verh"altnis der 
+Besetzungszahlen
+\end{itemize}
+
+
+Die Ver"anderung der Besetzungszahlen l"a"st sich durch das Einstrahlen 
+einer elektromagnetischen Sinuswelle mit der Frequenz
+$\sumofstates{0}{}=\frac{1}{\bar h} \mu B$ erreichen. Dies ist jedoch nur dann
+m"oglich, wenn vor dem Einstrahlen schon $n_{+}>n_{-}$ galt. Es wird in 
+diesem Fall mehr absorbiert als emittiert und somit sinkt das 
+Besetzungsverh"altnis $\frac{n_{+}}{n_{-}}$. F"ur $n_{+}=n_{-}$ sind 
+Absorption und Emission gleich gro"s und damit bleibt auch das 
+Besetzungverh"altnis konstant. Das hat zur Folge, da"s durch Einstrahlung
+einer elektromagnetischen Welle zwar eine sehr hohe Spintemperatur 
+erreichbar ist, der "Ubergang zur negativen Energie jedoch nicht gelingt. 
+Andererseits ist es sehr einfach das "au"sere Magnetfeld zu modifizieren,
+solange es nicht das Magnetfeld der Erde ist. Eine Variation des Feldes 
+in einem Zeitraum der klein gegen die Spin-Gitter-Relaxationszeit ist,
+l"a"st die Spinzust"ande unver"andert. Aus der Gleichung \ref{spintemp}
+sieht man, da"s sich  die Temperatur des Spinsystems proportional zu
+dem angelegtem Magnetfeld "andert. Verkleinert man die St"arke des 
+Magnetfeldes, so sinkt auch die Spintemperatur. Dieses Ph"anomen ist 
+unter {\em Abk"uhlung durch adiabatische Entmagnetisierung} bekannt. 
+
+Ist das Magnetfeld in dem der Kristall liegt start genug, so richten sich 
+die atomaren Magneten parallel zum Magnetfeld aus. Wird das Magnetfeld dann
+pl"otzlich abgestellt, so bewirkt die Zitterbewegung der Gitteratome, da"s 
+die Ausrichtung der Magnete wieder zuf"allig wird. Diese Ausrichtung 
+ben"otigt jedoch keinerlei Energie, so da"s die Temperatur des Kristalls 
+unver"andert bleibt. Um den Kristall abzuk"uhlen wird das Magnetfeld
+deshalb nicht abgeschaltet, sondern nur soweit geschw"acht, da"s die 
+Ausrichtung der Magneten gegen das Magnetfeld m"oglich wird. Diese
+Ausrichtung geschieht gegen das Magnetfeld, an dem so Arbeit geleistet
+wird. Die dazu ben"otigte Energie wird der thermischen Energie des 
+ristalls entzogen, so da"s die Kristalltemperatur sinkt.\\
+   
+Aber auch dieser Vorgang erlaubt keine negativen Temperaturen des Systems. 
+Zur Erzeugung von negativen Temperaturen geht man daher wie folgt vor:
+\begin{itemize}
+\item Anfangszustand mit einem relativ starken Magnetfeld um 6000 Gau"s
+\item adiabatische Entmagnetisierung auf 100 Gau"s
+\item Umkehrung der Feldrichtung innerhalb einer sehr kleinen Zeitspanne 
+$t < 10^{-5}$ s
+\item adiabatische Magnetisierung auf die urspr"unglichen 6000 Gau"s
+\end{itemize}
+Die eigentliche Erzeugung der negativen Temperaturen geschieht bei der
+Umkehrung der Richtung des Magnetfeldes innerhalb eines kurzen Zeitraumes. 
+Diese Umkehrung geschieht so schnell, da"s die einzelnen Spins keine Zeit 
+haben ihren Zustand zu "andern. Effektiv werden durch das Wechseln der 
+Magnetfeldrichtung jedoch die Zust"ande $|+\rangle$ und $|-\rangle$ vertauscht. 
+Wenn das Verh"altnis der Besetzungszahlen 
+$\frac{n_{+}}{n_{-}}$ vorher gr"o"ser 1 war, d.h. das System eine positive 
+Spintemperatur aufwies, so ist das Verh"altnis nach dem Wechsel reziprok und 
+damit kleiner 1. Die Temperatur des Spinsystems ist somit per Definition 
+negativ. Ihre Lebensdauer entspricht der Spin-Gitter-Relaxationszeit $\tau$.
+Innerhalb dieser Zeit f"uhrt das Spinsystems dem Gittersystem W"arme zu. 
+Die negativen Temperaturen sind also immer w"armer als die positiven 
+Spintemperaturen, da das Systeme mit negativer Temperatur st"andig Energie 
+an das Gittersystem abf"uhrt.
+Die Erhaltung von negativen Temperaturen gelang zuerst Purcell und Pound, 
+die diese "uber mehrere Minuten aufrecht erhalten konnten.
+Der experimentelle Beweis f"ur die Existenz von negativen Spintemperaturen 
+gelang, indem man die Besetzungzahlen der Spinzust"ande mittels 
+{\em magnetischer Kernresonanz } bestimmte. \\
+Nimmt man eine Probe eines Kristalls, wie z.B. Lithiumfluorid, und legt diese 
+in eine Spule, die ein magnetisches Feld erzeugt. Dieses Feld oszilliert mit 
+der Frequenz $\sumofstates{0}{}$. Die Energie des Feldes wird f"ur 
+$\sumofstates{0}{}=\frac{1}{\hbar}\mu B$ und $\sumofstates{0}{}=\frac{1}{\hbar}\mu B$ 
+Absorption, bzw Emission induzieren. Bei der Emission klappt ein Gitteratom 
+aus dem $|-\rangle$-Zustand in den $|+\rangle$-Zustand um, und emittiert dabei ein Photon 
+der entsprechenden Energie. Bei der Absorption wird die Energie $\mu B$ 
+aufgenommen, die wiederum der Spule entzogen wird. Durch die Energieverlust 
+an der Spule l"a"st sich so auf die Besetzungzahlen der einzelnen Zust"ande 
+r"uckschlie"sen.
+Ist "uber die Messung erst bewiesen, da"s Spin und Gitter verschiedene 
+Temperaturen annehmen k"onnen, so folgt automatisch die Existenz der negativen 
+Spintemperaturen.
+\end{module}
+
+\section{Literatur}
+1. R.V. Pound, Phys. Rev. {\bf 81}, 156 (1951) \\
+2. E.M. Purcell und R.V. Pound, Phys. Rev. {\bf 81}, 278 (1951) \\ 
+3. E.M. Purcell und R.V. Pound, Phys. {\bf Rev. 81}, 279 (1951) \\ 
+4. Norman F. Ramsey, Phys. Rev. {\bf 103}, (1956) \\
+5. A. Abragam, Phys. Rev. {\bf 109}, 1441 (1958) \\
+6. F. Reif: Statistische Physik und Theorie der W"arme, de Gruyter 1987 \\
+7. Diu, Guthmann: Grundlagen der Statistischen Physik, de Gruyter 1994 \\
+
+\end{document}
+  
+
+

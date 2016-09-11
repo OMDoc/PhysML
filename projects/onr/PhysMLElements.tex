@@ -1,0 +1,224 @@
+% - submitted to ... .
+% Define metric tensor
+% This is patterned after llncs.tex, the documentation file of
+% the LaTeX2e class from Springer-Verlag
+% for Lecture Notes in Computer Science, version 2.4
+\documentclass{llncs}
+\usepackage{llncsdoc}
+\usepackage{sfmath}
+
+% Dirac bra-ket symbols
+\def\bra#1{\mathinner{\langle{#1}|}}
+\def\ket#1{\mathinner{|{#1}\rangle}}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}  % \braket{\psi}{\Psi}
+\def\Bra#1{\left<#1\right|}
+\def\Ket#1{\left|#1\right>}
+
+%\newcites
+%\cite
+\newcommand{\rmssf}[1]{\relax\ifmmode\mathsf{#1}\else\textsf{#1}\fi}
+
+\begin{document}
+
+\title{Semantic Elements of Physics Markup}
+\author{Joseph B. Collins}
+\institute{Naval Research Laboratory\\ 4555 Overlook Ave, SW\\ Washington, DC  20375-5337}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+\section{Introduction}
+
+
+\section{The Elements}
+
+\subsection{Physical Quantity}
+Quantities are treated as the fundamental construct within the
+Syst\`{e}me Internationale (SI), where quantity is defined as a
+``property of a phenomenon, body, or substance, where the property has
+a magnitude that can be expressed by means of a number and a
+reference''.
+From the perspective of markup, a physical quantity must first have a
+name attribute, such as {\em wavelength}.
+From the SI definition, one can see that the physical quantity is a
+complex type, and must have a combination of attributes and contained,
+nested elements, which include a {\em dimension}, a {\em kind}, and a
+{\em magnitude}.
+These are discussed below.
+
+\subsubsection{Physical Dimension}
+The most primitive concept of physical markup is that of {\em physical
+  dimension}.
+We here define physical dimension the common usage to include that
+which is defined as the {\em quantity dimension} in the SI standard.
+The SI nomenclature regarding quantities can sometimes be confusing
+as the names of quantity dimensions are often the same as or similar
+to the names of quantities.
+The SI refers to the usage of the term quantity in a generic, or
+abstract sense, in which case, for example, length refers not to any
+specific length of any particular thing, but the general concept of
+length.
+The SI also refers to the usage of the term quantity in a specific
+sense, where, for example, the length of a standard meter refers to
+the spatial extent of a specific physical object.
+Similarly, the time dimension refers to the space in which temporal
+quantities, such as ``transit time'', ``period'', or ``duration'', are
+represented, measured and expressed.
+
+Examples of generic quantities are found in the seven SI Base
+Quantities: length, mass, time, electric current, thermodynamic
+temperature, amount of substance, and luminous intensity.
+In the SI nomenclatre, for a system of quantities, the base quantities
+define the quantity dimensions for that system.
+Other quantities, called {\em derived quantities}, are not referred to
+as dimensions in SI.
+In our usage, the term physical dimension, such as used in dimensional
+analysis, refers not only to the SI quantity dimension, but also to SI
+generic quantities, including generic derived quantities.
+
+We make this distinction in order to support the expression of
+different systems of quantities. 
+Different systems of quantities may have different base quantities,
+hence different quantity dimensions, or may share some of the same
+base quantities.
+Essentially, each system of quantities defines a basis with which to
+span either a subspace or the whole of the space of physical
+dimensions.
+
+Physical dimensions also have mathematical properties: any given
+system of base quantities, the quantity dimensions, with the formal
+inclusion of a dimensionless identity element, $1$, act as generators
+of a commutative group under multiplication.
+In addition to multiplication, each quantity dimension may be raised
+to any rational power.
+The base quantities of a system of quantities are formally treated as
+incommensurate with respect to each other, no one base quantity being
+expressible in terms of the others.
+
+While our discussion of physical dimension to this point has been as
+an attribute of a physical quantity, we also want to define physical
+dimensions as xml elements.
+The fact that we define physical dimensions also as elements does not
+preclude us from also using the same element name values as attributes
+of physical quantities.
+Dimensional analysis often reduces relations between physical
+quantities to relations between dimensions, so physical dimensions,
+which are usually treated as attributes of physical quantities, may
+also stand on their own in physical relations. 
+As elements they have the following attributes: a name; the quantity
+system to which it belongs; and a symbol.
+We assume by default that the quantity system is the SI, but allow for
+alternative systems.
+
+{\em Derived quantities}, as defined by SI, are quantities, in a
+system of quantities, which are defined in terms of the base
+quantities of that system.
+The manner in which derived quantities are defined is by application
+of the above described mathematical operations to the base quantities.
+Of the infinite number of possible derived quantities, only a finite
+few have their own names, for example, area, energy, and momentum.
+Colloquially, the generic sense of these quantities may be thought of as
+quantity dimensions themselves, e.g., ``the kinetic energy of the proton
+has the dimension of energy''.
+
+\subsubsection{Kind of Quantity}
+The next attribute of a physical quantity is that of the {\em kind}
+of physical quantity.
+The kind of a quantity is used to distinguish between different
+quantities which have the same quantity dimensions.
+The SI concedes that the concept of the kind of a quantity is to some
+extent arbitrary.
+Perhaps the best illustration is by way of examples.
+The salinity of a solution is typically stated as a mass fraction,
+i.e. the mass of dissolved salt per unit of mass of solution.
+As such, salinity is a dimensionless quantity.
+Angle is also dimensionless, given, for example, by the ratio of the
+subtended circular arc and the radius of the same circle.
+While dimensionally equivalent, one still considers these kinds of
+quantities to be distinct.
+There are many dimensionless quantities distinguished by kind.
+Similarly the quantities moment of force and energy have the same quantity
+dimension but are distinguished from each other.
+
+\subsubsection{Magnitude of a Quantity}
+The magnitude of a specific scalar physical quantity represents the
+amount of that quantity, in terms of real numbers or some
+subset of the real numbers, and in terms of reference quantities, or
+units.
+As such, the magnitude of a scalar physical quantity is the
+mathematical product of a real number and a unit. 
+For example, {\em the} kilogram is the reference mass that resides at
+the International Bureau of Weights and Measures (BIPM) in SÅËvres,
+France.
+In the SI system, the masses of all other physical objects are
+measured in proportion to that kilogram standard, where the proportion
+is expressed as a limited precision real number.
+There is also an accompanying error value for the real number.
+By default, when not specified, the error in a number is assumed to be
+half of the place value of the least significant digit expressed.
+
+In some cases vector quantities, including complex numbers and
+tensors, are used.
+When vector quantities are used, they may either be heterogeneous,
+where each component is a quantity, or homogeneous, where the
+components are pure numbers and the unit may be represented as a
+distinct factor.
+The representation of error with vector quantities is
+typically in terms of a covariance structure.
+Finally, unambiguous representation of a limited precision real number
+requires the use of an scientific notation with significand and
+exponent.
+It is needed to express, for example, the two significant digits of  $6.2 \times
+10^{3}$, instead of writing $6,200$, the latter being ambiguous.
+
+The current upper limit of precision of measurement for physical
+constants is about twelve to thirteen significant decimal digits, such
+as for the Rydberg constant.
+Magnitudes of physical constants and their uncertainties range from 
+$10^{-72}$ to $10^{50}$ in common physical units.
+The size of the known universe is on the order of $10^{62}$ planck
+lengths and the age of the universe is on the order of $10^{62}$
+planck times and of the order $10^{62}$ planck masses and $10^{80}$ protons.
+While it may be ideal to specify a format for arbitrary precision and
+arbitrary magnitude measurable values, current IEEE double precision
+format provides about $17$ significant digits and magnitudes of
+$10^{308}$ and $10^{-307}$.
+While it is not inconceivable that physics-based computations may
+exceed the expressiveness the IEEE double precision format, for most
+practical purposes, that format appears adequate 
+http://www.w3.org/TR/xmlschema-2/#double [IEEE 754-1985]
+or MathML <cn type=''double''>.
+ 
+Depending on how the significand of a double precision format is
+interpreted, the semantics of the precision limit of a measurement may
+be lost in the conversion to and from machine double precision.
+From the perspective of supporting large precision, $16$ significant
+digits is a good thing.
+Most measurements, however, fall far short of that level of
+precision.
+From a semantic perspective, the machine precision is merely the
+maximum precision that may represented in a machine word: the IEEE
+format does not in itself support the expression of uncertainty.
+Considering that in the conversion of a double precision literal to a
+machine double the limit of precision expressed in the literal is
+usually lost, it seems necessary to provide a separate mechanism for
+explicitly expressing the precision.
+
+Symbol for quantity is a <m:ci>
+
+\section{Summary}
+
+
+\begin{thebibliography}{1}
+
+
+
+\end{thebibliography}
+
+\end{document}
+
+
+

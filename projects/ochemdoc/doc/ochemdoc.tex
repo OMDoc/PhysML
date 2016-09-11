@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage[show]{macros/ed}
+\usepackage[savemem]{macros/listings/listings}
+\usepackage{lstpatch,lstomdoc}
+\usepackage[hide]{xmlindex}
+\usepackage[fancyhdr,today,draft]{macros/svninfo}
+\pagestyle{fancyplain}\fancyhead[RE,LO]{\leftmark}\fancyhead[LE,RO]{\thepage}
+
+\def\chemml{{\sc{CML}}}
+\def\physml{{\sc{PhysML}}}
+\def\ocdoc{{\sc{OChemDoc}}}
+\def\om#1{\fbox{\ensuremath{#1}}}
+\lstset{float=htb,columns=flexible,frame=lines,language=[omdoc]XML,basicstyle=\scriptsize,
+  indexstyle=\indextt,indexstyle=[1]\indexelement,indexstyle=[2]\indexattribute,showstringspaces=false}
+
+ \title{Integrating CML and OMDoc in {\ocdoc}}
+\author{Michael Kohlhase\\
+  Jacobs University
+\and 
+Peter Murray Rust\\
+University OF Cambridge }
+\begin{document}
+\svnInfo $Id: ochemdoc.tex 19 2007-11-30 08:12:44Z pmr $
+\svnKeyword $HeadURL:https://svn.omdoc.org/repos/omdoc/branches/omdoc-1.2/projects/omdoc-2.0/OpenMath-paper/presel.tex $
+\maketitle
+\begin{abstract}
+  This will revolutionize science.\ednote{continue}
+\end{abstract}
+
+\section{Introduction}
+
+The {\openmath}~\cite{BusCapCar:2oms04} and {\mathml}~\cite{CarIon:MathML03} have
+introduced the notion of a ``content dictionary'' to give meaning to symbols in
+mathematical formulae. Content dictionaries are documents that encode the mathematical
+knowledge necesssary to understand the meaning of a symbol. Thus content dictionaries make
+the context of mathematical formulae explicit and allow the structuring of
+mathematids. The {\omdoc} format~\cite{Kohlhase:omdoc1.2} extends the rather simple native
+content dictionary representation format of {\openmath} with an infrastructure for
+structuring, inheriting and documenting content dictionaries.
+
+The {\omdoc} format has been extended to a markup language for physics by adding
+observables, systems, and experiments. We will build on this and add chemical molecules,
+etc. to this mix from {\chemml}~\cite{CML:web} to create a markup language {\ocdoc} for
+knowledge in chemistry.
+
+Our design goals in this endeavor are
+\begin{enumerate}
+\item {\ocdoc} must allow a transparent transition from chemical colloquialism to physical
+  precision and on to mathematical rigor in representation.
+\item {\ocdoc} must represent objects and context compositionally.
+\item {\ocdoc} must be human readable/authorable in the small.
+\item {\ocdoc} must be referentially transparent.
+\item {\ocdoc} must distinguish between objects and their encodings. 
+\end{enumerate}
+
+
+\section{Examples}
+We consider an example from Steininger's Dissertation~\cite[p.23]{Steininger:pke05}
+\lstinputlisting{../examples/diss215.ocdoc}
+
+\section{Conclusion}
+\bibliographystyle{alpha}
+\bibliography{bibs/kwarc,ochemdoc}
+\newpage
+\begin{appendix}
+  \lstinputlisting[language=RNC,nolol,frame=none]{../examples/ochemdoc.rnc}
+\end{appendix}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: stex
+%%% TeX-master: t
+%%% End: 

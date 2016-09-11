@@ -1,0 +1,77 @@
+\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+\ProvidesPackage{xmlindex}[2006/5/22 v0.1 Index for XML Syntax]
+\newif\ifmargins\marginstrue
+\DeclareOption{show}{\marginstrue}
+\DeclareOption{hide}{\marginsfalse}
+\ProcessOptions
+\RequirePackage{keyval}[1997/11/10]
+\define@key{ns}{ns-attr}{\def\@test{#1}\ifx\@test\@empty\else\def\ns@attr{#1:}\fi}
+\define@key{ns}{ns-elt}{\def\@test{#1}\ifx\@test\@empty\else\def\ns@elt{#1:}\fi}
+
+%%%%%%%%%%%%%%%%%% elements %%%%%%%%%%%%%%%%%%
+\newcommand{\element}[2][]{% keyval, element
+\def\@empty{}\def\ns@elt{}\setkeys{ns}{#1}\snippet{\ns@elt #2}%
+\index{#2@{\snippet{\ns@elt #2}! element}}%
+\ifx\ns@elt\@empty\else\index{\ns@elt #2@{\snippet{\ns@elt #2}! element}}\fi}
+
+\newcommand{\Eldef}[2][]{% keyval, element
+\def\@empty{}\def\ns@elt{}\setkeys{ns}{#1}\snippet{\ns@elt #2}%
+\label{eldef:\@ifundefined{ns@elt}{}{\ns@elt}#2}%
+\ifmargins\marginpar{\fbox{\snippet{\ns@elt #2}}}\fi%
+\index{#2@{\snippet{\ns@elt #2}! element}}%
+\ifx\ns@elt\@empty\else\index{\ns@elt #2@{\snippet{\ns@elt #2}! element}}\fi}
+
+\newcommand{\eldef}[2][]{% keyval, element
+\def\@empty{}\def\ns@elt{}\setkeys{ns}{#1}\snippet{\ns@elt #2}%
+\label{eldef:\@ifundefined{ns@elt}{}{\ns@elt}#2}%
+\ifmargins\marginpar{\fbox{\snippet{\ns@elt #2}}}\fi%
+\index{#2@{\snippet{\ns@elt #2}! element}}%
+\ifx\ns@elt\@empty\else\index{\ns@elt #2@{\snippet{\ns@elt #2}! element}}\fi}
+
+\newcommand{\oldelement}[3][]{%keyval, element, version
+\def\@empty{}\def\ns@elt{}\setkeys{ns}{#1}\snippet{\ns@elt #2}%
+\index{#1@{\snippet{#1}} element (deprecated in {#2})}%
+\ifx\ns@elt\@empty\else\index{\ns@elt #1@{\snippet{#1}} element (deprecated in {#2})}\fi}
+
+%%%%%%%%%%%%%%%%%% attributes %%%%%%%%%%%%%%%%%%
+\newcommand{\attribute}[3][]{%keyval,attribute,element
+\def\@empty{}\def\ns@elt{}\def\ns@attr{}\setkeys{ns}{#1}\snippet{\ns@attr #2}%
+\index{#2@{\snippet{\ns@attr #2}}!attribute!on {\snippet{\ns@elt #3}}}%
+\ifx\ns@attr\@empty\else\index{#2@{\snippet{\ns@attr #2}}!attribute!on {\snippet{\ns@elt #3}}}\fi}
+
+\newcommand{\oldattribute}[4][]{%keyval,attribute,element
+\def\@empty{}\def\ns@elt{}\def\ns@attr{}\setkeys{ns}{#1}%
+\snippet{\ns@attr #2}%
+\index{#2@{\snippet{\ns@attr #2}}!old attribute on {\snippet{\ns@elt #3}} (deprecated in OMDoc #4)}%
+\ifx\ns@attr\@empty\else%
+\index{#2@{\snippet{\ns@attr #2}}!old attribute on {\snippet{\ns@elt #3}} (deprecated in OMDoc #4)}%
+\fi}
+
+\newcommand{\attributeshort}[2][]{% keyval, attribute
+\def\@empty{}\def\ns@attr{}\setkeys{ns}{#1}\snippet{\ns@attr #2}%
+\index{#2@{\snippet{\ns@attr #2}}!attribute}%
+\ifx\ns@attr\@empty\else\index{\ns@attr #2@{\snippet{\ns@attr #2}}!attribute}\fi}
+
+\newcommand{\attributeshortcomment}[3][]{% keyval, attribute, comment
+\def\@empty{}\def\ns@attr{}\setkeys{ns}{#1}\snippet{\ns@attr #2}%
+\index{#2@{\snippet{\ns@attr #2}}!attribute (#3)}%
+\ifx\ns@attr\@empty\else\index{\ns@attr #2@{\snippet{\ns@attr #2}}!attribute (#3)}\fi}
+
+%%%%%%%%%%%%%%%%%% attribute values %%%%%%%%%%%%%%%%%%
+\newcommand{\attval}[4][]{% keyval, value, attribute, element
+\def\ns@attr{}\def\ns@elt{}\setkeys{ns}{#1}\snippet{#2}%
+\index{#2@\snippet{#2}!attribute value!for {\snippet{\ns@attr #3}} on {\snippet{\ns@elt #4}}}}
+
+\newcommand{\oldattval}[5][]{% keyval, value, attribute, element, version
+\def\ns@attr{}\def\ns@elt{}\setkeys{ns}{#1}\snippet{#2}%
+\index{#2@{\snippet{#2}}!attribute value!for {\snippet{\ns@attr #3}} on {\snippet{\ns@elt #4}} (deprecated in OMDoc #5)}}
+
+\newcommand{\attvalshort}[3][]{%keyval, value, attribute
+\def\ns@attr{}\def\ns@elt{}\setkeys{ns}{#1}\snippet{#2}%
+\index{#2@{\snippet{\ns@attr #2}}!attribute value!for {\snippet{\ns@elt #3}}}}
+
+\newcommand{\attvalveryshort}[2][]{%keyval, value
+\def\ns@attr{}\def\ns@elt{}\setkeys{ns}{#1}\snippet{#2}%
+\index{#2@{\snippet{\ns@attr #2}}!attribute value}}
+
+% LocalWords:  keyval ns attr elt

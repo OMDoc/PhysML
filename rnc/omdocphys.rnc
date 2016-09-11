@@ -1,0 +1,48 @@
+# A RelaxNG schema for Open Mathematical documents (OMDoc 1.2) Module PHYS
+#   SYSTEM http://www.mathweb.org/omdoc/rnc/omdocphys.rnc
+#   PUBLIC -//OMDoc//RNC OMDoc PHYS V1.2//EN                               
+# See the documentation and examples at http://www.mathweb.org/omdoc       
+# (c) 2006 Michael Kohlhase, released under the GNU Public License (GPL)   
+
+default namespace omdoc = "http://www.mathweb.org/omdoc"
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+# we extend the set of available top-level elements
+omdoc.class |= observable | system | experiment | evidence
+
+# and the set of available types of assertions. 
+assertiontype |= "natural_law"
+
+observable = element observable {xref.attrib|
+	                         (attribute name {xsd:NCName},
+				  attribute algebra {omdocref}?,
+				  id.attrib,
+				  opdef,refinement,type?)}
+
+refinement = element refinement {id.attrib,omdocmtxt.MCF.content}
+opdef = element opdef {id.attrib,omdocmtxt.MCF.content}
+
+system  = element system {xref.attrib|
+	                  (id.attrib,realization?,observable*,preparation?,state?)}
+
+realization = element realization {id.attrib,omdocmtxt.MCF.content}
+preparation = element preparation {id.attrib,omdocmtxt.MCF.content}
+
+state = element state {id.attrib,attribute of {omdocref}?,metadata?,value*}
+
+value = element value {id.attrib,attribute for {xsd:NCName},(omdocmobj.class)}
+
+measurement = element measurement {xref.attrib|
+	                           (id.attrib,omdocmtxt.MCF.content,state,state)}
+
+experiment = element experiment {xref.attrib|
+	                         (id.attrib,omdocmtxt.MCF.content,
+				  system,system,measurement*)}
+
+evidence = element evidence {id.attrib,
+			     attribute for {omdocref}?,
+	                     attribute type {"for" | "against"},
+			     omdocmtxt.MCF.content,experiment*,interpretation}
+
+interpretation = element interpretation {id.attrib,omdocmtxt.MCF.content}
+

@@ -1,0 +1,190 @@
+\section{Case Study: Thermostatics}
+
+\begin{newpart}{moved here from the intro}
+  In the following we will exemplify this approach by application to a small subfield of
+physics, {\emph{thermostatics}}, which has some practical advantages to start with:
+\begin{itemize}
+\item it is non-trivial;
+\item it is a linear theory;
+\item the thermostatic state space is affine (no metric) and mostly has just very few
+  dimensions,, --- with just exactly one thermal;
+\item the variables have a range;
+\item it is mathematically confined to the subfield of operations with partial
+  derivatives\footnote{More generally: of total derivatives for an affine space.};
+\item it is of the widest most interest in numerous technical applications, so that a
+  semantic encoding will be of utmost utility.
+\end{itemize}
+\end{newpart}
+The physics of thermostatics is extremely simple.  All physically measurable relations and
+observables can be cast mathematically as total differentials (represented by sets of
+partial derivatives) of non-observable {\emph{Potentials}}.  Any observable, as a function
+of its specific variables, contains the whole physics information about the system.  The
+nice thing is that no metrics are involved, id est the thermostatic space is affine.
+
+So what do we have to do to be able to make use of a {\physml} to check the
+correctness of presented equations: 
+\begin{enumerate}
+\item define the variables as principal objects.
+\item define the measurable variables for a given experimental setup.
+\item setup the total derivative with its partial derivatives.
+\item encode the Jacobi determinant for coordinate transformations.
+\item setup practical tools for checking the correctness of transformations for linearity.
+\item Fortunately the dimension check as the easiest test of an operating {\physml} is simple in
+  thermostatics.
+\end{enumerate}
+
+\subsection{The Formal Part of {\physml} Exemplified}
+Now we exemplify the formal part of {\physml} in the nutshell of thermostatics:
+
+All {\emph{physical variables}}, such as {\emph{temperature}} $T$, {\emph{entropy}} $S$,
+{\emph{internal energy}} $U$, {\emph{density}}, {\emph{chemical potential}}, etc. are real
+numbered variables (with the option to extend to the complex plane).
+
+Each having its own {\emph{physics dimension}}, such as {\emph{energy}}, {\emph{density}},
+etc.
+
+Each having its own {\emph{range}}, such as $1/T < \infty$, or $\rho>0 $, etc.
+
+Each variable is defined by an experimental setup able to measure it.
+
+Given a thermostatic system and an experimental setup, this defines which variables can be
+measured simultaneously, the number of these define the {\emph{dimension of thermostatic
+    space}}.  Mostly this is two or three.
+
+Given a full set of simultaneously measurable variables of a given system (say
+$SV,N$),then the universal law of thermostatics says: {\emph{all}} physical information
+attainable on this system under this and any other experimental setup with other
+thermostatic variables given are contained in {\emph{one}} real valued function on the
+given set of experimental variables.  This quantity itself is not measurable and thus
+called {\emph{The Thermostatic Potential for the given setup}}. Its total differential,
+represented by its partial derivatives then lead by the usual algebra of partial
+derivatives under the respective Jacobi transformations to any physics quantity under any
+other experimental setup.  That is, why thermostatics is so simple as an example of
+{\physml}.
+
+So we need:
+\begin{itemize}
+\item real numbered variables
+\item range conditions
+\item potentials and its representations
+\item Jacobi algorithm for thermostatic space coordinate transformation
+\item partial derivatives algebra
+\item ordinary 12 class mathematics such as equation solving, derivative, stretching of
+  one variable, inversion, addition and multiplication.
+\end{itemize}
+
+\subsection{Bausteine/Steinbruch}\label{sec:thermostatik}
+
+Examples of {\emph{thermostatic observables}} are pressure $p$, Temperature $T$, Entropy
+$S$, internal energy $U$.
+
+
+A given experimentally prepared {\emph{thermostatic system}} is defined by the {\emph{set
+    of all simultaneously measurable observables}} of that system.  Their number is either
+countable infinite or much less, in most practical cases rather small. In any case the set
+contains exactly {\emph{one}} thermostatic variable\footnote{That is the essence of the
+  ``zeroth law of thermostatics'' or of the initiator Robert Mayer. The other laws of
+  thermostatics are (1.: Energy conservation including the thermal one; 2. Entropy can
+  only rise in a closed system; 3. temperature axis has a cut at $T=0$.}  All other
+observables of a set are non-thermal, called 'mechanic', like {\emph{volume}},
+{\emph{density}}, {\emph{mass}}, {\emph{charge}}, {\emph{angular momentum}},
+{\emph{composition}},\ldots Thus the essence of thermostatics can be demonstrated with
+simple systems which have just one non-thermal variable, such as the all-textbook-famous
+{\emph{gas container}}: Inside a homogeneous gas of pressure $p$ and put into a piston for
+compression and a heater for enforcing a homogeneous temperature $T$.
+
+The range of the variables can be read off from the dictionary of thermostatic
+observables.
+
+The {\emph{values}} of the variables are determined by an experiment.  We know beforehand
+that they are real numbered.
+
+The {\emph{Theorem}} or Axiom or Law of thermostatics says, that there exists for a given
+system and set of observables exactly {\emph{one}} function of the observables, called the
+{\textbf{thermostatic potential}} for that given experimentally prepared system, from
+which {\emph{all}} measuring results in all possible experimental setups of the same
+system including such with any other set of observables chosen, can be calculated
+algebraically from its total derivative.  However it is not said, which function.  The
+{\emph{first law of thermostatics}} then gives us a clue how to construct it: the
+{\emph{internal energy density $u$}} change is equal to the thermal energy change plus the
+non-thermal energy change, and luckily $u$ is the thermostatic potential for the variables
+entropy $s$ and density $\rho$:
+\begin{equation}
+{\rm d} u := T {\rm d}s + p/\rho^2 {\rm d}\rho \quad ;
+\end{equation}
+While $u$ is a non-measurable thermostatic potential, its total derivative\footnote{We
+  mean the mathematical algebra of Cartan's exterior derivative.} is represented by its
+independent first order partial derivatives, one for each variable.  By use of the
+Jacobian (thermostatic space) coordinate transformations we can calculate the set of
+partial derivatives of one potential to that of another and thus predict experiments under
+different conditions than the one we started with.
+
+An Example: the {\emph{specific heat}} $c_p(T) := (\partial f/\partial T)_p$ as a function
+of temperature for fixed pressure, giving the free energy $f$ increase per degree heated,
+may have been measured. However, now we want to know the specific heat $c_V(T) = (\partial
+u / \partial T)_V$.  \footnote{The two potentials $f$ and $u$ differ by the mechanical
+  work to expand the system during the measurement, in contrast to measuring for fixed
+  volume.  $p {\rm d}v$, with $u + pv =: f$.  The free energy has $(T,p)$ as variables,
+  while the internal energy has $(T.\rho)$.}  This simple calculation has first been done
+to our knowledge by Max Planck in his fundamental textbook {\sl
+  Thermodynamik}\cite{planck-1905} of 1905.\footnote{Henceforth we make use of a modern
+  notation of partial derivatives\cite{hilf-suessmann-1972}, first introduced by
+  A. Buchler, which separates in the notation the subject, the mapping and the result of
+  the derivative, $(\partial a/\partial b)$ for constant $c =: \partial_b^c a$.}.  Planck
+(on his page 55) gets from ${\rm d}u := T {\rm d}s + p {\rm d}v$, also $T =
+\partial_s^v u $ and $ p = \partial_v^s u$ the useful relations
+(remember: $u$ is a potential for the variables $(s,v)$ not for $(T,\rho)$)
+\[\partial_p^v \, u = c_v \, \partial_p^v T \qquad \partial_v^p u = c_p \, \partial_v^p T - p
+\quad ,\]
+and from this  finally
+\[(c_p - c_v)\,  \partial_v^p\partial_p^v T +  \partial_p^v c_p \, \partial_v^p T
+-  \partial_v^p c_v  \, \partial_p^v T  = 1 \quad .\]
+This nice identity between specific heats for different experimental setups
+is technically used for cross-checking experimental numbers.
+
+It is the aim of this paper to enable in the near future automatic checking tools
+triggered from a digital thermostatics paper, which had been semantically encoded
+with {\physml} to check even such nontrivial identities.
+
+For this we have to stratify the algebra of partial derivatives for automated
+semantic encoding using {\omdoc}.
+
+
+We start from the {\emph{total Differential}} ${\rm d} := {\rm d}x \partial_x^y + {\rm
+  d}y \partial_y^x $ and its behavior under affine Coordinate Transformations in the
+thermostatic space $(x,y) --> (a,b)$.  We get the general rules
+\[\partial_x^y = \partial_x^y a \quad \partial_a^b + 
+\partial_x^y b \quad \partial_b^a \quad , \]
+with its simple special cases
+\[\partial_x^y = \partial_x^y z \, \partial_z^y \quad {\rm chain rule},
+\partial_x^y z \quad \partial_z^y x = 1 \quad {\rm inversion}, \quad
+\partial_x^y z  \,  \partial_z^x y  \, \partial_y^z x = - 1 \quad {\rm triangulation}. \]
+
+\paragraph{What tools do we expect}
+Mathematical objects in equations of a paper in physics are identified to
+be the algebraic image of its respective physical observable.
+
+Physical dimensions, out of range of variables, units could be tested by automatic tools.
+
+Partial derivatives containing equations could be checked for its validity
+using one of the algebraic tools able to make use of Jacobian transformations.
+
+Making use of a future {\physml} also allows each author to choose his own symbols
+for a given observable, allows to centrally store and thus link to the
+accumulated knowledge of this observable, to search for papers where these
+quantities occur independent of the actual representation or notation.
+
+Specifically in thermostatics, once semantic encoding with {\physml} is  achieved,
+making use of the axioms of thermostatic, and the algebraic derivations as said,
+one  could automatically calculate predictions for other experimental setups
+than the one used to get the necessary full thermostatic information.
+
+Technically, an authoring tool will be developed which enables the author to easily make
+the necessary semantic markup by tags within his/her {\LaTeX}-typing.
+
+%%% Local Variables: 
+%%% mode: LaTeX
+%%% TeX-master: "mkm06"
+%%% End: 
+
+% LocalWords:  est Jacobi Bausteine Steinbruch Thermodynamik Buchler mkm

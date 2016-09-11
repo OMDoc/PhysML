@@ -1,0 +1,15 @@
+\begin{module}[id=units]
+\importmodule[dimensions]{dimensions}
+\importmodule[../math/arith]{arith}
+\symdef{gram}{g}
+\symdef{meter}{m}
+\symdef{second}{s}
+\symdef{Volt}{v}
+\symdef{Kelvin}{K}
+\symdef{Celsius}{^\circ\kern-.3em{C}}
+  \symdef{liter}{l}
+  \symdef{centimeter}{cm}
+  \symdef{kilogram}{kg}
+  \symdef{Newton}{N}
+  \symdef{Joule}{J}
+\end{module}

@@ -1,0 +1,10 @@
+\begin{module}[id=dimensions]
+\symdef{mass}{{\sf{mass}}}
+\symdef{length}{{\sf{length}}}
+\symdef{time}{{\sf{time}}}
+\symdef{charge}{{\sf{charge}}}
+\symdef{temperature}{{\sf{temperature}}}
+\symdef{intensity}{{\sf{intensity}}}
+\symdef{angle}{{\sf{angle}}}
+\symdef{volume}{{\sf{volume}}}
+\end{module}

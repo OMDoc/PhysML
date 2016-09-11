@@ -1,0 +1,99 @@
+\documentclass[twoside]{article}
+\usepackage{stex,physml}
+\usepackage[today,fancyhdr]{svninfo}
+\usepackage[show]{ed}
+
+\title{The Content Dictionary for SI Dimensions}
+\author{Michael Kohlhase}
+
+\begin{document}
+\svnInfo $Id: units.tex 43 2008-02-11 16:39:26Z kohlhase $
+\svnKeyword $URL: https://svn.omdoc.org/repos/physml/cds/base/units.tex $
+\maketitle
+
+\begin{module}[id=units]
+\importmodule[dimensions]{dimensions}
+\importmodule[../math/arith]{arith}
+\ednote{MK: all of these need proper descriptions.}
+
+\symdef{gram}{g}
+\begin{consymb}[name=gram]
+  \symtype{dimensions}{$\mass$}
+\end{consymb}
+
+\symdef{meter}{m}
+\begin{consymb}[name=meter]
+  \symtype{dimensions}{$\length$}
+\end{consymb}
+
+\symdef{second}{s}
+\begin{consymb}[name=second]
+  \symtype{dimensions}{$\time$}
+\end{consymb}
+
+\symdef{Volt}{v}
+\begin{consymb}[name=Volt]
+  \symtype{dimensions}{$\charge$}
+\end{consymb}
+
+\symdef{Kelvin}{K}
+\begin{consymb}[name=Kelvin]
+  \symtype{dimensions}{$\temperature$}
+\end{consymb}
+
+\symdef{Celsius}{^\circ\kern-.3em{C}}
+\begin{consymb}[name=Celsius]
+  \symtype{dimensions}{$\temperature$}
+\end{consymb}
+  
+  \begin{definition}[for=Celsius,type=implicit]
+    For all $x>0$, we have $x\Kelvin=(x-273.15)\Celsius$
+  \end{definition}
+
+  \symdef{liter}{l}
+  \begin{consymb}[name=liter]
+    \symtype{dimensions}{$\volume$}
+  \end{consymb}
+  
+  \begin{definition}[for=liter,type=simple]
+    $\power{\fraction\meter{10}}3$
+  \end{definition}
+  
+  \symdef{centimeter}{cm}
+  \begin{consymb}[name=centimeter]
+    \symtype{dimensions}{$\length$}
+  \end{consymb}
+
+  \begin{definition}[for=centimeter,type=implicit]
+    $\times{1,\meter}=\times{100,\centimeter}$.
+  \end{definition}
+
+  \symdef{kilogram}{kg}
+  \begin{consymb}[name=kilogram]
+    \symtype{dimensions}{$\mass$}
+  \end{consymb}
+
+  \begin{definition}[for=kilogram,type=implicit]
+    $1\kilogram=1000\gram$.
+  \end{definition}
+  
+  \symdef{Newton}{N}
+  \begin{consymb}[name=Newton]
+    \symtype{dimensions}{$\force$}
+  \end{consymb}
+
+  \begin{definition}[for=Newton,type=implicit]
+    $1\Newton=1{\fraction{\times{\kilogram,\meter}}{\power\second2}}$.
+  \end{definition}
+  
+  \symdef{Joule}{J}
+  \begin{consymb}[name=Joule]
+    \symtype{dimensions}{$\energy$}
+  \end{consymb}
+
+  \begin{definition}[for=Joule,type=implicit]
+    $\Joule=\times{\Newton,\meter}$.
+  \end{definition}
+  
+\end{module}
+\end{document}

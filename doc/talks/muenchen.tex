@@ -1,0 +1,88 @@
+\documentclass{mikoslides}
+\usepackage{times,alltt}%,url,amssymb}
+\usepackage{acronyms,logics2e,varia}% from ~/tex/lib/mymacros
+\usepackage{paths,stex,mikoaffiliation}% from sTeX
+\usepackage{tikz}
+\def\latexml{\scsys{LaTeXML}}
+
+\begin{document}\sf
+\begin{slide}\strut
+  \begin{ttitle}
+   \textcolor{red}{Capturing the Content of Physics}\\
+  \end{ttitle}\vspace{1cm}
+  \begin{center}
+  {\color{blue}\miko}
+  \end{center}
+\end{slide}
+
+\input{\omdocsnippath{scientific-method}}
+ 
+\begin{separatorslide}{}
+  \begin{ttitle}
+   \color{red} Content Markup Formalisms\\x1
+   \begin{minipage}{8.5cm}\normalsize
+   \begin{itemize}
+   \item Mathematical Formulae ({\mathml}, {\openmath})
+   \item Program Fragments ({\codeml})
+   \item Molecules in Chemistry ({\chemml})
+   \item {\textcolor{red}{Observables, Systems, Experiments ({\scshape{PhysML}})}}
+   \end{itemize}
+   \end{minipage}
+  \end{ttitle}
+\end{separatorslide}
+
+\input{\mathmlsnippath{overview}}
+\input{\mathmlsnippath{layout-schemata}}
+\input{\omsnippath{nutshell}}
+\input{\mathmlsnippath{parallel}}
+
+ \begin{separatorslide}{Markup for Structured Scientific Documents}
+   {\omdoc}: Open Mathematical Documents\\
+   Extend this to cover (Computer) Science materials
+ \end{separatorslide}
+
+\input{\omdocsnippath{situating}}
+\input{\omdocsnippath{nutshell}}
+\input{\omdocsnippath{statements}}
+\input{\omdocsnippath{definition}}
+
+\input{\omdocsnippath{presentation}}
+\input{\omdocsnippath{physml-units}}
+\input{\omdocsnippath{physml-observables}}
+\input{\omdocsnippath{physml-systems}}
+\input{\omdocsnippath{physml-experiment}}
+\input{\omdocsnippath{activedocs}}
+\input{\omdocsnippath{physml-stex}}
+
+\begin{frame}
+  \frametitle{Conclusions}
+  \begin{itemize}
+  \item Towards an E-Science {\textcolor{green}{infrastructure}} based on
+    {\textcolor{green}{communication}} of {\textcolor{green}{knowledge}}
+  \item {\textcolor{blue}{Approach}:} Start with {\textcolor{red}{content/context markup}}
+    for {\textcolor{green}{math}} and {\textcolor{red}{physics}}.
+  \item {\color{red}\omdoc} standardized communication language\lec{based on {\xml}}
+  \item gives us the beginning of a {\color{green} E-Science assistant}
+    \begin{itemize}
+    \item integration of external software systems\lec{make use of the Internet}
+    \item a common ontology for integration\lec{is zero a natural number?}
+    \item a universal math/-Science repository\lec{data mining, semantic search}
+    \item bookkeeping in experiments and theories\lec{management of change}
+    \end{itemize}
+  \item {\textcolor{blue}{Slogan}:} Light-weight formal methods for added-value applications
+  \end{itemize}
+\end{frame}
+
+\input{\omdocsnippath{theory-nutshell}}
+\input{\omdocsnippath{theory-natlist}}
+\input{\omdocsnippath{theory-inclusion}}
+
+
+\end{document}
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
+
+% LocalWords:  ISN Hilf def Baumann Unitan AutoMath qed NT physml activedocs
+% LocalWords:  natlist

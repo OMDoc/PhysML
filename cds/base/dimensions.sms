@@ -1,0 +1,13 @@
+\begin{module}[id=dimensions]
+\importmodule[../math/arith]{arith}
+\symdef{mass}{\mbox{\sf{mass}}}
+\symdef{length}{\mbox{\sf{length}}}
+\symdef{time}{\mbox{\sf{time}}}
+\symdef{charge}{\mbox{\sf{charge}}}
+\symdef{temperature}{\mbox{\sf{temperature}}}
+\symdef{intensity}{\mbox{\sf{intensity}}}
+\symdef{angle}{\mbox{\sf{angle}}}
+\symdef{volume}{\mbox{\sf{volume}}}
+\symdef{force}{\mbox{\sf{force}}}
+\symdef{energy}{\mbox{\sf{energy}}}
+\end{module}

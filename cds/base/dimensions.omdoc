@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<!--This OMDoc document is generated from an sTeX-encoded one via LaTeXML, you may want to reconsider editing it.-->
+<omdoc xmlns="http://omdoc.org/ns" xmlns:om="http://www.openmath.org/OpenMath" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:m="http://www.w3.org/1998/Math/MathML">
+  <theory xml:id="dimensions">
+    <imports from="../math/arith.omdoc#arith"/>
+    <symbol name="mass"/>
+    <notation>
+      <prototype>
+        <om:OMS cd="dimensions" name="mass"/>
+      </prototype>
+      <rendering>
+        <text>mass</text>
+      </rendering>
+    </notation>
+    <symbol name="mass">
+      <metadata>
+        <dc:description>
+The mass dimension.
+</dc:description>
+      </metadata>
+    </symbol>
+    <symbol name="length"/>
+    <notation>
+      <prototype>
+        <om:OMS cd="dimensions" name="length"/>
+      </prototype>
+      <rendering>
+        <text>length</text>
+      </rendering>
+    </notation>
+    <symbol name="length">
+      <metadata>
+        <dc:description>
+The length dimension.
+</dc:description>
+      </metadata>
+    </symbol>
+    <symbol name="time"/>
+    <notation>
+      <prototype>
+        <om:OMS cd="dimensions" name="time"/>
+      </prototype>
+      <rendering>
+        <text>time</text>
+      </rendering>
+    </notation>
+    <symbol name="time">
+      <metadata>
+        <dc:description>
+The time dimension.
+</dc:description>
+      </metadata>
+    </symbol>
+    <symbol name="charge"/>
+    <notation>
+      <prototype>
+        <om:OMS cd="dimensions" name="charge"/>
+      </prototype>
+      <rendering>
+        <text>charge</text>
+      </rendering>
+    </notation>
+    <symbol name="charge">
+      <metadata>
+        <dc:description>
+The charge dimension.
+</dc:description>
+      </metadata>
+    </symbol>
+    <symbol name="temperature"/>
+    <notation>
+      <prototype>
+        <om:OMS cd="dimensions" name="temperature"/>
+      </prototype>
+      <rendering>
+        <text>temperature</text>
+      </rendering>
+    </notation>
+    <symbol name="temperature">
+      <metadata>
+        <dc:description>
+The temparature dimension.
+</dc:description>
+      </metadata>
+    </symbol>
+    <symbol name="intensity"/>
+    <notation>
+      <prototype>
+        <om:OMS cd="dimensions" name="intensity"/>
+      </prototype>
+      <rendering>
+        <text>intensity</text>
+      </rendering>
+    </notation>
+    <symbol name="intensity">
+      <metadata>
+        <dc:description>
+The intensity dimension.
+</dc:description>
+      </metadata>
+    </symbol>
+    <symbol name="angle"/>
+    <notation>
+      <prototype>
+        <om:OMS cd="dimensions" name="angle"/>
+      </prototype>
+      <rendering>
+        <text>angle</text>
+      </rendering>
+    </notation>
+    <symbol name="angle">
+      <metadata>
+        <dc:description>
+The angle dimension.
+</dc:description>
+      </metadata>
+    </symbol>
+    <symbol name="volume"/>
+    <notation>
+      <prototype>
+        <om:OMS cd="dimensions" name="volume"/>
+      </prototype>
+      <rendering>
+        <text>volume</text>
+      </rendering>
+    </notation>
+    <symbol name="volume">
+      <metadata>
+        <dc:description>
+The volume.
+</dc:description>
+      </metadata>
+    </symbol>
+    <definition for="#volume" xml:id="dimensions.p1">
+      <CMP xml:id="dimensions.p1.p1">
+        <p xml:id="dimensions.p1.p1.p1">
+The volume dimension is <om:OMOBJ><om:OMA><om:OMS cd="arith" name="power"/><om:OMS cd="dimensions" name="length"/><om:OMI>3</om:OMI></om:OMA></om:OMOBJ></p>
+      </CMP>
+    </definition>
+    <symbol name="force"/>
+    <notation>
+      <prototype>
+        <om:OMS cd="dimensions" name="force"/>
+      </prototype>
+      <rendering>
+        <text>force</text>
+      </rendering>
+    </notation>
+    <symbol name="force">
+      <metadata>
+        <dc:description>
+The force dimension.
+</dc:description>
+      </metadata>
+    </symbol>
+    <definition for="#force" xml:id="dimensions.p2">
+      <CMP xml:id="dimensions.p2.p1">
+        <p xml:id="dimensions.p2.p1.p1"><om:OMOBJ><om:OMA><om:OMV name="equals"/><om:OMS cd="dimensions" name="force"/><om:OMA><om:OMS cd="arith" name="fraction"/><om:OMA><om:OMS cd="arith" name="times"/><om:OMA><om:OMV name="list"/><om:OMS cd="dimensions" name="mass"/><om:OMS cd="dimensions" name="length"/></om:OMA></om:OMA><om:OMA><om:OMS cd="arith" name="power"/><om:OMS cd="dimensions" name="time"/><om:OMI>2</om:OMI></om:OMA></om:OMA></om:OMA></om:OMOBJ>.
+</p>
+      </CMP>
+    </definition>
+    <symbol name="energy"/>
+    <notation>
+      <prototype>
+        <om:OMS cd="dimensions" name="energy"/>
+      </prototype>
+      <rendering>
+        <text>energy</text>
+      </rendering>
+    </notation>
+    <symbol name="energy">
+      <metadata>
+        <dc:description>
+The energy dimension.
+</dc:description>
+      </metadata>
+    </symbol>
+    <definition for="#energy" xml:id="dimensions.p3">
+      <CMP xml:id="dimensions.p3.p1">
+        <p xml:id="dimensions.p3.p1.p1"><om:OMOBJ><om:OMA><om:OMV name="equals"/><om:OMS cd="dimensions" name="energy"/><om:OMA><om:OMS cd="arith" name="times"/><om:OMA><om:OMV name="list"/><om:OMS cd="dimensions" name="force"/><om:OMS cd="dimensions" name="length"/></om:OMA></om:OMA></om:OMA></om:OMOBJ>.
+</p>
+      </CMP>
+    </definition>
+  </theory>
+  <!--The data elements-->
+</omdoc>

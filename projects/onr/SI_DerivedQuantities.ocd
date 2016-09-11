@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CD xmlns="http://www.openmath.org/OpenMathCD">
+  <CDName>SI_DerivedQuantities</CDName>
+  <CDURL> http://www.openmath.org/cd/SI_DerivedQuantities.ocd </CDURL>
+  <CDReviewDate> 2009-04-01 </CDReviewDate>
+  <CDStatus> experimental </CDStatus>
+  <CDDate>2009-01-10</CDDate>
+  <CDVersion> 1 </CDVersion>
+  <CDRevision> 0 </CDRevision>
+  <CDUses>
+  </CDUses>
+
+  <CDDefinition>
+    <Name>angle</Name>
+    <Description>
+      This symbol represents the quantity of a geometric planar angle.
+    </Description>
+    <CMP> dim(angle) = one </CMP>
+    <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA> <OMS cd="SI_Functions" name="dim"/>
+              <OMS cd="SI_DerivedQuantities" name="angle"/> 
+	</OMA>
+	<OMS cd="SI_BaseQuantities" name="one"/>
+      </OMA>
+    </OMOBJ></FMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name>solid angle</Name>
+    <Description>
+      This symbol represents the quantity of a two dimensional, geometric
+      solid angle.
+    </Description>
+    <CMP> dim(solid angle) = one </CMP>
+    <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA>
+	<OMS cd="relation1" name="eq"/>
+	<OMA> <OMS cd="SI_Functions" name="dim"/>
+              <OMS cd="SI_DerivedQuantities" name="solid angle"/>
+	</OMA>
+	<OMS cd="SI_BaseQuantities" name="one"/>
+      </OMA>
+    </OMOBJ></FMP>
+  </CDDefinition>
+
+<CDDefinition>
+<Name> frequency </Name>
+<Description>
+This symbol represents the physical quantity of frequency.
+</Description>
+<CMP> dim(frequency) = one/time </CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="frequency"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMS cd="SI_BaseQuantities" name="one"/>
+      <OMS cd="SI_BaseQuantities" name="time"/>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> force </Name>
+<Role>constant</Role>
+<Description>
+This symbol represents the physical quantity of force. 
+</Description>
+<CMP> dim(force) = mass*length/(time^2) </CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+  <OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="force"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA>
+        <OMS cd="arith1" name="times"/>
+	<OMS cd="SI_BaseQuantities" name="mass"/>
+        <OMS cd="SI_BaseQuantities" name="length"/>
+      </OMA>
+      <OMA>
+	<OMS cd="arith1" name="power"/>
+	<OMS cd="SI_BaseQuantities" name="time"/>
+	<OMI> 2 </OMI>
+      </OMA>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> pressure </Name>
+<Description>
+This symbol represents the physical quantity of pressure.
+</Description>
+<CMP> dim(pressure) = dim(force)/dim(area) = mass/(length*time*time) </CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation4" name="eqs"/>
+    <OMA>
+      <OMS cd="SI_Functions" name="dim"/>
+      <OMS cd="SI_DerivedQuantities" name="pressure"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA> <OMS cd="SI_Functions" name="dim"/>
+            <OMS cd="SI_DerivedQuantities" name="force"/>
+      </OMA>
+      <OMA> <OMS cd="SI_Functions" name="dim"/>
+            <OMS cd="SI_DerivedQuantities" name="area"/>
+      </OMA>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMS cd="SI_BaseQuantities" name="mass"/>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+      </OMA>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> energy </Name>
+<Description>
+This symbol represents the physical quantity of energy.
+</Description>
+<CMP> dim(energy) = dim(force)*length = mass*length^2/(time^2) </CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation4" name="eqs"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="energy"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="times"/>
+      <OMA> <OMS cd="SI_Functions" name="dim"/>
+            <OMS cd="SI_DerivedQuantities" name="force"/>
+      </OMA>
+      <OMS cd="SI_BaseQuantities" name="length"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="mass"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+      </OMA>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+      </OMA>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> power </Name>
+<Description>
+This symbol represents the physical quantity of power, or energy
+divided by time.
+</Description>
+<CMP> dim(power) = dim(energy)/time = mass*length^2/(time^3)</CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation4" name="eqs"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="power"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA> <OMS cd="SI_Functions" name="dim"/>
+            <OMS cd="SI_DerivedQuantities" name="energy"/>
+      </OMA>
+      <OMS cd="SI_BaseQuantities" name="time"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="mass"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+      </OMA>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+      </OMA>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> charge </Name>
+<Description>
+This symbol represents the physical quantity of electric charge.
+</Description>
+<CMP> dim(charge) = current*time </CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="charge"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="times"/>
+      <OMS cd="SI_BaseQuantities" name="current"/>
+      <OMS cd="SI_BaseQuantities" name="time"/>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> voltage </Name>
+<Description>
+This symbol represents the physical quantity of voltage or electric tension.
+</Description>
+<CMP> dim(voltage) = dim(energy/charge) = mass*length^2/(current*time^3) </CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation4" name="eqs"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="voltage"/>
+    </OMA>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+      <OMA>
+        <OMS cd="arith1" name="divide"/>
+        <OMS cd="SI_DerivedQuantities" name="energy"/>
+        <OMS cd="SI_DerivedQuantities" name="charge"/>
+      </OMA>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="mass"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+      </OMA>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="current"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+      </OMA>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> capacitance </Name>
+<Description>
+This symbol represents the physical quantity of electric capacitance.
+</Description>
+<CMP> dim(capacitance) = dim(charge/voltage) = current^2*time^4/(mass*length^2)</CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation4" name="eqs"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="capacitance"/>
+    </OMA>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+      <OMA>
+        <OMS cd="arith1" name="divide"/>
+        <OMS cd="SI_DerivedQuantities" name="charge"/>
+        <OMS cd="SI_DerivedQuantities" name="voltage"/>
+      </OMA>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="current"/>
+            <OMS cd="SI_BaseQuantities" name="current"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+      </OMA>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="mass"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+      </OMA>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> resistance </Name>
+<Description>
+This symbol represents the physical quantity of electrical resistance,
+the resistance that an electrical circuit has to electrical current.
+</Description>
+<CMP> dim(resistance) = dim(voltage/current) = mass*length^2/(current^2*time^3)</CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation4" name="eqs"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="resistance"/>
+    </OMA>
+    <OMA>
+      <OMS cd="SI_Functions" name="dim"/>
+      <OMA>
+	<OMS cd="arith1" name="divide"/>
+	<OMS cd="SI_DerivedQuantities" name="voltage"/>
+	<OMS cd="SI_DerivedQuantities" name="current"/>
+      </OMA>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="mass"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+      </OMA>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="current"/>
+            <OMS cd="SI_BaseQuantities" name="current"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+      </OMA>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> conductance </Name>
+<Description>
+This symbol represents the physical quantity of electrical conductance,
+the inverse of resistance.
+</Description>
+<CMP> dim(conductance) = dim(current/voltage) = current^2*time^3/(mass*length^2) </CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation4" name="eqs"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="conductance"/>
+    </OMA>
+    <OMA>
+      <OMS cd="SI_Functions" name="dim"/>
+      <OMA>
+        <OMS cd="arith1" name="divide"/>
+        <OMS cd="SI_DerivedQuantities" name="current"/>
+        <OMS cd="SI_DerivedQuantities" name="voltage"/>
+      </OMA>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="current"/>
+            <OMS cd="SI_BaseQuantities" name="current"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+      </OMA>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="mass"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+      </OMA>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> magnetic flux </Name>
+<Description>
+This symbol represents the physical quantity of magnetic flux.
+</Description>
+<CMP> dim(magnetic flux) = dim(energy/current) =  mass*length^2/(current*time^2) </CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation4" name="eqs"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="magnetic flux"/>
+    </OMA>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+      <OMA>
+        <OMS cd="arith1" name="divide"/>
+        <OMS cd="SI_DerivedQuantities" name="energy"/>
+        <OMS cd="SI_DerivedQuantities" name="current"/>
+      </OMA>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="mass"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+      </OMA>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="current"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+      </OMA>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> magnetic flux density </Name>
+<Description>
+This symbol represents the physical quantity of magnetic flux density.
+</Description>
+<CMP> dim(magnetic flux density) = dim(magnetic flux)/(length^2)
+      = mass/(current*time^2) </CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation4" name="eqs"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="magnetic flux density"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA>
+        <OMS cd="SI_Functions" name="dim"/>
+        <OMS cd="SI_DerivedQuantities" name="magnetic flux"/>
+      </OMA>
+      <OMA> <OMS cd="arith1" name="power"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+            <OMI> 2 </OMI>
+      </OMA>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMS cd="SI_BaseQuantities" name="mass"/>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="current"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+      </OMA>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> inductance </Name>
+<Description>
+This symbol represents the physical quantity of electrical inductance.
+</Description>
+<CMP> dim(inductance) = dim(voltage)*time/current =  mass*length^2/(current^2*time^2)  </CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation4" name="eqs"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="inductance"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA>
+        <OMS cd="arith1" name="times"/>
+        <OMA> <OMS cd="SI_Functions" name="dim"/>
+              <OMS cd="SI_DerivedQuantities" name="voltage"/>
+        </OMA>
+        <OMS cd="SI_BaseQuantities" name="time"/>
+      </OMA>
+      <OMS cd="SI_DerivedQuantities" name="current"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="mass"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+      </OMA>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="current"/>
+            <OMS cd="SI_BaseQuantities" name="current"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+            <OMS cd="SI_BaseQuantities" name="time"/>
+      </OMA>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> Celsius temperature </Name>
+<Description>
+This symbol represents the physical quantity of Celsius temperature.
+</Description>
+<CMP> dim(Celsius temperature) = temperature </CMP>
+<CMP> num(Celsius temperature) + 273.15 = num(temperature) </CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="Celsius temperature"/>
+    </OMA>
+    <OMS cd="SI_BaseQuantities" name="temperature"/>
+  </OMA>
+</OMOBJ></FMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA>
+      <OMS cd="arith1" name="plus"/>
+      <OMA> <OMS cd="SI_Functions" name="num"/>
+            <OMS cd="SI_DerivedQuantities" name="Celsius temperature"/>
+      </OMA>
+      <OMF dec="273.15"/>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> luminous flux </Name>
+<Description>
+This symbol represents the physical quantity of luminous flux.
+</Description>
+<CMP> dim(luminous flux) = (luminous intensity)*dim(solid angle)
+      =  (luminous intensity) </CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation4" name="eqs"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="luminous flux"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="times"/>
+      <OMS cd="SI_BaseQuantities" name="luminous intensity"/>
+      <OMA> <OMS cd="SI_Functions" name="dim"/>
+            <OMS cd="SI_DerivedQuantities" name="solid angle"/>
+      </OMA>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+<Name> illuminance </Name>
+<Description>
+This symbol represents the physical quantity of illuminance.
+</Description>
+<CMP> dim(illuminance) = dim(luminous flux)/(length^2)
+      = (luminous intensity)/(length^2) </CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="illuminance"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMA> <OMS cd="SI_Functions" name="dim"/>
+            <OMS cd="SI_DerivedQuantities" name="luminous flux"/>
+      </OMA>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+      </OMA>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="divide"/>
+      <OMS cd="SI_DerivedQuantities" name="luminous intensity"/>
+      <OMA> <OMS cd="arith1" name="times"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+      </OMA>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<!-- 
+radio nuclide activity, becquerel
+absorbed dose, gray
+dose equivalent, sievert
+catalytic activity, katal  
+-->
+
+<CDDefinition>
+<Name>area</Name>
+<Description>
+This symbol represents the physical quantity of area.
+</Description>
+<CMP> dim(area) = length*length </CMP>
+<FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+  <OMA>
+    <OMS cd="relation1" name="eq"/>
+    <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="area"/>
+    </OMA>
+    <OMA>
+      <OMS cd="arith1" name="times"/>
+      <OMS cd="SI_BaseQuantities" name="length"/>
+      <OMS cd="SI_BaseQuantities" name="length"/>
+    </OMA>
+  </OMA>
+</OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+  <Name> volume </Name>
+  <Description>
+    This symbol represents the physical quantity of volume.
+  </Description>
+  <CMP> dim(volume) = length^3 </CMP>
+  <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA> <OMS cd="SI_Functions" name="dim"/>
+            <OMS cd="SI_DerivedQuantities" name="volume"/>
+      </OMA>
+      <OMA> <OMS cd="arith1" name="power"/>
+            <OMS cd="SI_BaseQuantities" name="length"/>
+	    <OMI> 3 </OMI>
+      </OMA>
+    </OMA>
+  </OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+  <Name> speed </Name>
+  <Description>
+    This symbol represents the physical quantity of speed. It is the size of the
+    derivative of position with respect to time.
+  </Description>
+  <CMP> dim(speed) = length/time </CMP>
+  <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA> <OMS cd="SI_Functions" name="dim"/>
+            <OMS cd="SI_DerivedQuantities" name="speed"/>
+      </OMA>
+      <OMA>
+	<OMS cd="arith1" name="divide"/>
+	<OMS cd="SI_BaseQuantities" name="length"/>
+	<OMS cd="SI_BaseQuantities" name="time"/>
+      </OMA>
+    </OMA>
+  </OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+  <Name> momentum </Name>
+  <Description>
+    This symbol represents the physical quantity of momentum.
+  </Description>
+  <CMP> dim(momentum) = mass*length/time </CMP>
+  <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA> <OMS cd="SI_Functions" name="dim"/>
+            <OMS cd="SI_DerivedQuantities" name="momentum"/>
+      </OMA>
+      <OMA>
+        <OMS cd="arith1" name="divide"/>
+        <OMA> <OMS cd="arith1" name="times"/>
+              <OMS cd="SI_BaseQuantities" name="mass"/>
+	      <OMS cd="SI_BaseQuantities" name="length"/>
+        </OMA>
+        <OMS cd="SI_BaseQuantities" name="time"/>
+      </OMA>
+    </OMA>
+  </OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+  <Name>moment of force</Name>
+  <Description>
+    This symbol represents the physical quantity of force. 
+  </Description>
+  <CMP> dim(moment of force) = length*dim(force) = mass*length^2/(time^2) </CMP>
+  <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+    <OMA>
+      <OMS cd="relation4" name="eqs"/>
+      <OMA> <OMS cd="SI_Functions" name="dim"/>
+          <OMS cd="SI_DerivedQuantities" name="moment of force"/>
+      </OMA>
+      <OMA>
+	<OMS cd="arith1" name="times"/>
+	<OMS cd="SI_BaseQuantities" name="length"/>
+	<OMA> <OMS cd="SI_Functions" name="dim"/>
+              <OMS cd="SI_DerivedQuantities" name="force"/>
+	</OMA>
+      </OMA>
+      <OMA>
+	<OMS cd="arith1" name="divide"/>
+	<OMA> <OMS cd="arith1" name="times"/>
+              <OMS cd="SI_BaseQuantities" name="mass"/>
+              <OMS cd="SI_BaseQuantities" name="length"/>
+	      <OMS cd="SI_BaseQuantities" name="length"/>
+	</OMA>
+	<OMA> <OMS cd="arith1" name="times"/>
+	      <OMS cd="SI_BaseQuantities" name="time"/>
+	      <OMS cd="SI_BaseQuantities" name="time"/>
+	</OMA>
+      </OMA>
+    </OMA>
+  </OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+  <Name> density </Name>
+  <Description>
+    This symbol represents the physical quantity of volumic mass density.
+  </Description>
+  <CMP> dim(density) = mass/(length^3) </CMP>
+  <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA> <OMS cd="SI_Functions" name="dim"/>
+            <OMS cd="SI_DerivedQuantities" name="density"/>
+      </OMA>
+      <OMA>
+        <OMS cd="arith1" name="divide"/>
+	<OMS cd="SI_BaseQuantities" name="mass"/>
+        <OMA> <OMS cd="arith1" name="power"/>
+              <OMS cd="SI_BaseQuantities" name="length"/>
+              <OMI> 3 </OMI>
+        </OMA>
+      </OMA>
+    </OMA>
+  </OMOBJ></FMP>
+</CDDefinition>
+
+<CDDefinition>
+  <Name> concentration </Name>
+  <Description>
+    This symbol represents the physical quantity of concentration, the
+    amount of a substance in a volume.
+  </Description>
+  <CMP> dim(concentration) = (amount of substance)/length^3 </CMP>
+  <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+    <OMA>
+      <OMS cd="relation1" name="eq"/>
+      <OMA> <OMS cd="SI_Functions" name="dim"/>
+            <OMS cd="SI_DerivedQuantities" name="concentration"/>
+      </OMA>
+      <OMA>
+	<OMS cd="arith1" name="divide"/>
+	<OMS cd="SI_BaseQuantities" name="amount of substance"/>
+	<OMA> <OMS cd="arith1" name="power"/>
+              <OMS cd="SI_BaseQuantities" name="length"/>
+              <OMI> 3 </OMI>
+	</OMA>
+      </OMA>
+    </OMA>
+  </OMOBJ></FMP>
+</CDDefinition>
+
+</CD>

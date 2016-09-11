@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CD xmlns="http://www.openmath.org/OpenMathCD">
+  <CDName> SI_BaseUnits </CDName>
+  <CDURL> http://www.openmath.org/cd/SI_BaseUnits.ocd </CDURL>
+  <CDReviewDate> 2009-04-01 </CDReviewDate>
+  <CDStatus> experimental </CDStatus>
+  <CDDate> 2009-01-10 </CDDate>
+  <CDVersion> 1 </CDVersion>
+  <CDRevision> 0 </CDRevision>
+  <CDUses>
+  </CDUses>
+
+  <Description>
+    This CD defines symbols to represent the seven base units of the SI
+    (Syst\'eme International) system of units.  (DRAFT INTERNATIONAL
+    STANDARD ISO/DIS 80000-1 - "Quantities and units", 2008).
+    Each unit refers to a corresponding base quantity in SI_BaseQuantities.ocd.
+  </Description>
+
+  <CDDefinition>
+    <Name>one</Name>
+    <Description>
+      This symbol represents the dimensionless unit.
+    </Description>
+    <CMP> one = unit(one) = 1 </CMP>
+    <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA>
+        <OMS cd="relation4" name="eqs"/>
+        <OMS cd="SI_BaseUnits" name="one"/>
+        <OMA> <OMS cd="SI_Functions" name="unit"/>
+              <OMS cd="SI_BaseQuantities" name="one"/>
+        </OMA>
+        <OMI> 1 </OMI>
+      </OMA>
+    </OMOBJ></FMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name>metre</Name>
+    <Description>
+      This symbol represents the measure of one metre of length, the standard
+      SI unit of measure for physical distance.
+    </Description>
+    <CMP> This is a base unit for the SI system.
+    It is defined physically as the length of the path travelled by light
+    in vacuum during a time interval of 1/299 792 458 of a second.
+    This definition was provided in 1983 by the seventeenth General
+    Conference on Weights and Measures (CGPM) </CMP>
+    <CMP> metre = unit(length) </CMP>
+    <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA>
+        <OMS cd="relation1" name="eq"/>
+        <OMS cd="SI_BaseUnits" name="metre"/>
+        <OMA> <OMS cd="SI_Functions" name="unit"/>
+              <OMS cd="SI_BaseQuantities" name="length"/>
+        </OMA>
+      </OMA>
+    </OMOBJ></FMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name>kilogram</Name>
+    <Description>
+      This symbol represents the measure of one kilogram of mass, the standard
+      SI unit of measure for time.
+    </Description>
+    <CMP> This is a base unit for the SI system.
+    It is defined physically as the mass of the International Prototype
+    Kilogram stored at the International Bureau of Weights and Measures
+    (BIPM) in in Sèvres, France. A proposal is pending to redefine the
+    standard mass in terms of natural constants.
+    </CMP>
+    <CMP> kilogram = unit(mass) </CMP>
+    <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA>
+        <OMS cd="relation1" name="eq"/>
+        <OMS cd="SI_BaseUnits" name="kilogram"/>
+        <OMA> <OMS cd="SI_Functions" name="unit"/>
+              <OMS cd="SI_BaseQuantities" name="mass"/>
+        </OMA>
+      </OMA>
+    </OMOBJ></FMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name>second</Name>
+    <Description>
+      This symbol represents the measure of one second of time, the standard
+      SI unit of measure for time.
+    </Description>
+    <CMP> This is a base unit for the SI system.
+    It is defined physically as the duration of 9 192 631 770 periods of
+    the radiation corresponding to the transition between the two
+    hyperfine levels of the ground state of the caesium 133 atom.
+    This definition refers to a caesium atom at rest at a temperature of 0
+    Kelvin (absolute zero). The ground state is defined at zero magnetic
+    field.
+    </CMP>
+    <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA>
+        <OMS cd="relation1" name="eq"/>
+        <OMS cd="SI_BaseUnits" name="second"/>
+        <OMA> <OMS cd="SI_Functions" name="unit"/>
+              <OMS cd="SI_BaseQuantities" name="time"/>
+        </OMA>
+      </OMA>
+    </OMOBJ></FMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name>ampere</Name>
+    <Description>
+      This symbol represents the measure of one ampere, the standard
+      SI unit of measure for current.
+    </Description>
+    <CMP> This is a base unit for the SI system.
+    It is defined physically as the constant current which will produce an
+    attractive force of 2×10–7 newton per metre of length between two
+    straight, parallel conductors of infinite length and negligible
+    circular cross section placed one metre apart in free space.
+    </CMP>
+    <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA>
+        <OMS cd="relation1" name="eq"/>
+        <OMS cd="SI_BaseUnits" name="ampere"/>
+        <OMA> <OMS cd="SI_Functions" name="unit"/>
+              <OMS cd="SI_BaseQuantities" name="current"/>
+        </OMA>
+      </OMA>
+    </OMOBJ></FMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name>kelvin</Name>
+    <Description>
+      This symbol represents the measure of one kelvin, the standard
+      SI unit of measure for thermodynamic temperature.
+    </Description>
+    <CMP> This is a base unit for the SI system.
+    It is defined physically as equal to the fraction 1/273.16 of the
+    thermodynamic temperature of the triple point of water.
+    The isotopic composition of the water is defined by Vienna Standard
+    Mean Ocean Water.
+    </CMP>
+    <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA>
+        <OMS cd="relation1" name="eq"/>
+        <OMS cd="SI_BaseUnits" name="kelvin"/>
+        <OMA> <OMS cd="SI_Functions" name="unit"/>
+              <OMS cd="SI_BaseQuantities" name="temperature"/>
+        </OMA>
+      </OMA>
+    </OMOBJ></FMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name>mole</Name>
+    <Description>
+      This symbol represents the measure of one mole, the standard
+      SI unit measure for amount of substance.
+    </Description>
+    <CMP> This is a base unit for the SI system.
+    It is defined physically as the amount of substance of a system which
+    contains as many "elemental entities" as there are atoms in 12 grams
+    of carbon-12.
+    </CMP>
+    <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA>
+        <OMS cd="relation1" name="eq"/>
+        <OMS cd="SI_BaseUnits" name="mole"/>
+        <OMA> <OMS cd="SI_Functions" name="unit"/>
+              <OMS cd="SI_BaseQuantities" name="amount of substance"/>
+        </OMA>
+      </OMA>
+    </OMOBJ></FMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name>candela</Name>
+    <Description>
+      This symbol represents the measure of one candela, the standard
+      SI unit measure for luminous intensity.
+    </Description>
+    <CMP> This is a base unit for the SI system.
+    It is defined physically as the luminous intensity, in a given
+    direction, of a source that emits monochromatic radiation of frequency
+    540×10^12 hertz and that has a radiant intensity in that direction of
+    1/683 watt per steradian.
+    </CMP>
+    <FMP><OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA>
+        <OMS cd="relation1" name="eq"/>
+        <OMS cd="SI_BaseUnits" name="candela"/>
+        <OMA> <OMS cd="SI_Functions" name="unit"/>
+              <OMS cd="SI_BaseQuantities" name="luminous intensity"/>
+        </OMA>
+      </OMA>
+    </OMOBJ></FMP>
+  </CDDefinition>
+
+</CD>

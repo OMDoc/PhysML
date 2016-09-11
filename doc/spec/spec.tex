@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage{url,graphicx,amssymb,array}
+\usepackage[savemem]{listings} 
+\usepackage{lstpatch,lstomdoc}
+\usepackage[hide]{draftstamp,ed} %set this to [hide] in the final version
+\usepackage[hide]{xmlindex}
+\usepackage{svn}
+\usepackage{wrapfig}
+\makeindex
+%\SVN $Id: mkm06.tex 7947 2006-05-24 13:31:40Z kohlhase $
+%\SVNdate $Date: 2006-05-24 15:31:40 +0200 (Wed, 24 May 2006) $
+
+\def\chemml{{\sc{CML}}}
+\def\physml{{\sc{PhysML}}}
+\def\stex{{\raisebox{-.5ex}S\kern-.5ex\TeX}}
+\def\om#1{\fbox{\ensuremath{#1}}}
+\lstset{float=htb,columns=flexible,frame=lines,language=[omdoc]XML,basicstyle=\scriptsize,
+  indexstyle=\indextt,indexstyle=[1]\indexelement,indexstyle=[2]\indexattribute,showstringspaces=false}
+
+%% to number the listings in sequence with figures
+\makeatletter\let\c@lstlisting\c@figure\makeatother
+
+\def\LNAI{LNAI}
+\def\LNCS{LNCS}
+\def\PROC{Proceedings }
+\def\cG{{\cal G}}
+
+\def\google{\sc{Google}}
+\def\googlescholar{\sc{Google Scho\-lar}}
+\def\mathematica{\sc{Mathematica}}
+\def\gap{\sc{Gap}}
+\def\wikipedia{\sc{Wiki\-Pedia}}
+\def\soap{\sc{Soap}}
+\def\owl{\sc{Owl}}
+
+\def\deq{\colon=}
+\def\defin#1{{\bf{#1}}}
+\def\name#1{{{\small{\sc{#1}}}}}
+\def\seen{seen }
+\def\July{July }
+\def\webpageat{Web page at }
+\def\mathml{\sc{MathML}}
+\def\openmath{\sc{OpenMath}}
+\def\omdoc{\sc{OMDoc}}
+\newenvironment{myfig}[2]%
+{\begin{figure}[!htb]\def\myfiglabel{#1}\def\myfigcaption{{#2}}\begin{center}}
+{\caption{\myfigcaption}\label{fig:\myfiglabel}\end{center}\vspace{-2em}\end{figure}}
+
+\def\myfigref#1{Figure~\ref{fig:#1}}
+\def\myfigsref#1#2{Figures~\ref{fig:#1} and~\ref{fig:#2}}
+\def\myfiglref#1#2{Figures~\ref{fig:#1} to~\ref{fig:#2}}
+\def\Myfigref#1{Figure~\ref{fig:#1}}  % this one is capitalized for sentence beginnings
+
+\title{}
+\author{Eberhard Hilf \\
+Institute for Science Networking, Oldenburg\\
+  \url{hilf@isn-oldenburg.de}\\[.5cm]
+Michael Kohlhase\\
+  Computer Science, International University Bremen\\
+  \url{m.kohlhase@iu-bremen.de}\\[.5cm]
+Heinrich Stamerjohanns\\
+  Computer Science, International University Bremen\\
+  \url{h.stamerjohanns@iu-bremen.de}}
+
+\begin{document}
+\hyphenation{veri-fied
+        }
+
+\maketitle
+
+\begin{center}\textit{SVN Id: \SVNId}\end{center}
+
+\begin{abstract}
+  We present a content markup language for physics realized by extending the {\omdoc}
+  format by an infrastructure for the principal concepts of physics: {\emph{observables}},
+  physical {\emph{systems}}, and {\emph{experiments}}. The formalization of the
+  description of physics observables follows the structural essence of the operational
+  theory of physics measurements. The representational infrastructure for systems and
+  experiments allow to capture the distinctive practice of physics: natural laws are
+  supported by evidence from experiments which are described, disseminated and reproduced
+  by others.
+\end{abstract}
+
+\setcounter{tocdepth}{3}\tableofcontents\newpage
+
+\input{intro}
+\input{physml}
+\input{physomdoc}
+%\input{thermostatics}
+\input{physml-stex}
+\input{concl}
+
+\bibliographystyle{alpha}
+\bibliography{kwarc,dockon}
+%\begin{appendix}\input{sesame}\end{appendix}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
+
+
+
+% LocalWords:  Eberhard Hilf Heinrich Stamerjohanns SVN fied stex

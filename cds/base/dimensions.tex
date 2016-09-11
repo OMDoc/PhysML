@@ -1,0 +1,79 @@
+\documentclass[twoside]{omdoc}
+\usepackage{stex}
+\usepackage[today,eso-foot]{svninfo}
+\svnInfo $Id: dimensions.tex 77 2008-11-03 17:09:46Z kohlhase $
+\svnKeyword $HeadURL: https://svn.omdoc.org/repos/physml/cds/base/dimensions.tex $
+\usepackage[show]{ed}
+\usepackage{physml} 
+
+\title{The Content Dictionary for SI Dimensions}
+\author{Michael Kohlhase}
+
+\begin{document}
+\maketitle
+
+\begin{module}[id=dimensions]
+\importmodule[../math/arith]{arith}
+
+\symdef{mass}{\mbox{\sf{mass}}}
+\begin{consymb}[name=mass]
+  The mass dimension.
+\end{consymb}
+
+\symdef{length}{\mbox{\sf{length}}}
+
+\begin{consymb}[name=length]
+  The length dimension.
+\end{consymb}
+
+\symdef{time}{\mbox{\sf{time}}}
+\begin{consymb}[name=time]
+  The time dimension.
+\end{consymb}
+
+\symdef{charge}{\mbox{\sf{charge}}}
+\begin{consymb}[name=charge]
+  The charge dimension.
+\end{consymb} 
+
+\symdef{temperature}{\mbox{\sf{temperature}}}
+\begin{consymb}[name=temperature]
+  The temparature dimension.
+\end{consymb} 
+
+\symdef{intensity}{\mbox{\sf{intensity}}}
+\begin{consymb}[name=intensity]
+  The intensity dimension.
+\end{consymb}
+
+\symdef{angle}{\mbox{\sf{angle}}}
+\begin{consymb}[name=angle]
+  The angle dimension.
+\end{consymb}
+
+\symdef{volume}{\mbox{\sf{volume}}}
+\begin{consymb}[name=volume]
+  The volume.
+\end{consymb}
+\begin{definition}[for=volume,type=simple]
+  The volume dimension is $\power\length3$
+\end{definition}
+
+\symdef{force}{\mbox{\sf{force}}}
+\begin{consymb}[name=force]
+  The force dimension.
+\end{consymb}
+\begin{definition}[for=force,type=implicit]
+  $\force=\fraction{\times{\mass,\length}}{\power\time2}$.
+\end{definition}
+
+\symdef{energy}{\mbox{\sf{energy}}}
+\begin{consymb}[name=energy]
+  The energy dimension.
+\end{consymb}
+\begin{definition}[for=energy,type=implicit]
+  $\energy=\times{\force,\length}$.
+\end{definition}
+
+\end{module}
+\end{document}

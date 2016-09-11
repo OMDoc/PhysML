@@ -1,0 +1,35 @@
+# A RelaxNG schema for Open Chemical  Documents (OChemDoc 1.2)           
+# $Id: ochemdoc.rnc 21 2007-11-30 08:30:41Z kohlhase $
+# $HeadURL: https://svn.omdoc.org/repos/physml/projects/ochemdoc/rnc/ochemdoc.rnc $
+# See the documentation and examples at http://www.omdoc.org
+# Copyright (c) 2007 Michael Kohlhase, released under the GNU Public License (GPL) 
+
+default namespace omdoc = "http://www.sciml.org/ochemdoc"
+
+id.attrib = attribute xml:id {xsd:ID}?,attribute class {xsd:string}?
+
+items = assertion
+
+start  = element ochemdoc {id.attrib,items*}
+
+assertion = element assertion {id.attrib,CMP*}
+CMP = element CMP {(text|math)*}
+mtoken = eq|plus|times
+ctoken = notAllowed
+ccont = compound
+cexp = apply|bind|ci|csymbol|share|mtoken|ctoken|ccont
+math = element math {id.attrib,cexp*}
+
+eq = element eq {id.attrib}
+plus = element plus {id.attrib}
+times = element times {id.attrib}
+
+csymbol = element csymbol {attribute cd {xsd:NCName},attribute name {xsd:NCName}}
+
+compound = element compound {id.attrib,cexp*} #(can also be used in an apply)
+
+apply= element apply {id.attrib,cexp,cexp+}
+bind= element bind {id.attrib,cexp,bvar+,condition,cexp}
+bvar = element bvar {ci*}
+condition = element condition {id.attrib,cexp}
+ci = element ci {id.attrib}

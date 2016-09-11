@@ -1,0 +1,67 @@
+\section{Reading, Writing and Arithmetic with {\physml} Documents}\label{sec:physml-stex}
+
+Of course, the XML-based {\physml} format presented here is not directly suited for humans
+to read and write. And indeed it is not intended to be; humans should use adaptive
+presentations for reading and invasive editors~\cite{KohKoh:cdad04} for manipulating
+{\physml} documents.
+
+The {\omdoc} style sheets have been extended appropriately for the {\physml}-specific
+elements. With these, {\physml} documents can be converted to XHTML documents with
+{\mathml} formulae that can be displayed in a browser or to PDF documents for printing via
+the {\LaTeX} formatter.
+
+{\physml} inherits a well-established notation declaration language and presentation
+system from the {\omdoc} format: for new concepts that are introduced via
+{\element{symbol}} elements notation information can be specified via {\omdoc}
+{\element{presentation}} elements: In the presence of the following declaration,
+\begin{lstlisting}
+<presentation for="#Celsius">
+  <use format="html|pmml">&#x000B0;C</use>
+  <use format="TeX">{}^{\circ}C</use>
+</presentation>
+\end{lstlisting}
+The {\openmath} object representing the temperature in of the thermometer in
+{\mylstref{experiment}} will indeed look like the visualization in the box. 
+
+To write {\physml} documents, we have concentrated on the {\LaTeX} workflow that is
+well-established in physics. Concretely, we have extended the semantic {\TeX} system
+{\stex}~\cite{Kohlhase:albwo06} by {\physml} functionality. 
+
+\setbox0=\hbox{\footnotesize\stex}
+\begin{lstlisting}[label=lst:units-stex,caption=Writing the {\physml} for
+  {\mylstref{units}} in \usebox0] 
+\begin{module}[id=units,uses=dimensions]
+  \symdef[type=$\mass$]{gram}{g}
+  \symdef[type=$\temperature$]{Kelvin}{K}
+  \symdef[type=$\temperature$]{Celsius}{{}^{\circ}C}
+  \begin{definition}[for=Celsius]
+    $\allcdot{x>0}{x\Kelvin=(x-273.15)\Celsius}$
+  \end{definition}
+\end{module}
+\end{lstlisting}
+
+For more choice in invasive editors, we will extend the {\omdoc} wiki
+system~\cite{LanKoh:swmkm06} and the PowerPoint plugin for {\omdoc}~\cite{KohKoh:cdad04}
+to {\physml}.
+
+The explicit, and standardized content representations for physical documents in {\physml}
+will allow us to offer added-value services that cannot be offered on conventional
+representations.  Examples are the dimension check comparing the physical dimensions, and
+the units used in an equation presented in a paper. If the dimensions on both sides of an
+equation do not match (say {\emph{kg}} on one side, and {\emph{meter}} on the other, the
+equation is physically openly wrong, if different units for the same dimensions were used
+on both sides this is called `unlawful sloppiness' (say $\Kelvin$ on one side, $\Celsius$
+on the other).  Other checks will include the algebraic matching of both sides of an
+equation (say if {\emph{vector}} on one side and {\emph{coaxial vector}} on the other,
+this equation is bluntly incorrect). But more intelligent codes could also read the
+semantics delivered and offer mapping of algebraic results in different representation
+(say: integral instead of differential formulation, vector vs.  vector-component or
+exterior form, etc.) thus directly assisting the reader to not having to read clumsy
+formulations of theoretical results from old times, but get it in the present used
+representations and notations.
+%%% Local Variables: 
+%%% mode: stex
+%%% TeX-master: "mkm06"
+%%% End: 
+
+% LocalWords:  stex pmml lst wiki plugin mkm

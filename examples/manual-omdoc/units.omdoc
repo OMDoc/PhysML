@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<omdoc xml:id="test.omdoc"
+  xmlns="http://www.mathweb.org/omdoc"
+  xmlns:cc="http://creativecommons.org/ns"
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  version="1.2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.mathweb.org/omdoc
+                      http://www.mathweb.org/omdoc/xsd/omdoc.xsd">
+<metadata>
+  <dc:date action="created">2006-03-07T13:08:40Z</dc:date>
+  <dc:title xml:lang="en"> SI-Based Units </dc:title>
+  <dc:creator role="aut"> Michael Kohlhase </dc:creator>
+  <dc:date action="updated">2006-03-07T13:08:40Z</dc:date>
+  <dc:type> Text </dc:type>
+  <dc:format> application/omdoc+xml </dc:format>
+  <dc:rights>Copyright (c) 2006 Michael Kohlhase</dc:rights>
+  <cc:license>
+    <cc:permissions reproduction="permitted" distribution="permitted" derivative_works="permitted"/>
+    <cc:prohibitions commercial_use="permitted"/>
+    <cc:requirements notice="required" copyleft="required" attribution="required"/>
+  </cc:license>
+</metadata>
+
+<theory xml:id="units">
+  <symbol name="gram">
+    <type system="dimensions">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="dimensions" name="mass"/>
+      </OMOBJ>
+    </type>
+  </symbol>      
+
+  <symbol name="meter">
+    <type system="dimensions">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="dimensions" name="length"/>
+      </OMOBJ>
+    </type>
+  </symbol>      
+
+  <symbol name="second">
+    <type system="dimensions">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="dimensions" name="time"/>
+      </OMOBJ>
+    </type>
+  </symbol>      
+
+  <symbol name="Volt">
+    <type system="dimensions">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="dimensions" name="charge"/>
+      </OMOBJ>
+    </type>
+  </symbol>      
+
+  <symbol name="Kelvin">
+    <type system="dimensions">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="dimensions" name="temparature"/>
+      </OMOBJ>
+    </type>
+  </symbol>      
+
+<symbol name="Celsius">
+  <type system="dimensions">
+    <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMS cd="dimensions" name="temparature"/>
+    </OMOBJ>
+  </type>
+</symbol>      
+
+<definition for="Celsius" type="simple">
+  <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+    <OMA>
+      <OMS cd="arith1" name="plus"/>
+      <OMS cd="temparature-units" name="Kelvin"/>
+      <OMF dec="273.15"/>
+    </OMA>
+  </OMOBJ>
+</definition>
+</theory>
+</omdoc>

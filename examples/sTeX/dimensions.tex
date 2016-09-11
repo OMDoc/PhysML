@@ -1,0 +1,60 @@
+\documentclass[twoside]{article}
+\usepackage{stex,physml}
+\usepackage[today,fancyhdr]{svninfo}
+
+\title{The Content Dictionary for SI Dimensions}
+\author{Michael Kohlhase}
+
+\begin{document}
+\svnInfo $Id: semkm4ed.tex 1472 2008-01-14 17:10:20Z kohlhase $
+\svnKeyword $HeadURL: https://svn.kohlhase.net/repos/kohlhase.net/ako/IEEE_EdTech/semkm4ed.tex $
+\maketitle
+
+\begin{module}[id=dimensions]
+
+\symdef{mass}{\mbox{\sf{mass}}}
+\symdef{length}{\mbox{\sf{length}}}
+\symdef{time}{\mbox{\sf{time}}}
+\symdef{charge}{\mbox{\sf{charge}}}
+\symdef{temperature}{\mbox{\sf{temperature}}}
+\symdef{intensity}{\mbox{\sf{intensity}}}
+\symdef{angle}{\mbox{\sf{angle}}}
+\symdef{volume}{\mbox{\sf{volume}}}
+
+\begin{symboldec}[name=mass]
+  The mass dimension.
+\end{symboldec}
+
+\begin{symboldec}[name=length]
+  The length dimension.
+\end{symboldec}
+
+\begin{symboldec}[name=time]
+  The time dimension.
+\end{symboldec}
+
+\begin{symboldec}[name=charge] 
+  The charge dimension.
+\end{symboldec} 
+
+\begin{symboldec}[name=temperature]
+  The temparature dimension.
+\end{symboldec} 
+
+\begin{symboldec}[name=intensity]
+  The intensity dimension.
+\end{symboldec}
+
+\begin{symboldec}[name=angle]
+  The angle dimension.
+\end{symboldec}
+
+\begin{symboldec}[name=volume]
+  The volume.
+\end{symboldec}
+
+\begin{definition}[for=volume,type=simple]
+  The volume dimension is $\length^3$
+\end{definition}
+\end{module}
+\end{document}

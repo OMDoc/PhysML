@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<physics xmlns="http://omdoc.org/projects/physml">
+
+  <pObject name="universe">
+    <pQuantity name="gravitational constant" kind="physical constant">
+      <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"> <m:apply>
+	<m:eq/>
+	<m:ci>G</m:ci>
+	<m:apply>
+	  <m:times/>
+	  <m:cn>6.67428</m:cn>
+	  <m:apply><m:power/><m:cn>10</m:cn><m:cn>-11</m:cn></m:apply>    
+	  <m:apply><m:power/><pmeter/><m:cn>3</m:cn></m:apply>    
+	  <m:apply><m:power/><pkilogram/><m:cn>-1</m:cn></m:apply>    
+	  <m:apply><m:power/><psecond/><m:cn>-2</m:cn></m:apply>    
+	</m:apply>
+      </m:apply> </m:math>
+    </pQuantity>
+  </pObject>
+
+  <pObject name="earth">
+    <pQuantity name="density of earth" kind="mass density">
+      <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"> <m:apply>
+	<m:times/>
+	<m:apply>
+	  <m:fn><rho/></m:fn>
+	  <m:apply><m:minus/>
+	    <m:ci type=''vector''>r</m:ci>
+	    <m:ci type=''vector''>re</m:ci>
+	  </m:apply>
+	</m:apply>
+	<pkilogram/>
+	<m:apply><m:power/><pmeter/><cn>-3</cn></m:apply>    
+      </m:apply></m:math>
+    </pQuantity>
+    <pQuantity name="mass of earth" kind="mass">
+      <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"> <m:apply>
+	<m:int/>
+	<m:bvar><m:ci type=''vector''>r</m:ci></m:bvar>
+	<m:domainofapplication>  
+	  <m:ci type=''vector''>r</m:ci>
+	</m:domainofapplication>
+	<m:apply>
+	  <m:ci type=''function>&rho;</m:ci>
+	  <m:apply><m:minus/>
+	    <m:ci type=''vector''>r</m:ci>
+	    <m:ci type=''vector''>re</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:apply></m:math>
+    </pQuantity>
+  </pObject>
+
+  <pObject name="moon">
+    <pQuantity name="density of moon" kind="mass density">
+      <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"> <m:apply>
+	<m:times/>
+	<m:apply>
+	  <m:fn>&rho;</m:fn>
+	  <m:apply><m:minus/>
+	    <m:ci type=''vector''>r</m:ci>
+	    <m:ci type=''vector''>rm</m:ci>
+	  </m:apply>
+	</m:apply>
+	<pkilogram/>
+	<m:apply><power/><pmeter/><cn>-3</cn></m:apply>    
+      </m:apply></m:math>
+    </pQuantity>
+    <pQuantity name="mass of moon" kind="mass">
+      <m:math xmlns:m="http://www.w3.org/1998/Math/MathML"> <m:apply>
+	<m:int/>
+	<m:bvar><m:ci type=''vector''>r</m:ci></m:bvar>
+	<m:domainofapplication>  
+	  <m:ci type=''vector''>r</m:ci>
+	</m:domainofapplication>
+	<m:apply>
+	  <m:ci type=''function>&rho;</m:ci>
+	  <m:apply><m:minus/>
+	    <m:ci type=''vector''>r</m:ci>
+	    <m:ci type=''vector''>rm</m:ci>
+	  </m:apply>
+	</m:apply>
+      </m:apply></m:math>
+    </pQuantity>
+  </pObject>
+
+</physics>

@@ -1,0 +1,840 @@
+
+% - submitted to ... .
+
+% Define metric tensor
+
+
+
+% This is patterned after llncs.tex, the documentation file of
+% the LaTeX2e class from Springer-Verlag
+% for Lecture Notes in Computer Science, version 2.4
+\documentclass{llncs}
+\usepackage{llncsdoc}
+\usepackage{sfmath}
+
+% Dirac bra-ket symbols
+\def\bra#1{\mathinner{\langle{#1}|}}
+\def\ket#1{\mathinner{|{#1}\rangle}}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}  % \braket{\psi}{\Psi}
+\def\Bra#1{\left<#1\right|}
+\def\Ket#1{\left|#1\right>}
+
+%\newcites
+%\cite
+\newcommand{\rmssf}[1]{\relax\ifmmode\mathsf{#1}\else\textsf{#1}\fi}
+
+\begin{document}
+
+\title{Semantic Elements of Vectors in Physics}
+\author{Joseph B. Collins}
+\institute{Naval Research Laboratory\\ 4555 Overlook Ave, SW\\ Washington, DC  20375-5337}
+
+\maketitle
+
+\begin{abstract}
+
+\end{abstract}
+
+\section{Introduction}
+
+Our long-term intent is to provide a mechanism for capturing semantic
+elements of the formulae which, taken as a whole, are referred to as
+{\em laws of physics}.
+Additionally, we want to also provide a mechanism for capturing the
+semantic elements of the mathematical specification of physics-based
+models, which includes the application of those laws of physics to
+representations of physical objects as well as the solutions to those models.
+
+While the usage of vectors in the physical sciences and engineering is
+widespread, there is as yet no semantic standard for their unambiguous
+representation.
+There exist several notational variations, usually codified in journal
+style guides, but these are typically a combination of presentation 
+and semantics, but usually weaker in the latter.
+Our effort here is to begin the process of identifying the distinct
+semantic elements whose values may be subject to specification by a
+builder of physics-based models.
+
+In a specification of a model, it is generally preferred to state the
+laws of physics in a form that is, for example, independent of
+coordinate basis.
+In specifying a solution to the same model, it is usual, if not
+necessary, to specify a basis in which to compute a solution.
+The same is true when taking measurements: they usually are made
+within a particular frame-defined basis.
+Semantic specification issues which need to be addressed then include
+such questions as ``How does one specify that a vector is
+contravariant or covariant?'', or ``How does one specify the basis in
+which the vector takes this particular set of values?''.
+
+
+\section{Vectors: A Mathematical Overview}
+
+The modern meaning of the term {\em vector} has its origins in William
+Rowan Hamilton's work where he distinguished between the scalar and
+vector parts of quaternions. (Crowe)
+The basis element names, ${\bf i}$, ${\bf j}$, and ${\bf k}$,
+of Hamilton's vector part of a quaternion continue to be used to
+this day as the standard basis elements of vectors in Cartesian
+coordinates.
+The meaning of the term {\em vector} was further developed by Gibbs,
+Heaviside, and others in {\em Vector Analysis}.
+Currently, mathematicians generally use a single, consistent axiomatic
+definition of the term vector as an element of a {\em vector space}.
+This definition appears to be the best, well-defined common
+denominator of all of the various meanings attributed to vectors.
+When used by physicists the term {\em vector} is often qualified, but
+a single consistent meaning appears to be lacking.
+Because the meaning of the term {\em tensor} is often conflated with
+that of {\em vector}, we briefly synopsize the mathematical essentials
+of these two important concepts.
+
+\subsection{Vectors}
+
+To begin, a well-defined meaning of a mathematical object generally
+implies an axiomatic representation.
+http://en.wikipedia.org/wiki/Vector\_space
+The axioms
+Let F be a field of scalars ($a$, $b$, etc.). A vector space over F is the tuple
+($V$,$+$,$*$) where
+$V$ is the set of vectors (${\bf x}$, ${\bf y}$, ${\bf v}$, etc.)
+$+$, Vector Addition VxV -> V
+$*$, Scalar multiplication F*V -> V
+
+Addition of vectors is the usual abelian group.
+Scalar multiplication is distributive over scalar addition and vector
+addition, i.e.,
+$(a+b)*{\bf x} = a*{\bf x}+b*{\bf x}$ and
+$a*({\bf x} + {\bf y}) = a*{\bf x} + a*{\bf y}$;
+scalar multiplication is compatible with field multiplication, i.e.
+$a*(b*{\bf x}) = (a*b)*{\bf x}$ .
+And scalar multiplication with the scalar identity element is an
+identity operation, i.e., $1*{\bf x} = {\bf x}$.
+
+
+A vector, ${\bf v}$, may be represented as a sum over some
+basis vectors, $\{{\bf e}_i\}$, as:
+\begin{equation}
+{\bf v} = \sum_i v^i \cdot {\bf e}_i =  v^i {\bf e}_i
+\end{equation}
+where $v^i$ are called the components of ${\bf v}$ in the basis, $\{{\bf e}_i\}$.
+The range of summation is from $1$ to $d$, the dimension of the vector
+space.
+We also show use of the Einstein summation convention.
+The Einstein summation convention is used to reduce the overall number
+of symbols in vector equations:
+it assumes summation is implied whenever a raised index and a lowered
+index have the same letter symbol.
+(Were repeated index values to occur where summation is not implied,
+then the author sould state the exception).
+
+
+We also will want to use the idea that a vector, ${\bf v}$, may
+be {\em transformed}.
+A general transformation may represented as a function of the vector,
+i.e.,
+${\bf v}' = {\bf F} \left({\bf v} \right)$
+which very frequently takes a linear form
+\begin{equation}
+{v'}^i = F^i_j v^j   .
+\end{equation}
+
+A {\em vector field} exists where a vector is defined at each point
+within a space spanned by some coordinate frame.
+
+
+\subsection{Tensors}
+
+It is preferred to state laws of physics in a form that does not
+depend on such arbitrary things as choice of coordinate frame.
+Some classes of vector fields, called {\em tensors}, are used for this
+purpose.
+A tensor equation, which is expressed within a single coordinate frame,
+has an invariant form with respect to some class of coordinate
+transformations.
+In particular, assume that some arbitrary position is represented in
+two different coordinate frames as ${\bf x}$ and ${\bf x}'$.
+Also assume that components ${x'}^i$ are differentiable functions of
+$x^j$, and that the components $x^j$ are differentiable functions
+of ${x'}^i$.
+The following types of tensor: scalars, contravariant vectors, and
+covariant vectors, defined as (using Einstein summation convention):
+
+{\bf Definition: Scalar}: 
+A scalar is a function of position and has the same value regardless
+of the coordinate frame, i.e., 
+\begin{equation}
+{\phi '} = \phi \left({\bf x}'\right) = {\phi}
+\left({\bf x}\right) = \phi.
+\end{equation}
+
+{\bf Definition: Contravariant vector components}:
+A vector field, ${\bf v}$, expressed as ${v'}^i \left( {\bf x}'\right)$ and $v^j \left({\bf x}\right)$, 
+has contravariant components if they transform as follows:
+\begin{equation}
+{v'}^i = {\partial {x'}^i \over \partial x^j} v^j .
+\end{equation}
+
+{\bf Definition: Covariant vector components}:
+A vector field, ${\bf u}$, expressed as ${u'}_i \left( {\bf x}'\right)$ and $u_j \left({\bf x}\right)$,
+has covariant components if they transform as follows:
+\begin{equation}
+{u'}_i = {\partial x^{j} \over \partial {x'}^i} u_j  .
+\end{equation}
+
+Contravariant components and covariant components are usually
+distinguished by raised indices for the former and lowered indices for
+the latter.
+(While contravariance and covariance of components are usually
+distinguished by index position, contravariance and covariance are not
+necessarily indicated by the presence of raised and lowered indices).
+When a vector is called a tensor it is usually understood to transform
+either contravariantly or covariantly for all non-singular,
+differentiable transformations of the coordinates.
+
+Clearly, not all vector quantities are tensors.
+For example, what is referred to as a spatial {\em position vector},
+usually using either of the symbols ${\bf x}$ or ${\bf r}$, is, in
+general, not a contravariant or covariant tensor.
+On the other hand, the differential position has contravariant
+components, i.e.,
+\begin{equation}
+{dx'}^i = {\partial {x'}^i \over \partial x^{j}} dx^{j}
+\end{equation}
+while a vector field that is given by the gradient of a scalar field has
+covariant components, i.e.,
+\begin{equation}
+{u'}_i = \nabla \phi
+= {\partial {\phi '} \over \partial {x'}^i}
+= {\partial x^j \over \partial {x'}^i} {\partial \phi \over \partial x^j}
+= {\partial x^j \over \partial {x'}^i} u_j
+\end{equation}
+by the chain rule.
+
+In a metric space, a metric tensor, ${\bf g}$, is defined by specifying a scalar,
+the square of the differential length, $ds$, i.e.,
+\begin{equation}
+\left( ds \right) ^2 = g_{ij}dx^idx^j .
+\end{equation}
+
+Covariant vector components are related to contravariant components in
+a metric space by {\em contraction} with the metric tensor, i.e.
+\begin{equation}
+v_i = g_{ij}v^j .
+\end{equation}
+
+The inner product of two order-1 tensors, ${\bf u} \cdot {\bf u}$, may
+be written as $u^i v_i$ or $u_i v^i$.
+In Euclidean space with Cartesian coordinates, the metric tensor takes
+the form of the Kronecker delta matrix.
+
+Higher order tensors may be formed by the {\em tensor product} of
+tensors, i.e., $T^{ij} = u^iv^j$.
+Various order tensors may be formed by arbitrary combinations of the
+tensor product of tensors and the inner product, or contraction, of
+tensors.
+When higher order tensors are used, they may not be uniformly
+contravariant or covariant, but instead have "mixed variance", which
+leads to the designation of the indices of tensors being either
+contravariant or covariant.
+
+A vector which only transforms like a tensor for any non-singular,
+differentiable coordinate transformation may be called a {\em general}
+tensor.
+A vector which only transforms like a tensor only for a restricted
+subgroup of non-singular, differentiable coordinate transformations is
+usually qualified in name, such as ``Cartesian tensors''.
+In physics contexts, the restricted subgroup is called the
+{\em covariance group};
+a {\em covariant theory} in physics is one whose equations (laws of
+physics) are tensor equations with respect to a given covariance
+group.
+
+When contravariant and covariant transformations are
+indistinguishable, i.e.,
+${\partial {x'}^i \over \partial x^j} = 
+ {\partial x^{j} \over \partial {x'}^i}$,
+then distinguishing between contravariant and covariant indices
+carries no meaning.
+This occurs when the coordinate transformation is both {\em affine}, i.e.,
+${x'}^i = A^i_j x^j +b^i$,
+with ${\bf A}$ and ${\bf b}$ both independent of ${\bf x}$ and ${\bf
+  x}'$,
+and ${\bf A}$ is {\em orthogonal}, i.e., ${\bf A}^{\bf T} = {\bf A}^{-1}$.
+(Note: for homogeneous affine transformations, i.e., ${\bf b}=0$,
+the position vectors transform as tensors).
+For transformations that are simply orthogonal, the vectors that
+transform as ${v'}^i = A^i_j v^j$, with
+${\bf A}^{\bf T} = {\bf A}^{-1}$,
+are called {\em Cartesian tensors}.
+Similarly, a vector which only exhibits tensor behaviour under Lorentz
+transformations is called a Lorentz tensor or, more commonly, a
+four-tensor.
+
+
+Covariance group
+galilean group
+Spherical Tensors)
+
+
+\section{Vectors in Physics}
+
+It is the common practice of physicists to use vectors in a weakly
+typed fashion, not always explicitly specifying all of the vector
+(space) attributes of a given quantity.
+In physics, first and foremost, vectors have properties of magnitude
+and direction and are used to represent a variety of physical
+quantities, e.g., forces, positions, velocities, accelerations, etc.
+For a physicist the "physics" comes first, which, in the case of
+vectors, are measured physical quantities having magnitude and
+direction.
+As such, vectors are seen as the products of measurement and, in
+pure physics and in didactic contexts, measurements are the primary
+{\em axioms}.
+The formal mathematical type that gives the most convenient
+representation of vector quantities is viewed as a set of emergent
+properties, following from the physics.
+It may also occur that essential mathematical properties are tacitly
+assumed. 
+From a mathematician's perspective, it may appear common
+practice for physicists to be changing the type of a variable during
+the specification of a problem, or of a model, or the solution of the
+same.
+Certainly, from the perspective of applied physics where the
+properties of the vectors are considered known and accepted and one is
+not discovering unknown properties of the physical laws, it is
+reasonable to be able to think in terms of specifying the mathematical
+types of variables first, but this is not always practiced.
+
+For a mathematician to say that an object is a vector is to mean,
+simply, that it is "an element of a vector space", i.e., a closed set
+of objects that can be added, subtracted and scaled.
+For a physicist, {\em vector} takes its meaning from the following
+context.
+First, a vector quantity is commonly defined to exist at some
+loaction, within a region of space-time where it can be measured.
+Secondly, measurements of vector quantities are generally made in some
+specific reference frame.
+Vector quantities have particular physical units associated with them,
+and these vector quantities may not be added or subtracted with each
+other unless thay have the same units.
+There is generally an assumed norm applicable to the vector and other
+associated vectors, such as position vectors, to give their magnitude.
+This generally defines a metric.
+Finally, from theoretical considerations, many of the objects called
+"vectors" are expected to have specific mathematical properties, such
+as invariance with respect to coordinate changes.
+Invariance with respect to coordinate system is necessary to ensure
+the repeatability of measurements.
+All of these properties, taken together, may imply a ``normed vector
+space'', but the physical axioms are drawn from the scientific method. 
+It is not the intent, here, to develop a physical axiomatic system,
+but merely to highlight the different directions from which
+mathematicians and physicists arrive at the notion of vectors.
+
+From the physicist's perspective, there are distinct, common usages of
+the language of vectors.
+Often, the simple term, {\em vector}, is used as synonymous with a
+vector {\em field}, or a {\em field vector}, an element of a vector
+field.
+Similarly, the unadorned term, {\em vector}, is sometimes used as
+synonymous with an order-1 tensor field.
+The term {\em vector} is often qualified to name many different types
+of vector objects, such as: attached, or bound vector; position
+vector; field vector; free vector; sliding, or line vector; polar vector;
+pseudovector or axial vector; solenoidal, or transverse vector;
+irrotational, or longitudinal vector.
+Similarly, the term {\em tensor} is sometimes qualified, such as
+Cartesian tensor and four-tensor (or four-vector).
+
+
+A common depiction of a vector is that of a directed line segment, or
+arrow, having a tail at one point in space and a head at another.
+Such a vector is called an attached vector or a bound vector: being
+defined by its two spatial endpoints, it is bound to them.
+A displacement vector to $P$ from any given point, $A$, is bound at
+its tail to $A$ and bound at its head to $P$.
+When $A$ is the origin of a frame this is called a position vector for
+the point $P$ in that frame.
+To be added or subtracted, two displacement vectors should have an
+endpoint in common.
+Bound vectors
+ - dxi/dxi'
+same at both ends (Affine) ``moment''is an attached vector.
+
+For a vector field there is a vector quantity that is defined at each
+point on a manifold, and a field vector is the vector quantity bound
+to the point where it is defined.
+To be added or subtracted, field vectors must be bound to the same point.
+- general transformation
+Example: velocity fields
+
+A free vector is a vector that may be moved parallel to itself without
+effect since its meaning is not bound to any point.
+A free vector may be added to others.
+An example of a free vector is the relative displacement``three feet
+upwards''.
+A direction and magnitude are defined, but no single point is
+involved in its definition.
+
+Spatial Dimension
+Coordinate System (Cartesian, Spherical, Cylindrical, etc)
+Default Definitions and Variable Names
+Coordinate transformation equations (from Cartesian)
+
+
+ - affine
+example -  difference of 2 positions
+moon
+becker p66
+
+sliding vector 
+a vector having specified magnitude and lying on a
+given line
+can be moved along a line it lies on.
+in 3D req line, mag, sense - 5 numbers - bivalent anisym tensor
+example: forces in rigid body mechanics
+
+moment, couple, applied force
+
+
+http://eom.springer.de/v/v096340.htm
+
+sliding vectors - a vector having specified magnitude and lying on a
+given line.
+Also called line vector.
+
+polar vectors (normal vectors) 
+pseudovectors  (also called axial vectors)
+Solenoidal vector
+
+
+Specifically, what are termed "vectors" are often order 1 (or rank 1)
+tensor fields.
+Correspondingly, one often needs to distinguish between contravariant
+vectors and covariant vectors, both of which are tensors.
+
+Vector Analysis continues to be used, largely unmodified, by the bulk
+of applied physicists, particularly for applications of classical
+physics.
+By development by various applications of the concept
+
+
+
+
+
+most compact representation of the quantities determines 
+
+Finally, invariance is not always with respect to the same group of
+transformations: for one vector it may be the 
+
+The most common invariance group is the Galilean group of space-time
+translations, inertial transformations, and orthogonal transformations
+(rotations and reflections) in 3-space.
+
+Example
+http://en.wikipedia.org/wiki/Metric\_tensor\#Lorentzian\_metrics\_from\_relativity
+
+Jackson Chapter 11.6
+
+
+Newtonian gravity, a gradient field
+
+V=del phi
+
+;  momentum field of a flowing fluid; electric and magnetic fields.
+stress tensor
+
+
+
+Poincar\`{e} group
+
+energy-momentum 4-vector; electromagnetic tensor
+
+
+Most vectors important
+
+Mathematically, these properties are described by various vector
+algebraic manipulations and laws of physics.
+
+Mathematically there is an abstract concept of a "vector
+space". Vectors in physics must conform to physical principles,
+derived from observation.
+The vectors 
+
+Many of the quantities used by physicists referred to as vectors are
+actually tensors.
+
+theory morphism
+
+Concepts: dual space, metric, pseudo-metric / bi-linear form
+
+
+Vector dimension:
+3D is most common; 4D also common; InfD also common
+
+ 
+Position is not a vector. Displacement is a vector. I've already explained why
+you are wrong about this. And the electromagnetic field is NOT a 4 vector. It
+is a rank 2 tensor. The electric and magnetic fields by themselves are also not
+vectors. They are incomplete parts of the electromagnetic field.
+
+
+Definition: vector
+
+A vector is an element of a linear space or vector space and may have
+any or all of the following attributes:
+a symbol, which acts as an identifier, and is used to represent the
+vector object, independent of the basis;
+dimension (of the space), $d$;
+{\em The dimension of the frame in which the vector field is defined
+is often, but not necessarily, the same as the dimensionality of the
+vector space}.
+a basis;
+the vector's components;
+indices (row indices, contravariant indices);
+dual indices (column indices, covariant indices);
+order, the number of indices (regular indices plus dual indices)
+required to specify the components, sometimes called rank;
+index range, usually from $1$ to $d$, sometimes $0$ to $d - 1$;
+a covariance group.
+
+The components of a vector must be elements of a field.
+
+A vector may be represented by a symbol (usually a single character);
+a tuple of components; an array of components, or tuple of tuples of
+components, etc.
+
+Every vector has a corresponding dual-space (row, covariant) vector,
+or covector, whose individual symbol representation may the same
+except that its components are referred to using indices that are
+dual.
+(If no distinction is made between vectors and covectors then either
+the notation is ambiguous or a Cartesian basis is implicitly assumed.)
+
+
+A higher rank tensor will have higher
+
+Definition: inner product
+
+The inner product (dot product, scalar product) of two vectors is a
+sum, over common index values, of the pair-wise products of components
+of a vector and a covector.
+
+
+Definition: multivector
+
+A multivector is a vector with an additional attribute: grade. A
+multivector may be homogeneous of a single grade, or of mixed grade,
+being a sum of multivectors that are each homogeneous.
+
+
+
+
+Definition: Stress Tensor
+Assume a Cartestian frame.
+The stress tensor, ${\bf \tau}$, is defined as
+\begin{equation}
+{\bf F}_{\left( k \right)} = \sum_i \tau_{ki} {\bf e}_i
+\end{equation}
+and represents the forces acting on the surfaces of a small cubic
+volume with outward normals parallel to the Cartesian basis vectors,
+${\bf e}^i$.
+
+Definition: Strain Tensor
+Assume a Cartesian frame.
+A deformation of an elastic medium causes a point ${\bf x}$ to move to
+a point ${\bf y}$, giving rise to a displacement,
+${\bf u} = {\bf y}-{\bf x}$. Assuming the components $u^j$ are
+continuously differentiable functions of position, the strain tensor
+is given by
+\begin{equation}
+s_{jk} = {1 \over 2}
+\left(
+{\partial u^j \over \partial x^k} +
+{\partial u^k \over \partial x^j}
+\right),
+\end{equation}
+
+Definition: Generalized Hooke's Law
+There is a linear relationship between the components of stress and
+strain, i.e.,
+\begin{equation}
+\tau_{jk} = \sum_{l,m} c_{jklm} s_{lm}
+\end{equation}
+
+fluid rate of strain tensor
+
+Semantics of vectors and tensors
+
+Vectors in physics
+
+Many of the so-called vectors used in physics are actually {\em vector
+fields},
+
+A vector of order zero is a scalar.
+A vector of order one is a (common) vector; a vector of order two or
+more, a tensor.
+
+The mathematical definition of a vector space as an algebra of
+objects that may be scaled and added is a rather spare
+indication of the wealth of meanings often attached to the term
+``vector''.
+While the term ``vector'' was introduced by Hamilton, its meaning was
+extensively developed by Heaviside, Gibbs and others.
+Some authors discuss the notion of vectors as having an essential
+geometric interpretation.
+In physics, vectors represent quantities which have essential
+properties of invariance.
+For classical physics, the term ``Cartesian tensor'' is used,
+for special relativity, the terms ``four-vectors'' and ``4-tensors''
+are used, for quantum mechanics ``spinors''.
+
+The principal symbol used to represent a vector or tensor quantity is
+usually depicted as a bold-face character when no indices are present.
+A transformed vector is often represented using a prime (apostrophe),
+an added overbar, or other mark, but with the same principal symbol.
+The use of an index in conjunction with a non-emboldened principal
+character generally indicates components of a vector within some
+basis.
+When basis indices are used, sometimes the principal symbol is primed
+to indicate that an alternate basis is being used and sometimes the
+indices themselves are primed.
+The distinction being made by priming the indices is that the
+underlying vector or tensor is invariant, while its expression in some
+basis is indicated with indices being present, therefore reasoning
+that the indices should carry the information of a different basis.  
+Indices representing other concepts are also used, less frequently,
+such as ${\bf r}_a$ to represent, for example, the position of
+``particle a''.
+
+Repeated indices under the Einstein summation convention are bound
+variables whose scope is confined.
+Within the community of physical scientists they are more commonly
+referred to as ``dummy indices''.
+
+
+Vectors come as follows:
+
+1) $\left( 1, 3, 5 \right)$
+
+2) $\left( {\begin{array}{*{20}c}
+   1   \\
+   4   \\
+  {-2} \\
+ \end{array} } \right)^{\bf T}
+= \left( 1, 4, -2 \right)$
+
+3)  ${\bf x}$
+
+4) ${\bf x} \cdot {\bf y}$
+
+5) ${\bf x}^{\bf T}{\bf y}$
+
+6) $\left( {\begin{array}{*{20}c}
+   1 \\
+   3 \\
+   5 \\
+\end{array} } \right)^{\bf T}
+\left( {\begin{array}{*{20}c}
+   1   \\
+   4   \\
+  {-2} \\
+\end{array} } \right)
+ = \left( 1, 3, 5 \right) 
+\left( {\begin{array}{*{20}c}
+   1   \\
+   4   \\
+  {-2} \\
+\end{array} } \right) = 3$
+
+7) $\left( 1, 3, 5 \right)^{\bf T} \left( 1, 4, -2 \right)
+ =  
+\left( {\begin{array}{*{20}c}
+   1  \\
+   3  \\
+   5  \\
+\end{array} } \right) \left( 1, 4, -2 \right) =
+\left( {\begin{array}{*{20}c}
+   1 & 4 & {-2}    \\
+   3 & 12 & {-6}  \\
+   5 & 20 & {-10} \\
+ \end{array} } \right)$
+
+8) $x_j y^j = x^ig_{ij}y^j$
+
+9) $T^{ij} = u^i v^j$
+
+10) $y^i = M^{ij \hspace{1pt} k}_{\hspace{3pt} l}x_jw^lv_k$
+
+11) ${\bf H}  \ket{\psi} = E \ket{\psi}$
+
+12) ${\bf L}^2 \ket{l,m} = \hbar^2l(l+1) \ket{l,m}$
+
+
+The first case obviously has 3 dimensions, but no basis is specified.
+In the second case, a transpose operation transforms a column vector
+into a row vector: again, the vectors have 3 dimensions.
+Again, no basis is specified, but the transpose operation requires
+one.
+The lack of a basis being specified usually suggests the
+{\em standard basis} has been assumed.
+This is made more probable by the indicated result of the transposed
+vector: it is simply reflected across an invisible diagonal.
+In the third case, we have simple symbolic representation of a vector
+variable, ${\bf x}$.
+As a variable, it typically is used in scientific applications to
+represent some modeled quantity, which would usually possess some
+specific spatial dimension.
+As no numerical values are given, specification of a basis is not
+necessary for this case.
+The most common presentation is as a boldface, lowercase latin letter.
+The scalar, dot, or inner, product is commonly represented with a
+visible infix ``dot'', as in case (4).
+Case (5) also is used to represent the scalar product of two vectors,
+where the sufficial operator, $T$, represents the transpose operation on
+the vector preceding it, and there is no explicit multiplication
+operator.
+Case (6) reveals that the inner product representation in case (5)
+invisibly assumes that a vector is a ``column'' vector, and that its
+transpose is a ``row'' vector.
+The notation of case (5) suggests that the principle expression of row
+vectors is as transposes of vectors.
+Case (7) reveals that the invisible multiplication operator is also
+used for the vector outer product, or tensor product.
+Case (8) uses index notation to show the inner product as a contracted
+product of contravariant and covariant vectors, with implied summation
+on the repeated indices, as well as the conversion of a contravariant
+vector to a covariant vector via ${\bf g}$, the metric tensor.
+The range of summation is over $d$ distinct values, where $d$ is the
+dimension of the space.
+Case (9) uses index notation to show the tensor product.
+We also observe that the index order is not insignificant, and this is
+made particularly clear in case (10), where the third index, $l$, is a
+lowered, covariant index and is aligned with a space in the sequence
+of upper, contravariant indices.
+In case (11), we show a typical representation of a quantum
+wave-function.
+The Hamiltonian, ${\bf H}$, a Hermitian operator, returns the energy
+of the wave function. 
+Since the wave function is unaltered, we may assume that the wave
+function, $\ket{\psi}$, is an eigenfunction of the Hamiltonian with
+eigenvalue, $E$.
+Similarly, in case (12), the angular momentum operator, ${\bf L}^2$,
+has eigenvectors, $\ket{l,m}$, which are indexed by integers, $l$ and
+$m$.
+No details of the range of $l$ and $m$ are given, but there is a clear
+relation between the eigenvalue, $\hbar^2 l (l+1)$, and the index, $l$. 
+
+
+In physics, vector spaces are generally defined over the field of real
+or complex numbers.
+There are two common, broad categories of vector spaces used in
+physics: vectors in space-time, whose magnitudes are given by a
+Euclidean norm, or its relativistic extensions;
+and quantum-state vectors, typically elements of
+infinite dimensional Hilbert spaces, whose magnitudes are normalized
+to 1.
+Cases 1-7 above show examples of {\em Cartesian tensors}, where an
+inner product, or dot product, is indicated as
+${\bf x} \cdot {\bf y} = {\bf x}^T{\bf y}$, i.e. the matrix product
+of a row vector, and a column vector of real elements.
+This may alternatively be written, with summation implied, as 
+$x_j y^j = x^i{\delta}_{ij}y^j$.
+When writing the product this way, it is seen to be the case where the
+metric tensor is equivalent to the Kronecker delta, and the covariant,
+or dual space vectors are given by the linear form $x_j =
+\delta_{ij}x^j$.
+The squared magnitude is Euclidean, given by
+${\bf x}^2 = x^i \delta_{ij}x^j$.
+Note that with Cartesian tensors, the dimension of the space is
+usually 3, and the distinction between raised and
+lowered indices, being somewhat redundant, is usually neglected.
+
+Cases 8-10 follow the form of tensors as they are typically represented
+in special and general relativity.
+The dimension of the space is usually 4, with time being distinguished
+from the spatial dimensions by the {\em signature} of the metric
+tensor.
+
+
+
+
+
+
+
+field product
+Matrix product
+Inner product
+dot product
+wedge product
+geometric product
+
+gauge invariance
+
+\section{Summary}
+
+
+\begin{thebibliography}{1}
+
+\bibitem{si}
+Comit\'{e} International des Poids et Mesures:
+``The International System of Units (SI)'',
+8th edition 2006,
+Bureau International des Poids et Mesures
+
+\bibitem{gibbs}
+Wilson, E. B.:
+``Vector Analysis: Founded upon the Lectures of J. Williard Gibbs'',
+Yale University Press (1901)
+
+\bibitem{hest}
+Hestenes, D., Sobczyk, G.:
+``Clifford Algebra to Geometric Calculus: A Unified Language for Mathematics and Physics'',
+D. Reidel Publishing (1984)
+
+\bibitem{eins}
+Einstein, A.:
+``Zur Elektrodynamik bewegter K\"{o}rper'' (On the Electrodynamics of Moving Objects), 
+Annalen der Physik {\bfseries 17} (1905) 891--921
+
+\bibitem{hest2}
+Hestenes, D.:
+``Reforming the Mathematical Language of Physics'',
+Oersted Medal Lecture (2002),
+American Journal of Physics {\bfseries 71} (2003) 104
+
+\bibitem{crowe}
+Crowe, M. J.:
+``A History of Vector Analysis: The Evolution of the Idea of a Vectorial System'',
+Dover Publications (1994)
+
+\bibitem{wiki}
+http://en.wikipedia.org/wiki/Geometric\_algebra
+
+\bibitem{hest3}
+Hestenes, D.:
+``New Foundations for Classical Mechanics'',
+Kluwer Academic Publishers (1999)
+
+\bibitem{doran}
+Doran, C., Lasenby, A.:
+``Geometric Algebra for Physicists'',
+Cambridge University Press (2003)
+
+\bibitem{hest4}
+Hestenes, D.:
+``Gauge Theory Gravity with Geometric Calculus''
+D. Hestenes, Foundations of Physics, {\bfseries 35}(6) (2005) 903
+
+\bibitem{dorst}
+Dorst, L., Fontijne, D., Mann, S.:
+``Geometric Algebra for Computer Science'',
+Elsevier Inc. (2007)
+
+\end{thebibliography}
+
+\end{document}
+
+
+

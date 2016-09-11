@@ -1,0 +1,10 @@
+\requiremodules[exclude]{dimensions}
+\begin{module}[id=units,uses=dimensions]
+  \symdef{gram}{g}
+  \symdef{meter}{m}
+  \symdef{second}{s}
+  \symdef{Volt}{v}
+  \symdef{Kelvin}{K}
+  \symdef{Celsius}{^\circ\kern-.3em{C}}
+  \symdef{liter}{l}
+\end{module}

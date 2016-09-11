@@ -1,0 +1,51 @@
+<CDSignatures xmlns="http://www.openmath.org/OpenMathCDS" type="sts" cd="SI_BaseQuantities">
+
+<Signature name="one" >
+<OMOBJ xmlns="http://www.openmath.org/OpenMath"> 
+  <OMV name="SI_BaseQuantity"/>
+</OMOBJ>
+</Signature>
+
+<Signature name="length" >
+<OMOBJ xmlns="http://www.openmath.org/OpenMath"> 
+  <OMV name="SI_BaseQuantity"/>
+</OMOBJ>
+</Signature>
+
+<Signature name="mass" >
+<OMOBJ xmlns="http://www.openmath.org/OpenMath"> 
+  <OMV name="SI_BaseQuantity"/>
+</OMOBJ>
+</Signature>
+
+<Signature name="time" >
+<OMOBJ xmlns="http://www.openmath.org/OpenMath"> 
+  <OMV name="SI_BaseQuantity"/>
+</OMOBJ>
+</Signature>
+
+<Signature name="current" >
+<OMOBJ xmlns="http://www.openmath.org/OpenMath"> 
+  <OMV name="SI_BaseQuantity"/>
+</OMOBJ>
+</Signature>
+
+<Signature name="temperature" >
+<OMOBJ xmlns="http://www.openmath.org/OpenMath"> 
+  <OMV name="SI_BaseQuantity"/>
+</OMOBJ>
+</Signature>
+
+<Signature name="amount of substance" >
+<OMOBJ xmlns="http://www.openmath.org/OpenMath"> 
+  <OMV name="SI_BaseQuantity"/>
+</OMOBJ>
+</Signature>
+
+<Signature name="luminous intensity" >
+<OMOBJ xmlns="http://www.openmath.org/OpenMath"> 
+  <OMV name="SI_BaseQuantity"/>
+</OMOBJ>
+</Signature>
+
+</CDSignatures>

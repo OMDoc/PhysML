@@ -1,0 +1,4 @@
+\requiremodules[exclude]{background}
+\begin{module}[id=mytemparature,uses=probability-intro]
+\symdef{sumofstates}[2]{\Omega_{#1}(#2)}
+\end{module}

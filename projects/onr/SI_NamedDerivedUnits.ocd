@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<CD xmlns="http://www.openmath.org/OpenMathCD">
+  <CDName>SI_DerivedUnits</CDName>
+  <CDURL> http://www.openmath.org/cd/SI_DerivedUnits.ocd </CDURL>
+  <CDReviewDate> 2009-04-01 </CDReviewDate>
+  <CDStatus> experimental </CDStatus>
+  <CDDate>2009-01-10</CDDate>
+  <CDVersion> 1 </CDVersion>
+  <CDRevision> 0 </CDRevision>
+  <CDUses>
+  </CDUses>
+
+
+  <Description>
+    This CD defines symbols to represent the names of named derived
+    units the SI (Syst\'eme International) system of units.  (DRAFT
+    INTERNATIONAL STANDARD ISO/DIS 80000-1 - "Quantities and units",
+    2008). Each unit refers to a corresponding derived quantity in
+    SI_DerivedQuantities.ocd.
+  </Description>
+
+  <CDDefinition>
+    <Name>gram</Name>
+    <Description>
+      This symbol represents one gram. This unit is implied by the 
+      incorporation of the prefix "kilo" in the standardized base
+      unit of kilogram. Since SI prefixes may not, by SI standard,
+      be prepended to "kilogram", the gram is introduced for the
+      application of prefixes.
+    </Description>
+    <CMP> gram = kilogram/1000 </CMP> 
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name>radian</Name>
+    <Description>
+      This symbol represents one radian, the natural unit of measure
+    for angle.
+    </Description>
+    <CMP> This is a dimensionless derived unit for the SI system. It
+    is the angle subtended at the center of a circular arc with
+    length the same as the radius of the corresponding circle. </CMP>
+    <CMP> unit(radian) = 1 </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name>steradian</Name>
+    <Description>
+      This symbol represents one steradian, the natural unit of
+    measure for solid angle.
+    </Description>
+    <CMP> One steradian is defined as the solid angle subtended at the
+    center of a sphere of radius r by a part of the surface of the
+    sphere having an area r*r and a circular perimeter.
+    </CMP>
+    <CMP> unit(steradian) = 1 </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> hertz </Name>
+    <Description>
+      This symbol represents an SI unit of frequency.
+    </Description>
+    <CMP> unit(hertz) = one/second </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> newton </Name>
+    <Role>constant</Role>
+    <Description>
+      This symbol represents an SI unit of force. 
+    </Description>
+    <CMP> unit(newton) = kilogram*metre/second^2 </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> pascal </Name>
+    <Description>
+      This symbol represents an SI unit of pressure.
+    </Description>
+    <CMP> unit(pascal) = unit(newton)/length^2 </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> joule </Name>
+    <Description>
+      This symbol represents an SI unit of energy.
+    </Description>
+    <CMP> unit(joule) = unit(newton)*metre </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> watt </Name>
+    <Description>
+      This symbol represents an SI unit of power, a joule per second.
+    </Description>
+    <CMP> unit(watt) = unit(joule)/second </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> coulomb </Name>
+    <Description>
+      This symbol represents an SI unit of electric charge.
+    </Description>
+    <CMP> coulomb = ampere*second </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> volt </Name>
+    <Description>
+      This symbol represents an SI unit of voltage or electric tension.
+    </Description>
+    <CMP> volt = joule/coulomb </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> farad </Name>
+    <Description>
+      This symbol represents an SI unit of electric capacitance.
+    </Description>
+    <CMP> farad = coulomb/volt </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> ohm </Name>
+    <Description>
+      This symbol represents an SI unit of electrical resistance.
+    </Description>
+    <CMP> ohm = volt/ampere </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> siemens </Name>
+    <Description>
+      This symbol represents an SI unit of electrical conductance. It is not plural.
+    </Description>
+    <CMP> siemens = ampere/volt </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> weber </Name>
+    <Description>
+      This symbol represents an SI unit of magnetic flux.
+    </Description>
+    <CMP> weber = joule/ampere </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> tesla </Name>
+    <Description>
+      This symbol represents an SI unit of magnetic flux density.
+    </Description>
+    <CMP> tesla = weber/(metre^2) </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> henry </Name>
+    <Description>
+      This symbol represents an SI unit of electrical inductance.
+    </Description>
+    <CMP> henry = volt*second/ampere </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> degree Celsius </Name>
+    <Description>
+      This symbol represents an SI unit of Celsius temperature.
+    </Description>
+    <CMP> degree Celsius = kelvin </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> lumen </Name>
+    <Description>
+      This symbol represents an SI unit of luminous flux.
+    </Description>
+    <CMP> lumen = candela*steradian </CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> lux </Name>
+    <Description>
+      This symbol represents an SI unit of illuminance.
+    </Description>
+    <CMP> lux = lumen/(metre^2) </CMP>
+  </CDDefinition>
+
+  <!-- 
+       radio nuclide activity, becquerel
+       absorbed dose, gray
+       dose equivalent, sievert
+       catalytic activity, katal  
+  -->
+
+</CD>

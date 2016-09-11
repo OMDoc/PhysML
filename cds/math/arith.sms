@@ -1,0 +1,8 @@
+\begin{module}[id=arith]
+\symdef{plus}[1]{\assoc[p=500]{+}{#1}}
+\symdef{minus}[2]{\infix[p=500]{-}{#1}{#2}}
+\symdef{times}[1]{\assoc[p=400]{\cdot}{#1}}
+\symdef{fraction}[2]{{#1\over#2}}
+\symdef{power}[2]{\infix[p=200]{^}{#1}{#2}}
+\symdef{greater}[2]{\infix[p=500]{>}{#1}{#2}}
+\end{module}

@@ -1,0 +1,275 @@
+\def\llquote#1{\ensuremath{\langle\kern-.25em\langle{#1}\rangle\kern-.25em\rangle}}
+\def\PHYSmodule#1{\module{PHYS}{#1}{Foundations of Physics}} 
+\def\mobjabbr{OMOBJ |m:math |legacy}
+\def\module#1#2#3{#1}
+\def\indextoo#1{#1}
+\def\snippet#1{\tt{#1}}
+\def\Kelvin{K}
+\def\Celsius{{}^{\circ}C}
+
+\section{Extending OMDoc for Physics}\label{HandleOnKnowledge}
+
+In this section we will extend the {\omdoc} format\footnote{Due to space restrictions we
+  cannot introduce the format here; we refer the reader to~\cite{Kohlhase:omdoc1.2} for
+  the language definition and examples.} by an infrastructure for (physical) systems,
+observables and experiments.
+\begin{figure}
+\begin{center}\scriptsize
+\begin{tabular}{|>{\tt}l|>{\tt}l|>{\tt}l|>{\tt}p{5.5cm}|}\hline
+{\rm Element}& \multicolumn{2}{l|}{Attributes} & Content  \\\hline
+             & {\rm Req.}  & {\rm Optional}     &           \\\hline\hline
+ observable  & name & algebra, xref & metadata?, opdef, refinement, type?\\\hline
+ refinement  &      & xml:id, xref & metadata?, CMP*, FMP*\\\hline 
+ opdef       &      & xml:id, xerf & metadata?, CMP*, FMP*\\\hline\hline
+ system      &     & xml:id, xref & metadata?, realization?, observable*, 
+                                               preparation?, state?\\\hline
+ realization &     & xml:id & metadata?, CMP*, FMP*\\\hline 
+ preparation &     & xml:id & metadata?, CMP*, FMP*\\\hline 
+ state       & of  & xml:id, xref & metadata?, value*\\\hline
+ value       & for & xml:id, xref & \llquote{mobj}\\\hline\hline
+ experiment  &                 & xml:id, xref   & metadata?, CMP*, FMP*, measurement*\\\hline
+ measurement &           & xml:id, xref   & metadata?, state, state \\\hline
+ evidence    & for, type & xml:id, & metadata? CMP*, FMP*,interpretation \\\hline
+ interpretation &        & xml:id  & metadata?, CMP*, FMP*\\\hline 
+ \multicolumn{4}{|p{11cm}|}{where {\element{metadata}}, {\element{CMP}}, {\element{FMP} and
+     {\element{type}} are {\omdoc} elements described in~\cite{Kohlhase:omdoc1.2} and where \llquote{mobj} is {\tt{(\mobjabbr)}}}}\\\hline
+\end{tabular}\vspace*{-.5cm}
+\end{center}\normalsize
+\caption{The Structure of {\physml} Elements}\label{fig:overview}\vspace*{-.5cm}
+\end{figure}
+
+With the existing representational infrastructure in {\omdoc} we can already represent
+structured collections of interrelated concepts and statements about them via {\omdoc}
+{\element{theory}}\footnote{The nomenclature in mathematics, which gave rise to the
+  element names in {\omdoc} and the naming conventions in physics clash here. In physics a
+  set of assumptions about the physical world are called a ``model'' until they are
+  generally accepted, only then are they called a ``theory'' (e.g.  the Nuclear
+  shell-model; however: quantum theory, general relativity theory).  } contexts. One of
+the central concepts in physics, the theory of measurable quantities can be set up in this
+way using {\omdoc} {\element{symbol}}s.
+
+We start with a simple example, the dimensions of the SI units.
+
+\begin{lstlisting}[label=lst:concepts,mathescape,
+  caption={Introducing Basic Concepts in a {\omdoc} Theory},
+  index={theory,symbol}]
+<theory xml:id="dimensions">
+  <symbol name="mass"/><symbol name="length"/><symbol name="time"/>
+  <symbol name="charge"/><symbol name="temperature"/>
+  <symbol name="volume"/>
+  <definition for="volume" type="simple">$\om{length^3}$</definition>
+</theory>
+\end{lstlisting}
+We can introduce derived dimensions like the dimension for volume as defined
+concepts. Note that all of the {\element{symbol}} declarations make the concepts available
+for the use in {\openmath}-encoded formulae via {\element{OMS}} elements and for the
+markup of technical terms via the {\omdoc} {\element{term}} element. Both identify a
+concept by its {\attribute{name}{OMS}} and home theory (called a {\emph{content
+    dictionary}}; hence the attribute {\attribute{cd}{OMS}}). Here as in the following, we
+use mathematical notation in boxes to abbreviate the {\openmath} objects in the listings
+to save space.
+
+We will use these dimensions as a type system for quantities, and introduce the units as
+constructors for the dimensions (note that we introduce the symbols with a
+{\element{type}}\footnote{In the example, we have not executed this, but it is possible
+  to extend the type system to model ranges of numerical values in quantities in this type
+  system: Instead of simply specifying that the unit $\Kelvin$ is of type
+  {\tt{$\backslash$temperature}} we give $\Kelvin$ the complex type $\langle
+  temperature,{\mathbb{R}}^*\rangle$ and adjust the dimension-types of the arithmetic
+  operators, so that they check for range admissibility. This puts a considerably higher
+  load on the type checking algorithm, but gives more control and quality assurance. As
+  {\omdoc} encoding tolerates multiple type systems, we need not even choose one, but
+  can accumulate the knowledge in the representations and use the one appropriate to the
+  task at hand.}).
+\begin{lstlisting}[label=lst:units,mathescape,caption={A Theory of SI Units},
+  index={theory,symbol}]
+<theory xml:id="units">
+  <symbol name="gram"><type system="dimensions">$\om{mass}$</type></symbol>      
+  <symbol name="Kelvin"><type system="dimensions">$\om{temperature}$</type></symbol>
+  <presentation for="Kelvin">$\Kelvin$</presentation>
+  <symbol name="Celsius"><type system="dimensions">$\om{temperature}$</type></symbol>
+  <presentation for="Celsius">$\Celsius$</presentation>
+  <definition for="Celsius" type="implicit">$\om{\forall x\not=0. \Kelvin=(x-273.15)\Celsius}$</definition>
+</theory>
+\end{lstlisting}
+As usual, we can define the intended notation of a concept via {\element{presentation}}
+elements (see section~\ref{sec:physml-stex}) and we can introduce derived units via
+definitions. With this machinery, we can also state natural laws:
+\begin{lstlisting}[label=lst:nat_law,mathescape,
+  caption={A Natural Law Expressed as an {\omdoc} {\element{axiom}}.},
+  index={axiom}]
+<axiom xml:id="force_mass_acceleration" type="natural_law">
+  <CMP>Force is mass times acceleration.</CMP>
+  <FMP>$\om{{\bf{F}}={\bf{m}}\cdot {\bf{a}}}$</FMP>
+</axiom>
+\end{lstlisting}
+Note that in {\omdoc} terminology we are dealing with an axiom, i.e. with an assertion
+that cannot be mathematically proven\footnote{There may be physical evidence that supports
+  it though.} but has to be assumed about the world.  In physics a relation between
+observables has to be supported by sets of experiments, with no counter-evidence within the
+range of the variables of the involved observables.
+
+\subsection{Observables}\label{subsec:observables}
+
+Above we have determined the notion of an {\emph{observable}} as a primary object of
+physics. As any observable --- e.g. the temperature, or velocity --- of a given physical
+system can be used in formulae describing the system, we need to extend the {\omdoc}
+format by a new statement-level language element that is definition-like. The
+{\eldef{observable}} element introduced by the {\physml} module in {\omdoc} (see
+Figure~\ref{fig:overview} for an overview) has three relevant children\footnote{Here and
+  in the following, we will not explicitly describe the {\element{metadata}} element,
+  which is used in {\omdoc} to accommodate bibliographic and administrative metadata,
+  specifying titles, digital rights, licensing, authorship, timestamping, etc. or the
+  {\attributeshort[ns-attr=xml]{id}} attribute which is used for identification. Details
+  can be found in the {\omdoc} specification~\cite{Kohlhase:omdoc1.2}.} {\element{opdef}},
+{\element{refinement}}, and {\element{type}}, to model the properties of observables we
+have identified in Section~\ref{sec:physml}. The {\eldef{opdef}} and {\eldef{refinement}}
+elements contain {\emph{mathematical vernacular}}, i.e. structured text interspersed with
+mathematical formulae. Mathematical vernacular is represented in {\omdoc} by a
+multilingual group of {\element{CMP}} (commented mathematical property) elements with
+mathematical text, and (possibly) a multi-system group of {\element{FMP}} elements with
+formalizations of the properties expressed in the {\element{CMP}}s. The {\element{opdef}}
+element is used for describing the {\emph{operational definition}} of the observable,
+i.e. the defining process of measurement, whereas the {\element{refinement}} element is
+used to specify the rule of iterative refinement that takes the measurement process to
+its (idealized) limit.
+
+The {\emph{dimension}} of the observable is specified as a {\element{type}} element. Here
+we can directly use the type system for dimensions we have introduced in the last section.
+In our example in Listing~\ref{lst:observable} this is just the temperature.
+
+The {\element{observable}} element carries a {\attribute{name}{observable}} attribute,
+which is used by {\omdoc} to introduce a symbol that can be referenced by an
+{\element{OMS}} element just like the {\element{symbol}} element. Furthermore, it carries
+an optional {\attribute{algebra}{observable}} attribute that contains a pointer to an
+{\omdoc} representation to the mathematical object introduced by this observable.
+
+All of these elements also carry an optional {\attributeshort{xref}} attribute that allows
+to refer to an already existing representation of the same element via an URI reference;
+the effect is that the referred object is virtually copied in to the place of the
+referring one.
+
+\begin{lstlisting}[label=lst:observable,mathescape,
+  caption={An Observable for the Temperature},
+  index={observable,opdef,refinement,type}]
+<observable name="temperature">
+  <opdef><CMP>Measure with a thermometer.</CMP></opdef>
+  <refinement><CMP>Make the thermometer stepwise smaller.</CMP></refinement>
+  <type system="dimensions">$\om{temperature}$</type>
+</observable>
+<presentation for="temperature"><use format="default">$\bf T$</use></presentation>
+\end{lstlisting}
+
+
+\subsection{Physical Systems and their States}\label{subsec:systems}
+
+One of the basic building block of {\physml} is the {\eldef{system}} element that is used
+to represent a physical system. The system is described via the mathematical vernacular in
+a {\eldef{realization}} element which is the first relevant child. As we have seen above,
+a physical system can be characterized by a (in practice very finite) set of
+{\indextoo{observable}s}, i.e. physical variables that can be measured independently.
+These are represented by a non-empty set\footnote{Enjoy the special cases: By use of an
+  apparatus, which cannot measure anything (that is: has no observable) one cannot learn
+  anything. The respective mathematical operator would be the identity.  Less trivial is
+  the case, where we prepare a system in state $|a\rangle$, then try a measurement `is the
+  system in state $|a\rangle$'? If it is already in that state, one does not learn
+  anything new, and that is: no-one can decide whether the experiment took place or not.
+  Example: heat a system and a thermal measuring device to 40 deg.  Then measure the
+  temperature of the system by the device: Your result 40 deg can by no means be
+  distinguished from the suspicion you did not do the experiment.}  of
+{\element{observable}} children. Listing~\ref{lst:simple-system} shows a very simple
+system, which we will use as a concrete measuring apparatus later.
+
+\begin{lstlisting}[label=lst:simple-system,mathescape,
+  caption={A Simple Physical System},
+  index={theory,symbol}]
+<system xml:id="thermometer">
+  <realization><CMP>A thin glass tube with mercury in it.</CMP></realization>
+  <observable xref="#temperature"/>
+</system>
+\end{lstlisting}
+
+In this setup, we have represented only the observable we are interested in: all other
+physical traits of the apparatus are irrelevant for our current purposes. If other
+physical properties also matter, then we can add other observables. However, we have to
+make sure that we fix the states of all of the observables that we do not want to
+measure. This can be done informally in mathematical vernacular in the optional
+{\eldef{preparation}} element, which may follow the {\element{observable}} elements, and
+more formally in a {\element{state}} element. A {\eldef{state}} element specifies a set of
+values for observables in the system it refers to (either its parent {\element{system}} or
+the system specified to in the optional {\attribute{of}{state}} attribute) via a set of
+{\element{value}} children. A {\eldef{value}} element specifies the observable it refers
+to by referring to it's name in the required {\attribute{for}{value}} attribute. Its
+content is a representation of a physical quantity as an {\openmath}, content {\mathml},
+or {\omdoc} {\element{legacy}} element. In the example below, we have (somewhat
+arbitrarily) prepared a gas cylinder for an experiment by making it red.
+
+\begin{lstlisting}[label=lst:system,mathescape,
+  caption={A Physical System Prepared for an Experiment},
+  index={theory,symbol}]
+<system xml:id="gas_cylinder">
+  <realization><CMP>A gas-tight wooden cylinder</CMP></realization>
+  <observable xref="#pressure.obs"/>
+  <observable xref="#density.obs"/>
+  <observable xref="#color.obs"/>
+  <preparation><CMP>We make the cylinder red!</CMP></preparation>
+  <state><value for="color">$\om{red}$</value></value>
+  </state>
+</system>
+\end{lstlisting}
+
+\subsection{Experiments}\label{subsec:experiments}
+
+Physical experiments are represented by the {\element{experiment}} element in
+{\physml}. The body of this element consists of  two {\element{system}} elements followed by a
+set\footnote{We explicitly allow an empty set of measurements here in order to describe
+  future, planned or failed experiments that have not yielded measurements (yet).} of
+{\element{measurement}} elements. The first child represents the system which is measured,
+the second the measuring device. The {\eldef{measurement}} elements contain two
+{\element{state}} elements as described above which correlate the state of the system on
+which the measurement is performed with the state of the system of the measuring
+device. In the following example, we represent the result of measuring the temperature of
+a gas cylinder with varying density and pressure.  
+\begin{lstlisting}[label=lst:experiment,caption={Experiment: measuring the temp.
+    of a gas cylinder},
+  index={state,value},mathescape]
+<experiment xml:id="ex_pressure_vs_temp">
+  <CMP>Measuring the pressure vs. temperature of a compressed gas cylinder</CMP>
+  <system xref="#gas_cylinder"/>
+  <system xref="#thermometer"/>
+  <measurement xml:id="m_213">
+    <state of="#gas_cylinder">
+      <value for="pressure">$\om{332.49586 psi}$</value>
+      <value for="density">$\om{19 g/l}$</value>
+    </state>
+    <state of="#thermometer"><value for="temperature">$\om{17.52\Kelvin}$</value></state>
+  </measurement>
+</experiment>
+\end{lstlisting}
+Note that this only represents the raw data from an experiment. We can link experiments
+and natural laws, such as the one stated in {\mylstref{nat_law}} via the
+{\element{evidence}} element. The main insight here is that as we cannot ``prove'' natural
+laws, but only observe them. We can only keep on experimenting in physics and collect
+evidence or counter-evidence for any relations between observables. The {\eldef{evidence}}
+element contains a non-empty set of {\element{experiment}}s followed by an
+{\element{interpretation}} element that allows to detail any interpretative steps, e.g. an
+account how the data was fitted to a curve, etc. Its {\attribute{for}{evidence}} attribute
+specifies the relation it concerns, and the {\attribute{type}{evidence}} attribute
+specifies whether the evidence supports it (value {\tt{for}}) or falsifies it (value
+{\tt{against}}).
+
+In reality one is left with a residual ambiguity because physical experiments are
+conducted with real apparata, while the physics law gives a mathematical relation between
+the idealized quantities of the physical observables and apparata obtained as the
+(virtual) limit of the stepwise refinement iteration rule.
+
+%%% Local Variables: 
+%%% mode: LaTeX
+%%% TeX-master: "mkm06"
+%%% End: 
+
+% LocalWords:  em PHYS mobj num Ebs stimmt das XXX YYY bitte korrigieren lst cd
+% LocalWords:  mathescape OMF arith dec nat MiKo ns attr Heinrich hier vern bzw
+% LocalWords:  unftige Werte Observablen einsetzen dc kmp xref mkm OMOBJ truecm
+% LocalWords:  xml metadata CMP FMP Ich glaube nein aber nachdenken reinkoennte
+% LocalWords:  IEEE OMA multi Req opdef xerf stex deg obs

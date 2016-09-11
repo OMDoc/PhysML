@@ -1,0 +1,7 @@
+This directory contains OChemDoc examples for the discussion. 
+This only for Peter and Michael, so don't bother us. 
+
+ochemdoc.xsl   is a mockup that transforms to html until an OMDoc-style
+               transformation process comes along
+schemas.xsl    tell nxml-mode on emacs which schema to take
+ochemdoc.rnc   is the first RelaxNG schema (for authoring sanity)

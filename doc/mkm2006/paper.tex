@@ -1,0 +1,217 @@
+\documentclass{llncs}
+\usepackage{url,graphicx,amssymb,array}
+\usepackage[savemem]{listings} 
+\usepackage{lstpatch,lstomdoc}
+\usepackage[hide]{draftstamp,ed} %set this to [hide] in the final version
+\usepackage[hide]{xmlindex}
+\usepackage{svn}
+\usepackage{wrapfig}
+\makeindex
+%\SVN $Id: mkm06.tex 7947 2006-05-24 13:31:40Z kohlhase $
+%\SVNdate $Date: 2006-05-24 15:31:40 +0200 (Wed, 24 May 2006) $
+
+\pagestyle{plain}                %delete this in the final version
+
+\def\chemml{{\sc{CML}}}
+\def\physml{{\sc{PhysML}}}
+\def\stex{{\raisebox{-.5ex}S\kern-.5ex\TeX}}
+\def\om#1{\fbox{\ensuremath{#1}}}
+\lstset{float=htb,columns=flexible,frame=lines,language=[omdoc]XML,basicstyle=\scriptsize,
+  indexstyle=\indextt,indexstyle=[1]\indexelement,indexstyle=[2]\indexattribute,showstringspaces=false}
+
+%% to number the listings in sequence with figures
+\makeatletter\let\c@lstlisting\c@figure\makeatother
+
+\def\LNAI{LNAI}
+\def\LNCS{LNCS}
+\def\PROC{Proceedings }
+\def\cG{{\cal G}}
+
+\def\google{\sc{Google}}
+\def\googlescholar{\sc{Google Scho\-lar}}
+\def\mathematica{\sc{Mathematica}}
+\def\gap{\sc{Gap}}
+\def\wikipedia{\sc{Wiki\-Pedia}}
+\def\soap{\sc{Soap}}
+\def\owl{\sc{Owl}}
+
+\def\deq{\colon=}
+\def\defin#1{{\bf{#1}}}
+\def\name#1{{{\small{\sc{#1}}}}}
+\def\seen{seen }
+\def\July{July }
+\def\webpageat{Web page at }
+\def\mathml{\sc{MathML}}
+\def\openmath{\sc{OpenMath}}
+\def\omdoc{\sc{OMDoc}}
+\newenvironment{myfig}[2]%
+{\begin{figure}[!htb]\def\myfiglabel{#1}\def\myfigcaption{{#2}}\begin{center}}
+{\caption{\myfigcaption}\label{fig:\myfiglabel}\end{center}\vspace{-2em}\end{figure}}
+
+\def\myfigref#1{Figure~\ref{fig:#1}}
+\def\myfigsref#1#2{Figures~\ref{fig:#1} and~\ref{fig:#2}}
+\def\myfiglref#1#2{Figures~\ref{fig:#1} to~\ref{fig:#2}}
+\def\Myfigref#1{Figure~\ref{fig:#1}}  % this one is capitalized for sentence beginnings
+
+\title{Capturing the Content of Physics:\\ Systems, Observables, and Experiments}
+\author{Eberhard Hilf\inst{1} \and Michael Kohlhase\inst{2} \and Heinrich
+  Stamerjohanns\inst{2}}
+
+\institute{Institute for Science Networking, Oldenburg\\
+  \email{hilf@isn-oldenburg.de} \and 
+  Computer Science, International University Bremen\\
+  \email{m.kohlhase@iu-bremen.de}\\
+  \email{h.stamerjohanns@iu-bremen.de}
+}
+
+\newcommand{\ab}{\vspace{3mm}\\}
+
+\begin{document}
+\hyphenation{veri-fied
+        }
+
+\maketitle\vspace{-.5cm}
+%\begin{center}\textit{SVN Id: \SVNId}\end{center}
+
+\begin{abstract}
+  We present a content markup language for physics realized by extending the {\omdoc}
+  format by an infrastructure for the principal concepts of physics: {\emph{observables}},
+  physical {\emph{systems}}, and {\emph{experiments}}. The formalization of the
+  description of physics observables follows the structural essence of the operational
+  theory of physics measurements. The representational infrastructure for systems and
+  experiments allow to capture the distinctive practice of physics: natural laws are
+  supported by evidence from experiments which are described, disseminated and reproduced
+  by others.
+\end{abstract}
+
+%\setcounter{tocdepth}{3}\tableofcontents\newpage
+
+\input{intro}
+\input{physml}
+\input{physomdoc}
+%\input{thermostatics}
+\input{physml-stex}
+\input{concl}
+
+%\bibliographystyle{alpha}
+%\bibliography{../bibs/dockon,../bibs/kwarc/systems,../bibs/kwarc/crossrefs}
+\begin{thebibliography}{Koh06b}
+
+\bibitem[Bri27]{Hilf:bridgeman}
+Percy Bridgeman.
+\newblock The logic of modern physics.
+\newblock {\em Comment: the book could not be traced but is well cited}, 1927.
+\newblock and all publications following this on operational foundation of the
+  theory of measurement.
+
+\bibitem[CML05]{CML:web}
+{Chemical Markup Language CML}.
+\newblock \webpageat\url{http://www.ch.cam.ac.uk/CUCL/staff/pm.html},
+  \seen\July 2005.
+
+\bibitem[EB72]{Born:einstein}
+Albert Einstein and Max Born.
+\newblock {\em Briefwechsel 1916 - 1955}.
+\newblock Rowohlt Verlag, Reinbek, 1972.
+
+\bibitem[ERH05]{PML:web}
+Julika~Mimkes Eberhard R.~Hilf.
+\newblock {Zu einem verlustfreien Publizieren und Archivieren}.
+\newblock
+  \webpageat\url{http://www.isn-oldenburg.de/~hilf/vortraege/mathdiss02/},
+  \seen\July 2005.
+
+\bibitem[Fal70a]{Falk:mechanik}
+Gottfried Falk.
+\newblock {\em Theoretische Physik I und Ia}.
+\newblock Heidelberger Taschenb\"ucher. Springer Verlag, 1970.
+
+\bibitem[Fal70b]{Falk:thermodyn}
+Gottfried Falk.
+\newblock {\em Theoretische Physik II Thermodynamik}.
+\newblock Heidelberger Taschenb\"ucher. Springer Verlag, 1970.
+
+\bibitem[Hil05a]{Hilf:texdocc}
+Eberhard~R. Hilf.
+\newblock {Kann man {\TeX} beibringen, Physik zu verstehen?}
+\newblock In {\em {Der Aufbau eines deutschen TeXDoc-Centers an der SUB
+  G\"ottingen, --- Chancen von TeX-Dokumenten f\"ur eine dauerhafte Verwertung
+  und Publikation}}. {Workshop des DFG-TeXDocC-Projektes, Die Deutsche
+  Bibliothek Frankfurt}, \seen 2005-07-24 2005.
+
+\bibitem[Hil05b]{Hilf:p05}
+Eberhard~R. Hilf.
+\newblock Physml.
+\newblock In {\em Sesame 2005 Workshop Bremen}. MKM Mathematical Knowldege
+  Management, \seen\July 2005.
+\newblock \webpageat\url{http://www.mkm-ig.org/meetings/sesame05/program.html},
+  talk at
+  \webpageat\url{http://www.isn-oldenburg.de/~hilf/vortraege/sesame05/index.ht%
+ml}.
+
+\bibitem[HMS03]{Hilf:guestrow}
+Eberhard~R Hilf, Julika Mimkes, and Helmut Schottm\"uller.
+\newblock {Die Zukunft des wisenschaftlichen Publizierens --- Vom Publizieren
+  zum Austausch von Informationen in der Wissenschaft}.
+\newblock \webpageat
+  \url{http://www.isn-oldenburg.de/~hilf/vortraege/guestrow03/}, 2003.
+
+\bibitem[KK04]{KohKoh:cdad04}
+Andrea Kohlhase and Michael Kohlhase.
+\newblock {CPoint}: Dissolving the author's dilemma.
+\newblock In Andrea Asperti, Grzegorz Bancerek, and Andrej Trybulec, editors,
+  {\em Mathematical Knowledge Management, MKM'04}, number 3119 in \LNCS, pages
+  175--189. Springer Verlag, 2004.
+
+\bibitem[Koh06a]{Kohlhase:albwo06}
+Michael Kohlhase.
+\newblock A {\LaTeX}-based workflow for omdoc.
+\newblock  \cite{Kohlhase:omdoc1.2}.
+\newblock to appear, manuscript at
+  {\url{http://www.mathweb.org/omdoc/pubs/omdoc1.2.pdf}}.
+
+\bibitem[Koh06b]{Kohlhase:omdoc1.2}
+Michael Kohlhase.
+\newblock {\em {\sc OMDoc} An open markup format for mathematical documents
+  (Version 1.2)}.
+\newblock LNAI. Springer Verlag, 2006.
+\newblock to appear, manuscript at
+  {\url{http://www.mathweb.org/omdoc/pubs/omdoc1.2.pdf}}.
+
+\bibitem[LK06]{LanKoh:swmkm06}
+Christoph Lange and Michael Kohlhase.
+\newblock A semantic wiki for mathematical knowledge management.
+\newblock In {\em Proceedings of the 1st Workshop: ''SemWiki2006 - From Wiki to
+  Semantics''}. 2006.
+
+\bibitem[Mit70]{Mittelstaedt:buch}
+Peter Mittelstaedt.
+\newblock {\em Klassische Mechanik}, volume 500/500a of {\em
+  Hochschultaschenbuecher}.
+\newblock Bibliographisches Institut, 1970.
+
+\bibitem[Pen06]{metrology}
+L.~R. Pendrill.
+\newblock Metrology: time for a new look at the physics of traceable
+  measurement?
+\newblock {\em Europhysics News}, 37(1):25, 2006.
+
+\bibitem[Sak93]{Sakurai}
+J.~J. Sakurai.
+\newblock {\em {Modern Quantum Mechanics}}.
+\newblock Prentice Hall, 1993.
+\newblock ISBN 0201539.
+
+\end{thebibliography}
+
+%\begin{appendix}\input{sesame}\end{appendix}
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
+
+
+
+% LocalWords:  Eberhard Hilf Heinrich Stamerjohanns SVN fied stex

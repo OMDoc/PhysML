@@ -1,0 +1,49 @@
+<cml xmlns="http://www.xml-cml.org" id="p2035">
+<moleculeList>
+  <molecule id="m1" title="nitric oxide">
+    <atomArray>
+      <atom id="a1" elementType="N" hydrogenCount="0"/>
+      <atom id="a2" elementType="O" hydrogenCount="0"/>
+    </atomArray>
+    <bondArray>
+      <bond id="a1_a2" atomRefs2="a1 a2" order="2"/>
+    </bondArray>
+  </molecule>
+  <molecule id="m2" title="nitrogen dioxide">
+    <atomArray>
+      <atom id="a1" elementType="N" hydrogenCount="0"/>
+      <atom id="a2" elementType="O" hydrogenCount="0"/>
+      <atom id="a3" elementType="O" hydrogenCount="0"/>
+    </atomArray>
+    <bondArray>
+      <bond id="a1_a2" atomRefs2="a1 a2" order="1"/>
+      <bond id="a1_a3" atomRefs2="a1 a3" order="2"/>
+    </bondArray>
+  </molecule>
+  <molecule id="m3" title="formaldehyde">
+    <atomArray>
+      <atom id="a1" elementType="C" hydrogenCount="2"/>
+      <atom id="a2" elementType="O" hydrogenCount="0"/>
+    </atomArray>
+    <bondArray>
+      <bond id="a1_a2" atomRefs2="a1 a2" order="2"/>
+    </bondArray>
+  </molecule>
+</moleculeList>
+
+<table id="table2" title="Initial concentrations for species in MCM at 298K">
+  <parameter dictRef="mcm:temp">
+    <scalar dataType="xsd:double" units="units:K">298</scalar>
+  </parameter>
+  <array title="species" dictRef="mcm:s77" dataType="cml:molecule">
+    <molecule ref="m1"/>
+    <molecule ref="m2"/>
+    <molecule ref="m3"/>
+  </array>
+  <array title="initial concentration" dictRef="mcm:ic55"
+      dataType="xsd:double" units="units:molecule.cm-3">1.0E9 1.0E9 1.0E11</array>
+  <array title="initial concentration" dictRef="mcm:ic56"
+      dataType="xsd:double" units="units:ppb">4.13E-2 4.13E-2 4.13</array>
+</table>
+
+</cml>

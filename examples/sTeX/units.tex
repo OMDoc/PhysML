@@ -1,0 +1,59 @@
+\documentclass[twoside]{article}
+\usepackage{stex,physml}
+\usepackage[today,fancyhdr]{svninfo}
+
+\title{The Content Dictionary for SI Dimensions}
+\author{Michael Kohlhase}
+
+\begin{document}
+\svnInfo $Id: semkm4ed.tex 1472 2008-01-14 17:10:20Z kohlhase $
+\svnKeyword $HeadURL: https://svn.kohlhase.net/repos/kohlhase.net/ako/IEEE_EdTech/semkm4ed.tex $
+\maketitle
+
+\begin{module}[id=units]
+\importmodule[dimensions]{dimensions}
+
+\symdef{gram}{g}
+\begin{symboldec}[name=gram]
+  \symtype{dimensions}{$\mass$}
+\end{symboldec}
+
+\symdef{meter}{m}
+\begin{symboldec}[name=meter]
+  \symtype{dimensions}{$\length$}
+\end{symboldec}
+
+\symdef{second}{s}
+\begin{symboldec}[name=second]
+  \symtype{dimensions}{$\time$}
+\end{symboldec}
+
+\symdef{Volt}{v}
+\begin{symboldec}[name=Volt]
+  \symtype{dimensions}{$\charge$}
+\end{symboldec}
+
+\symdef{Kelvin}{K}
+\begin{symboldec}[name=Kelvin]
+  \symtype{dimensions}{$\temperature$}
+\end{symboldec}
+
+\symdef{Celsius}{^\circ\kern-.3em{C}}
+\begin{symboldec}[name=Celsius]
+  \symtype{dimensions}{$\temperature$}
+\end{symboldec}
+  
+  \begin{definition}[for=Celsius,type=implicit]
+    $\forall x>0.x\Kelvin=(x-273.15)\Celsius$
+  \end{definition}
+
+  \symdef{liter}{l}
+  \begin{symboldec}[name=liter]
+    \symtype{dimensions}{$\volume$}
+  \end{symboldec}
+  
+  \begin{definition}[for=liter,type=simple]
+    ${\meter\over10}^3$
+  \end{definition}
+\end{module}
+\end{document}

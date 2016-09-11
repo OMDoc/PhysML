@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<omdoc xml:id="eq1.omdoc"
+  xmlns="http://www.mathweb.org/omdoc"
+  xmlns:cc="http://creativecommons.org/ns"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:om="http://www.openmath.org/OpenMath"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  version="1.8">
+
+<metadata>
+  <dc:date action="created">2007-11-30T14:59:23</dc:date>
+  <dc:title xml:lang="en">Equation 1</dc:title>
+  <dc:creator role="aut"></dc:creator>
+  <dc:date action="updated">2007-11-30T14:59:23</dc:date>
+  <dc:type>Text</dc:type>
+  <dc:format>application/omdoc+xml</dc:format>
+  <dc:rights>Copyright (c) 2007 </dc:rights>
+  <cc:license>
+    <cc:permissions reproduction="permitted" distribution="permitted" derivative_works="permitted"/>
+    <cc:prohibitions commercial_use="permitted"/>
+    <cc:requirements notice="required" copyleft="required" attribution="required"/>
+  </cc:license>
+</metadata>
+
+<!-- this is an assumed content dictionary, we keep it here for reference -->
+<theory xml:id="geogeometry">
+<symbol name="localhourangle"/>
+<presentation for="#localhourangle">
+  <use format="default">LHA</use>
+</presentation>
+
+<symbol name="solardeclinationangle"/>
+<presentation for="#solardeclinationangle">
+  <use format="default">DEC</use>
+</presentation>
+
+<symbol name="latitude"/>
+<presentation for="#latitude">
+  <use format="default">LAT</use>
+</presentation>
+
+<symbol name="timeofyear"/>
+<presentation for="#timeofyear">
+  <use format="default">TOY</use>
+</presentation>
+</theory>
+
+<theory xml:id="mcm">
+  <metadata>
+    <dc:title>The master chemical mechanism</dc:title>
+  </metadata>
+  
+  <symbol name="photorate">
+    <type system="dimensions">
+      <!-- **** we don't know this, so we make it up -->
+      <symbol cd="dimensions" name="molspersec"/>
+    </type>
+  </symbol>
+
+  <presentation for="#photorate">
+    <use format="default">J</use>
+  </presentation>
+
+  <symbol name="lconst">
+    <type system="dimensions">
+      <symbol cd="dimensions" name="molspersec"/>
+    </type>
+  </symbol>
+  <presentation for="#nconst">
+    <use format="default">l</use>
+  </presentation>
+
+  <symbol name="mconst"/>
+  <presentation for="#solarzenithangle">
+    <use format="default">m</use>
+  </presentation>
+
+  <symbol name="nconst"/>
+  <presentation for="#nconst">
+    <use format="default">n</use>
+  </presentation>
+    
+  <imports from="#geogeometry"/>
+  <imports from="http://omdoc.org/cds/units.omdoc#units"/>
+
+  <definition xml:id="photolysis-rate.def" for="#photorate #lconst #mconst #nconst">
+  <CMP>
+    Photolysis rate parameters depend on the solar zenith angle.  Based on two parameter
+    calculations made in Hough (1988) for clear sky conditions at an altitude of
+    <m:math><m:apply><m:times/><m:cn>0.5</m:cn><m:csymbol cd="units"
+    name="km"/></m:apply></m:math>, a formula was determined in Jenkin et al. (1997) to
+    express the variation of the <phrase type="definiendum">photolysis rate
+    <m:math><m:csymbol cd="mcm" name="photorate"/></m:math></phrase> with the <term
+    cd="mcm" name="solarzenithangle">solar zenith angle</term> <m:math><m:csymbol cd="mcm"
+    name="solarzenithangle"/></m:math>
+
+<math xmlns="http://www.w3.org/1998/Math/MathML">
+  <apply>
+    <eq/>
+    <csymbol cd="mcm" name="photorate"/> 
+    <apply>
+      <times/>
+      <csymbol cd="mcm" name="lconstant"/>
+      <apply>
+	<exp/>
+	<apply><cos/><m:csymbol cd="mcm" name="solarzenithangle"/></apply>
+	<csymbol cd="mcm" name="mconstant"/>
+      </apply>
+      <apply>
+	<exp/>
+	<exponentiale/>
+	<apply>
+	  <times/>
+	  <apply><minus/><csymbol cd="mcm" name="nconstant"/></apply>
+	  <apply><sec/><m:csymbol cd="mcm" name="solarzenithangle"/></apply>
+	</apply>
+      </apply>
+    </apply>
+  </apply>
+</math>
+
+where the three parameters (<m:math><m:csymbol cd="mcm" name="lconstant"/></m:math>,
+<m:math><m:csymbol cd="mcm" name="mconstant"/></m:math>, <m:math><m:csymbol cd="mcm"
+name="nconstant"/></m:math>) are optimised by fitting measured data (Jenkin et al., 1997).
+  </CMP>
+</definition>
+
+  <symbol name="solarzenithangle"/>
+  <presentation for="#solarzenithangle">
+    <use format="default">&#x3B8;</use>
+  </presentation>
+
+<definition xml:id="solarzenithangle.def" for="#solarzenithangle">
+  <CMP>
+  The solar zenith angle, <m:math><m:csymbol cd="mcm" name="solarzenithangle"/></m:math>,
+  is calculated as a function of the time of day (represented by the <term
+  cd="geogeometry" name="localhourangle">local hour angle</term>, <m:math><m:csymbol
+  cd="geogeometry" name="localhourangle"/></m:math>), the <term cd="geogeometry"
+  name="timeofyear">time of year</term> (represented by the <term cd="geogeometry"
+  name="solardeclinationangle">solar declination angle</term> <m:math><m:csymbol
+  cd="geogeometry" name="solardeclinationangle"/></m:math>) and the <term cd="geogeometry"
+  name="latitude">latitude</term> (<m:math><m:csymbol cd="geogeometry"
+  name="latitude"/></m:math>) (Derwent and Jenkin, 1990):
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <apply>
+      <eq/>
+      <apply>
+	<cos/>
+	<m:csymbol cd="mcm" name="solarzenithangle"/>
+      </apply>
+      <apply>
+	<plus/>
+	<apply>
+	  <times/>
+	  <apply><cos/><csymbol cd="geogeometry" name="localhourangle"/></apply>
+	  <apply><cos/><csymbol cd="geogeometry" name="solardeclinationangle"/></apply>
+	  <apply><cos/><csymbol cd="geogeometry" name="latitude"/></apply>
+	</apply>
+	<apply><sin/><csymbol cd="geogeometry" name="solardeclinationangle"/></apply>
+	<apply><sin/><csymbol cd="geogeometry" name="latitude"/></apply>
+      </apply>
+    </apply>
+  </math>
+  </CMP>
+</definition>
+</theory>
+</omdoc>

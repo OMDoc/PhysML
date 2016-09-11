@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CD xmlns="http://www.openmath.org/OpenMathCD">
+
+  <CDName> SI_functions </CDName>
+  <CDBase>http://www.openmath.org/cd</CDBase>
+  <CDURL> http://www.openmath.org/cd/SI_functions.ocd </CDURL>
+  <CDReviewDate> 2009-04-01 </CDReviewDate>
+  <CDStatus> experimental </CDStatus>
+  <CDDate>2009-01-10</CDDate>
+  <CDVersion> 1 </CDVersion>
+  <CDRevision> 0 </CDRevision>
+
+  <Description> 
+    This CD defines symbols for functions applied to SI quantities and
+    units.
+  </Description>
+
+  <CDDefinition>
+    <Name> dim </Name>
+    <Role>application</Role>
+    <Description> 
+      The symbol to represent the function that returns the physical
+      dimension of its argument in terms of products of rational powers of
+      SI_BaseQuantities. The dim operation may be meaningfully applied to SI
+      quantities, SI units, and pure numbers.
+    </Description>
+    <CMP> The dim operator acts as the identity operation when applied to
+    an SI base quantity.</CMP>
+    <CMP> The dim operator returns the corresponding SI base quantity when
+    applied to an SI base unit.</CMP>
+    <CMP> For each named SI derived quantity and unit, the value returned
+    by the dim operator is defined for each case.</CMP>
+    <CMP> The dim operator applied to a product is the commutative product
+    of the dim operator applied to the factors. </CMP>
+    <CMP> The dim operator applied to a multiplicative inverse of a
+    quantity is equal to the multiplicative inverse of the dim operator
+    applied to the same quantity. </CMP>
+    <CMP> The dim operator returns a value of one when applied to a
+    dimensionless quantity or number.</CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> unit </Name>
+    <Role>application</Role>
+    <Description> 
+      The symbol to represent the function that returns the units
+      of its argument in terms of a product of rational powers of
+      SI_BaseUnits.
+    </Description>
+    <CMP>The unit operator may be applied to any physical quantity.</CMP>
+    <CMP>The unit operator applied to an SI base quantity returns the
+    corresponding unit.</CMP>
+    <CMP>The unit operator applied to an SI base unit returns that unit.</CMP>
+    <CMP> The unit operator applied to a product is the commutative product
+    of the unit operator applied to the factors. </CMP>
+    <CMP> The unit operator applied to a multiplicative inverse of a
+    quantity is equal to the multiplicative inverse of the unit operator
+    applied to the same quantity. </CMP>
+    <CMP> The unit operator returns a value of one when applied to a
+    dimensionless quantity or number.</CMP>
+  </CDDefinition>
+
+  <CDDefinition>
+    <Name> num </Name>
+    <Role>application</Role>
+    <Description> 
+      The symbol to represent the function to return the numerical
+      value of a quantity in terms of a product of rational powers of
+      SI_BaseUnits.
+    </Description>
+    <CMP>The num operator may be applied to any physical quantity.</CMP>
+    <CMP>The num operator applied to an SI base quantity or unit returns
+    the value one.</CMP>
+    <CMP> The quantity num(Q)*unit(Q), may replace any quantity, Q, in
+    physical equations, though num(Q)*unit(Q) is not always the same
+    as Q.</CMP>
+  </CDDefinition>
+
+</CD>

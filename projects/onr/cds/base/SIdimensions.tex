@@ -1,0 +1,54 @@
+\documentclass[twoside]{article}
+\usepackage{stex,physml}
+\usepackage[today,fancyhdr]{svninfo}
+\usepackage[show]{ed}
+
+\title{The Content Dictionary for International System of Quantities
+  (ISQ) Base Quantities}
+\author{Michael Kohlhase}
+
+\begin{document}
+\svnInfo $Id: dimensions.tex 44 2008-02-11 16:41:23Z kohlhase $
+\svnKeyword $URL: https://svn.omdoc.org/repos/physml/cds/base/dimensions.tex $
+\maketitle
+
+\begin{module}[id=dimensions]
+\importmodule[../math/arith]{arith}
+
+\symdef{length}{\mbox{\sf{length}}}
+\begin{consymb}[name=length]
+  The length dimension.
+\end{consymb}
+
+\symdef{mass}{\mbox{\sf{mass}}}
+\begin{consymb}[name=mass]
+  The mass dimension.
+\end{consymb}
+
+\symdef{time}{\mbox{\sf{time}}}
+\begin{consymb}[name=time]
+  The time dimension.
+\end{consymb}
+
+\symdef{electriccurrent}{\mbox{\sf{electriccurrent}}}
+\begin{consymb}[name=electriccurrent]
+  The electric current dimension.
+\end{consymb} 
+
+\symdef{temperature}{\mbox{\sf{temperature}}}
+\begin{consymb}[name=temperature]
+  The temparature dimension.
+\end{consymb} 
+
+\symdef{amountofsubstance}{\mbox{\sf{amountofsubstance}}}
+\begin{consymb}[name=amountofsubstance]
+  The amount of substance dimension.
+\end{consymb} 
+
+\symdef{luminousintensity}{\mbox{\sf{luminousintensity}}}
+\begin{consymb}[name=luminousintensity]
+  The luminous intensity dimension.
+\end{consymb}
+
+\end{module}
+\end{document}

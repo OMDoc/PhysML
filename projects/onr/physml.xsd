@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- see mathml-xsd directory for examples? -->
+
+<xs:schema 
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns="http://www.omdoc.org/physml/"
+  elementFormDefault="qualified"
+ >
+
+ <xs:annotation>
+	<xs:documentation>
+  	This is an XML Schema for PhysML.
+	Author: Joseph Collins, U.S. NRL.
+	</xs:documentation>
+ </xs:annotation>
+
+<!-- 
+<xs:attributeGroup name="myAttrGroup">
+    <xs:attribute . . ./>
+    . . .
+</xs:attributeGroup>
+
+<xs:complexType name="myelement">
+    . . .
+    <xs:attributeGroup ref="myAttrGroup"/>
+</xs:complexType>
+ -->
+
+
+    <xs:element name="pQuantity">
+        <xs:annotation>
+        <xs:documentation>
+           The term "physical quantity" is defined by ISO/DIS
+        80000-1 (DRAFT) as a "property of a phenomenon, body, or
+        substance, where the property has a magnitude that can be
+        expressed by means of a number and a reference".
+	Hence, a physical quantity is a measurable property of a
+        physical object, where the measurement is expressed in a
+        number of reference units. The term "physical dimension" is
+        sometimes used as synonymous with "physical quantity",
+        particularly in the practice of "dimensional analysis".
+
+	   Physical quantities are universally recognized. The selection
+        of specific systems of quantities, which typically define
+        "base quantities", are a matter of convention. The most
+        commonly used convention is the ISQ, or International System
+        of Quantities.
+        </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="pObject">
+        <xs:annotation>
+        <xs:documentation>
+           A physical object is an object with observable
+        properties. Those properties are called quantities.
+        </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+
+    <xs:complexType name="pDimension">
+        <xs:annotation>
+        <xs:documentation>
+           The term "quantity dimension" is used by ISO/DIS
+        80000-1 (DRAFT) wherein quantities of the same kind have the
+    	same quantity dimension.
+        </xs:documentation>
+        </xs:annotation>
+
+	<xs:attribute name="name"   type="xs:string" use="required"/>
+	<xs:attribute name="symbol" type="xs:string" use="required"/>
+    </xs:complexType>
+
+<xs:element name="one" symbol="1" type="pDimension"/>
+<xs:element name="length" symbol="L" type="pDimension"/>
+<xs:element name="time" symbol="M" type="pDimension"/>
+<xs:element name="mass" symbol="T" type="pDimension"/>
+<xs:element name="electric current" symbol="I" type="pDimension"/>
+<xs:element name="temperature" symbol="Theta" type="pDimension"/>
+<xs:element name="amount of substance" symbol="N" type="pDimension"/>
+<xs:element name="luminous intensity" symbol="J" type="pDimension"/>
+<xs:element name="electric charge" symbol="Q" type="pDimension"/>
+
+
+
+<xs:element name="length" type="pDimension"/>
+<xs:element name="time" type="pDimension"/>
+<xs:element name="mass" type="pDimension"/>
+<xs:element name="charge" type="pDimension"/>
+<xs:element name="temperature" type="pDimension"/>
+
+<xs:element name="velocity" type="pDimension"/>
+<xs:element name="acceleration" type="pDimension"/>
+<xs:element name="force" type="pDimension"/>
+<xs:element name="momentum" type="pDimension"/>
+<xs:element name="energy" type="pDimension"/>
+
+</xs:schema>
+<!-- -->

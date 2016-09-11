@@ -1,0 +1,1 @@
+include $(PREFIX)/stex/lib/Makefile.in

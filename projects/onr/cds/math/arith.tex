@@ -1,0 +1,21 @@
+\documentclass[twoside]{article}
+\usepackage{stex,physml}
+\usepackage[today,fancyhdr]{svninfo}
+
+\title{The Content Dictionary for Arithmetics for PhysML}
+\author{Michael Kohlhase}
+
+\begin{document}
+\svnInfo $Id: units.tex 41 2008-02-11 09:31:43Z kohlhase $
+\svnKeyword $URL: https://svn.omdoc.org/repos/physml/cds/base/units.tex $
+\maketitle
+
+\begin{module}[id=arith]
+\symdef{plus}[1]{\assoc[p=500]{+}{#1}}
+\symdef{minus}[2]{\infix[p=500]{-}{#1}{#2}}
+\symdef{times}[1]{\assoc[p=400]{\cdot}{#1}}
+\symdef{fraction}[2]{{#1\over#2}}
+\symdef{power}[2]{\infix[p=200]{^}{#1}{#2}}
+\symdef{greater}[2]{\infix[p=500]{>}{#1}{#2}}
+\end{module}
+\end{document}

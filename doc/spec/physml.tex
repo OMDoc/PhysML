@@ -1,0 +1,184 @@
+\section{Desiderata for a Physics Markup Language}\label{sec:physml}
+
+The design of a semantic markup language for a learned field is more sophisticated than it
+might seem.  The reason is that, in order to be useful it has to map the way research is
+organized. This leads to language designs centered around the {\emph{principal objects}}
+of the respective research field. In chemistry, the Chemical Markup Language
+{\chemml}~\cite{CML:web} was designed with the {\emph{name of a molecule}} as principal
+object, to which properties and its chemical reactions are attached as
+properties\footnote{We think that an alternative approach would have had more merits, to
+  designate {\emph{chemical reactions}} as the principal objects --- the principal action,
+  a chemist does.}.
+
+In mathematics, the earliest discipline to have a dedicated markup language, we have
+{\mathml} and {\openmath} as markup formalisms that take mathema\-tical objects as
+principal objects. The {\omdoc} format~\cite{Kohlhase:omdoc1.2} extends them with content
+markup for {\emph{statements}} (like definitions, axioms, theorems, and proofs) and
+{\emph{theories}} (conceived as principal objects on a higher level).
+
+In physics, since the times of Galilei (`\emph{Experimental results are the highest
+  authority}'), the young Einstein (`\emph{A theory is to be accepted if it describes and
+  predicts all possible experiments,--- independent of the feelings and `intuition' of the
+  scientist}'~\cite{Born:einstein}), and most important of P.
+Bridgeman~\cite{Hilf:bridgeman}, who elucidated first the logical steps of physics
+learning, by analyzing the {\emph{operational}} steps in doing research, it is now
+consensus~\cite{Mittelstaedt:buch,Falk:thermodyn,Falk:mechanik,Sakurai} that research is
+accepted as physics if it does physical experiments with apparatuses which represent
+physical observables.  This simple sounding requirement will be the entry point for us to
+design a specific Physics Markup Language, a construction which tries to mirror the way
+physicists operationally think.
+
+\subsection{Physics as a Science of Measurements}
+
+We start the same way as a physicist would enter a new field: by {\emph{operationally}}
+following the consecutive steps:
+\begin{description}
+\item[DP1] Decide to work on a specific field, and gather {\emph{'pre-scientific'
+      available knowledge}}\footnote{By this we concentrate on fields of interest, where
+    we at least {\emph{assume}} that by preparing physical experiments we may gain new
+    knowledge.}
+\item[DP2] Define an {\emph{observable}}; In physics this has to be done by
+  {\emph{constructing a physical device}}\footnote{Historically, in the 1960s, there
+    has been a long debate, whether in classical Mechanics, in contrast to all other
+    fields, instead of {\emph{building}} a physical device, already the
+    {\emph{description}} of how to build that device is
+    sufficient~\cite{Mittelstaedt:buch}}, called an apparatus, with which measurements can
+  be made giving real valued numbers\footnote{In the modern {\emph{Theory of
+        Measurements}} observed numbers are to be mapped to {\emph{Eigenstates}} of a
+    {\emph{Hermitian Operator}}, which is the mathematical image of the physical
+    apparatus.} depending on the specific experimental setup.\footnote{This rule separates
+    physics from other fields, such as mathematics.}
+  
+\item[DP3] {\emph{Set an iterative operational construction rule}} to refine stepwise the
+  design of the apparatus such that (just as in `proof by induction') by applying the rule
+  iteratively, it will be accepted that successively more precise apparatuses can be built
+  in principle\footnote{This absolutely essential rule assures that we stay with doable
+    physics experiments.  The condition that the rule has not to depend on the status of
+    actual refinement assures that the limit (see next rule) to a virtual ideal
+    mathematical counterpart of the observable will be secure and correct.}
+  
+\item[DP4] {\emph{Take this construction to its limit}}, and define the virtual outcome of
+  such an `ideal device' as the {\emph{physical observable}}, which then can directly be
+  related (mapped) to the respective mathematics.\footnote{A Hilbert operator for the
+    ideal apparatus, a Hilbert State for its actual physical momentary realization, and
+    {\emph{eigenvalues}} for its measurement results. We confess that in practice, most
+    scientists use real continuous variables for convenience, say for the position in
+    space of a classical mechanical object, but with the strategy given here, we assure
+    that we arrive at the correct quantum mechanics first and gain the classical mechanics
+    statement by averaging over space from there using the standard Ehrenfest principle.
+    The price for the convenience is high: we have to use Banach spaces instead of Hilbert
+    space, any proof has to be done by iterating back to Hilbert space, use of
+    distribution theory instead of functions, etc.} By this mapping to mathematical
+  objects and their algebra, theoretical physics can be done with the aim to reproduce all
+  previously conducted experiments and correctly predict any doable experiment in the field within the
+  construction-dependent uncertainties of the apparatuses.
+\item[DP5] {\emph{Do a set of experiments, map to theory, check with the predictions}} ---
+  if all are borne out we have a new natural law (Otherwise the set of assumptions and
+  results are called `{\emph{model}}').
+\item[DP6] {\emph{Distribute the results in a way so that the experiments and calculations
+      can be repeated by others in the world}}. Physics results (relations between
+  observables) are independent of representations chosen for the mathematical objects
+  needed, and independent of where and when (space and time chosen).  They should be
+  repeatable by other physicists at other laboratories in the world. Therefore the actual
+  spreading of the information on the findings to other laboratories in the world
+  {\emph{is}} part of the operational procedure to gain physics insight.
+\end{description}
+To strengthen our intuition about the crucial step {\bf{DP3}}, let us consider an example:
+Assume we want to measure the position in space of a physical object in classical
+mechanics.  First we design a physically constructible `detector' covering a finite space
+area $(x_i,\Delta x_i)$ which can distinguish whether the object is inside the detector
+area or not.  Then we buy very many of these detectors and plaster (non-overlapping,
+touching detectors) the physical space.  By checking all of them we learn in which
+detector $(x_i ,\Delta x_i) $ the object is to the precision $\Delta x_i$. Repeating the
+experiment but with (may be a more expensive) detector set with {\emph{finitely}} smaller
+detector space, say $\Delta x_{i+1} = \Delta x_i/2$ will give a better precision of the
+experiment. Repeating the application of the rule, which is obviously independent of the
+absolute value of precision gained in a certain step, would give us the ideal physics
+result. However we cannot experimentally do or pay for many refinement steps, and have to
+fear that the correctness of the experiment will break down if we physically go too far.
+That is why the limit process for the {\emph{physical observable}} is done by virtually,
+not physically, going to the limit and mapping the result to a mathematical object as the
+mathematical representative of the observable.  Each of the assumed algebraic properties
+has then to be tested by respective physical experiments. Thus only after experimental
+testing e. g. all commutative algebra properties of the mathematical representative of the
+space position observable we can identify it with a vector in Euclidian space.
+ 
+In short, we need the process given in the {\bf{DP}} steps to ensure the choice of the
+related mathematical object and to get the best strategy for a semantic encoding of
+physics in a markup language. But how does this formal {\emph{operational definition}} fit
+to the actual practical fixing of physics observables by international committees, e.g.
+the CGPM (Conference Generale des Poids and Measures), CODATA, IUPAP (International Union
+of Pure and Applied Physics), and SUNAMCO (Standards, Units and Nomenclature, Atomic
+Masses and Fundamental Constants)? This question is the domain of {\emph{Metrology}}, an
+active research field of its own (see~\cite{metrology} for a recent summary).  The
+international metrologic commissions dwell on the next step of fixing observables once the
+operational definition has been set, focusing on
+\begin{description}
+\item[precise measurement procedures] extending the practical measurement of observables
+  to very large and very small scales is achieved (for the length scale from cosmological
+  to subatomic).
+\item[determining physical constants] by finding quantitative natural laws which connect
+  real observations and thus can be reformulated to define a {\emph{physical constant}}
+  which is given by a physical process (such as the gravitational constant, the speed of
+  light, etc.).  Examples are: the scale for the time is set to be the {\emph{second}}
+  fixed as 9.192.631.770 periods of the hyperfine split light radiation of the atom
+  {\emph{Cesium}}.  The {\emph{metre}} is the length of the path traveled by light in
+  vacuum during a time interval of $1/299.792.458$ of a second, thus replacing the
+  Ur-metre at Paris measured by a length ruler.
+\item[hunting for higher precision] which is especially necessary when long time unique
+  series of measurements of given observables have to be trusted such as in geophysics,
+  astrophysics.
+\end{description}
+
+\subsection{Principal Objects for a Physics Markup Language}
+
+Given the above, we have to model the following principal concepts in a content/context
+markup language for physics.
+
+\begin{description}
+\item[Observables] As described, an observable is defined by the operational description
+  of the defining apparatus, an iterative refinement rule, and properties such as
+  dimension, scale, and attached algebraic object. The relations in which this observable
+  occurs, etc. can be represented in {\omdoc}.
+\item[Experiments] Physics is distinct from other sciences by strictly sticking to
+  reproducible experiments' outcomes as the source of knowledge. Reproducible means: to be
+  able to tell others about the experiment so that they can reproduce it. This is in
+  contrast to other sciences such as meteorology, history, or biology, which have records
+  (data recorded over time) as principal source.
+\item[Apparatuses] Experimental measurements are done using apparatuses.  An apparatus
+  $\cal{A}$ is defined by a detailed description on how to build it, so that others may
+  redo the experiment.  Alternatively an apparatus can be fully described by {\emph{all}}
+  its simultaneously measurable observables\footnote{We note that in physics the list of
+    properties of an apparatus is either finite or countably infinite (in contrast to e.g.
+    biological systems).  This assures a Hilbert space of states and real numbered values
+    for the observables as the eigenvalues of the Hermitean Operator representing the
+    Observable.  This restriction to at most countable infinite property list is
+    absolutely essential for physics.  Only by that we get, after mapping to the formal
+    mathematical context the correct observation that in all physics experiments measured
+    numbers are real, as assured by the Hilbert state space and the Hermitean Operators
+    therein. }.  A set of given values for all its properties defines a {\textbf{State}}
+  $|a_i\rangle$, $i=1,2,3,\ldots$ of $\cal{A}$.  An experiment is conducted by bringing
+  $\cal{A}$ into contact with another apparatus $\cal{B}$. The logical asymmetry of a
+  typical experiment comes only with the mind of the observer, the experimentalist. She
+  uses $\cal{B}$ to get information about the state of $\cal{A}$.
+\end{description}
+
+Again, an example is in order: Assume we have an apparatus {\emph{gas-filled bottle}},
+with a set of observables such as density of {\emph{gas}}, {\emph{size}}, {\emph{color}},
+and {\emph{material}}, and one thermostatic observable, the {\emph{temperature}}.  We
+choose $\cal{B}$ to be a device which mostly has the same observables, such that if
+brought into thermal contact with $\cal{A}$ it does not affect the properties of $\cal{A}$
+significantly but adapts its temperature to that of $\cal{A}$.  We call $\cal{B}$ a
+{\emph{thermometer}} and $\cal{A}$ a {\emph{system}} in this case.  Our interest here is
+on the value shown by the thermometer as a result of the value of the temperature of the
+apparatus.  We neglect the (inevitable) changes of other observable's values, both of the
+system and the measurement device: such idealizations of experiments are common in
+physics.
+%%% Local Variables: 
+%%% mode: stex
+%%% TeX-master: "mkm06"
+%%% End: 
+
+% LocalWords:  Galilei Bridgeman spacepoint timeclick sizably mathema DP CGPM
+% LocalWords:  Ehrenfest Poids CODATA IUPAP SUNAMCO Pendrill metre Ur Hermitean
+% LocalWords:  stex mkm

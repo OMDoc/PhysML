@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<omdoc xml:id="test.omdoc"
+  xmlns="http://www.mathweb.org/omdoc"
+  xmlns:cc="http://creativecommons.org/ns"
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  version="1.2">
+<metadata>
+  <dc:date action="created">2006-03-07T13:08:40Z</dc:date>
+  <dc:title xml:lang="en"> SI-Based Units </dc:title>
+  <dc:creator role="aut"> Michael Kohlhase </dc:creator>
+  <dc:date action="updated">2006-03-07T13:08:40Z</dc:date>
+  <dc:type> Text </dc:type>
+  <dc:format> application/omdoc+xml </dc:format>
+  <dc:rights>Copyright (c) 2006 Michael Kohlhase</dc:rights>
+  <cc:license>
+    <cc:permissions reproduction="permitted" distribution="permitted" derivative_works="permitted"/>
+    <cc:prohibitions commercial_use="permitted"/>
+    <cc:requirements notice="required" copyleft="required" attribution="required"/>
+  </cc:license>
+</metadata>
+
+<theory xml:id="thermostatics">
+
+<observable name="temparature">
+  <opdef><CMP>Measure with a thermometer</CMP></opdef>
+  <refinement><CMP>Make the thermometer smaller and smaller</CMP></refinement>
+  <type system="dimensions">
+    <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMS cd="dimensions" name="temparture"/>
+    </OMOBJ>
+  </type>
+</observable>
+
+	
+<observable name="density">
+  <opdef><CMP>opdef</CMP></opdef>
+  <refinement><CMP>be more careful</CMP></refinement>
+  <type system="quantities">
+    <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMA>
+	<OMS cd="arith1" name="divide"/>
+	<OMS cd="units" name="mass"/>
+	<OMS cd="units" name="volume"/>
+      </OMA>
+    </OMOBJ>
+  </type>
+</observable>
+
+
+<system xml:id="mercury_thermometer">
+  <realization>
+    <CMP>A thin glass tube with mercury in it.</CMP>
+  </realization>
+  <observable xref="#temperature"/>
+</system>
+
+<system xml:id="gas_cylinder">
+  <realization><CMP>A gastight wooden box</CMP></realization>
+  <observable xref="#pressure.obs"/>
+  <observable xref="#density.obs"/>
+  <observable xref="#color.obs"/>
+  <preparation><CMP>We make the box red!</CMP></preparation>
+  <state>
+    <value for="color">
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	<OMS cd="colors" name="red"/>
+      </OMOBJ>
+    </value>
+  </state>
+</system>
+
+<experiment xml:id="ex_pressure_vs_temp">
+  <CMP>Measuring the pressure vs. temparature of a compressed gas cylinder</CMP>
+  <system xref="#gas_cylinder"/>
+  <system xref="#mercury_thermometer"/>
+  <measurement xml:id="m_213">
+    <state of="#gas_cylinder">
+      <value for="pressure">
+	<OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	  <OMA>
+	    <OMS cd="arith1" name="times"/>
+	    <OMF dec="332.49586"/>
+	    <OMS cd="units" name="psi"/>
+	  </OMA>
+	</OMOBJ>
+      </value>
+      <value for="density">
+	<OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	  <OMA>
+	    <OMS cd="arith1" name="times"/>
+	    <OMF dec="332.49586"/>
+	    <OMA>
+	      <OMS cd="arith1" name="divide"/>
+	      <OMS cd="units" name="gram"/>
+	      <OMS cd="units" name="liter"/>
+	    </OMA>
+	  </OMA>
+	</OMOBJ>
+      </value>
+    </state>
+    <state of="#mercury_theormometer">
+      <value for="temparature">
+	<OMOBJ xmlns="http://www.openmath.org/OpenMath">
+	  <OMA>
+	    <OMS cd="arith1" name="times"/>
+	    <OMF dec="17.52"/>
+	    <OMS cd="units" name="Kelvin"/>
+	  </OMA>
+	</OMOBJ>
+      </value>
+    </state>
+  </measurement>
+</experiment>
+
+<assertion xml:id="kraftgleichung" type="natural_law">
+  <CMP>k=m*b</CMP>
+</assertion>
+</theory>  
+
+</omdoc>

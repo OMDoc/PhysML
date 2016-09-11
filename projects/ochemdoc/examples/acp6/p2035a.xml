@@ -1,0 +1,90 @@
+<cml xmlns="http://www.xml-cml.org" id="p2035"
+  xmlns:mcm="http://www.chem.leeds.ac.uk/Atmospheric/MCM/dict">
+
+<moleculeList>
+  <molecule id="m1" title="O1D"/>
+  <molecule id="m2" title="OH">
+  </molecule>
+  <molecule id="m3" title="H2O"/>
+  <molecule id="m4" title="O"/>
+</moleculeList>
+
+<substanceList>
+  <substance title="air"/>
+</substance>
+
+<reaction id="rxn48">
+  <reactantList>
+    <reactant id="r1">
+      <molecule ref="m2"/>
+      <math cml:ref="../@count">
+        <apply>
+          <div/>
+          <apply>
+            <times/>
+            <csymbol cd="mcm" name="k2"/>
+            <cn>2</cn>
+          </apply>
+          <apply>
+            <plus/>
+            <csymbol cd="mcm" name="k2"/>
+            <csymbol cd="mcm" name="k3"/>
+          </apply>
+        </apply>
+      </math>
+    </reactant>
+    <reactant id="r2" count="">
+      <molecule ref="m4"/>
+      <math title="count">
+        <apply>
+          <div/>
+          <csymbol cd="mcm" name="k3"/>
+          <apply>
+            <plus/>
+            <csymbol cd="mcm" name="k2"/>
+            <csymbol cd="mcm" name="k3"/>
+          </apply>
+        </apply>
+      </math>
+    </reactant>
+  </reactantList>
+  <productList>
+    <product id="p1" count="2">
+      <molecule ref="m2"/>
+    </product>
+  </productList>
+  
+  <propertyList>
+    <property title="rate coefficient" dictRef="mcm:k66">
+      <scalar id="s1" dataType="xsd:double" units="units:molecule.cm-3.s-1"></scalar>
+      <math>
+        <apply>
+          <cn>2.2E-10</cn>
+          <ci>concH2O</ci>
+        </apply>
+      </math>
+    </property>
+  </propertyList>
+  
+      
+</reaction>
+
+    <substanceList id="sub1" role="solution">
+      <substance>
+        <molecule ref="m3"/>
+        <amount units="units:"></amount>
+      </substance>
+      <substance>
+        <molecule ref="air"/>
+        <amount units="units:?"></amount>
+      </substance>
+      ???
+      
+    </substanceList>
+    
+    <parameter id="concH2O">
+      <scalar dictRef="cml:conc">
+      </scalar>
+    </parameter>
+
+</cml>

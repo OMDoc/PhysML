@@ -1,0 +1,17 @@
+#!/bin/sh
+echo "physml-joint transferred to pdf-file"
+pdflatex physml-joint
+pdflatex physml-joint
+pdflatex physml-joint
+bibtex physml-joint
+bibtex own
+bibtex own
+bibtex others
+bibtex others
+bibtex services
+bibtex services 
+pdflatex physml-joint
+pdflatex physml-joint
+pdflatex physml-joint
+echo " pdf-file has been successfully done"
+

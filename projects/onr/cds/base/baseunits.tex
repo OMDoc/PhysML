@@ -1,0 +1,54 @@
+\documentclass[twoside]{article}
+\usepackage{stex,physml}
+\usepackage[today,fancyhdr]{svninfo}
+\usepackage[show]{ed}
+
+\title{The Content Dictionary for SI Base Units}
+\author{Michael Kohlhase}
+
+\begin{document}
+\svnInfo $Id: units.tex 43 2008-02-11 16:39:26Z kohlhase $
+\svnKeyword $URL: https://svn.omdoc.org/repos/physml/cds/base/SIbaseunits.tex $
+\maketitle
+
+\begin{module}[id=units]
+\importmodule[basedimensions]{basedimensions}
+\importmodule[../math/arith]{arith}
+
+\symdef{meter}{m}
+\begin{consymb}[name=meter]
+  \symtype{basedimensions}{$\length$}
+\end{consymb}
+
+\symdef{kilogram}{kg}
+\begin{consymb}[name=kilogram]
+  \symtype{basedimensions}{$\mass$}
+\end{consymb}
+
+\symdef{second}{s}
+\begin{consymb}[name=second]
+  \symtype{basedimensions}{$\time$}
+\end{consymb}
+
+\symdef{ampere}{A}
+\begin{consymb}[name=ampere]
+  \symtype{basedimensions}{$\electriccurrent$}
+\end{consymb}
+
+\symdef{kelvin}{K}
+\begin{consymb}[name=kelvin]
+  \symtype{basedimensions}{$\temperature$}
+\end{consymb}
+
+\symdef{mole}{mol}
+\begin{consymb}[name=mole]
+  \symtype{basedimensions}{$\amountofsubstance$}
+\end{consymb}
+  
+\symdef{candela}{cd}
+\begin{consymb}[name=candela]
+  \symtype{basedimensions}{$\luminousintensity$}
+\end{consymb}
+
+\end{module}
+\end{document}

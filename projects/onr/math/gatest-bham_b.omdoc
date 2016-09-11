@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE omdoc PUBLIC "-//OMDoc//DTD OMDoc V1.2//EN"
+                "../external/omdoc/branches/omdoc-1.2/dtd/omdoc.dtd" [<!ENTITY % om.prefixed "INCLUDE">]>
+
+<omdoc xml:id="ga1-omdoc" version="1.2"
+       modules="CD"
+       xmlns:dc="http://purl.org/dc/elements/1.1/" 
+       xmlns:cc="http://creativecommons.org/ns"
+       xmlns:mcd="http://www.w3.org/ns/MathML-cd"
+       xmlns="http://www.mathweb.org/omdoc">
+      <!-- xmlns:omdoc="http://www.mathweb.org/omdoc" -->
+
+<metadata>
+  <dc:title>GA 1.1 Axioms, Definitions, and Identities</dc:title>
+  <dc:creator role="trl">Fred Petry</dc:creator>
+  <dc:creator role="ant">The OMDoc Society</dc:creator>
+  <dc:Language>en</dc:Language>
+  <dc:date action="updated">June 26, 2008</dc:date>
+  <dc:source>David Hestenes and Garret Sobezyk, Clifford Algebra to
+  Geometric Calculus, D.Reidel Publishing Company.</dc:source>
+  <dc:type>Text</dc:type>
+  <dc:format>application/omdoc+xml</dc:format>
+  <dc:rights>Copyright (c) 2008 Fred Petry </dc:rights>
+  <dc:description>This CD presents a convenient set of axioms for
+  Geometric Algebra. 
+  </dc:description>
+</metadata>
+
+<omtext xml:id="ga1.def" type="introduction">
+ <CMP>
+   <p>This section presents a convenient set of axioms for Geometric
+ Algebra (GA). In terms of the fundamental geometric product, several other
+ products of special geometric and algebric significence are defined,
+ namely, the inner and outer products,the scalar product, and the
+ commutator.  A comprehansive set of basic indentities is established,
+ identities which are needed for efficient applicaation of the algebra
+ to almost any problem. The axioms, definitions and results of this
+ section will be used repaeatedly throughout the rest of<link href="http://en.wikipedia.org/wiki/Geometric_algebracds">GA</link>.</p>
+    <p>We define GA by a set of axioms which anable us to carry out
+ proofs and computations without reference to basis in the
+ algebra. For the sake of simpleicity and ease of application, we have
+ not attempted to eliminate all redundancy from the axioms. </p>
+ </CMP>
+</omtext>
+
+<theory xml:id="ring">
+
+<imports from="../external/omdoc/branches/omdoc-1.2/examples/omstd/relation1.omdoc#relation1"/>
+<imports from="../external/omdoc/branches/omdoc-1.2/examples/omstd/quant1.omdoc#quant1"/>
+<imports from="../external/omdoc/branches/omdoc-1.2/examples/logics/simpletypes.omdoc#simpletypes"/>
+
+<symbol name="G" xml:id="G">
+  <metadata>
+    <dc:description> The symbol G is denoted to the Geometric Algebra.
+    </dc:description>
+    <dc:subject>G</dc:subject>
+  </metadata>
+</symbol>
+
+<presentation xml:id="pr_G" for="#G">
+  <use format="default">G</use>
+  <use format="cmml" element="G"/>
+</presentation>
+
+<axiom>
+<CMP>
+  G is <term cd="ring" name="G" role="definiens">algebraically closed</term>.
+</CMP>
+</axiom>
+
+<!-- Declare Multi-vector *** put into its own theory in another file ****-->
+<omtext xml:id="multivector.def" type="definition">
+<!-- The omtext element classifies the text fragment as a definition, other types for mathematical statements include
+axiom, example, theorem, and lemma. Note that the numbering of the -->
+<!-- original text is lost, but can be re-created in the text -->
+<!-- presentation process.The optional xml:id attribute specifies a document-unique identifier that can be used for reference later. 14.3 p. 133 -->
+     <CMP>Let <legacy format="TeX">A, B, C, ...</legacy> denote
+       multi-vector in <legacy format="Tex">G.</legacy></CMP>
+</omtext>
+<!-- ***** end put ****** -->
+
+
+<!-- <presentation xml:id="ring_pr_gcd" for="#gcd"> -->
+<!--  <use  format="default">gcd</use>-->
+<!--  <use  format="default" xml:lang="de">ggT</use>-->
+<!--  <use format="cmml" element="gcd"/>-->
+<!--</presentation> -->
+
+<symbol name="sum" xml:id="sum">
+  <metadata>
+    <dc:description>The symbol represents the geometric sum of multivectors A,B,C,...</dc:description>
+    <dc:subject>sum</dc:subject>
+  </metadata>
+</symbol>
+
+<presentation xml:id="pr-sum" for="#sum" role="applied" fixity="assoc" 
+	      precedence="500" bracket-style="lisp">
+  <use  format="default">+</use>
+</presentation>
+<presentation xml:id="pr2-sum" for="#sum">
+  <use  format="default">+</use>
+  <use format="cmml" element="plus"/>
+</presentation>
+
+<symbol name="product" xml:id="product">
+  <metadata>
+  <dc:description>This symbol  represents the geometric sum of multivectors A,B,C,...</dc:description>
+  <dc:subject>product</dc:subject></metadata>
+</symbol>
+
+<presentation xml:id="pr-product" for="#product" role="applied" precedence="400" fixity="assoc" bracket-style="lisp">
+  <use format="default"/>
+</presentation>
+<presentation xml:id="prr-product" for="#oroduct">
+  <use  format="default"/>
+  <use format="cmml" element="minus"/>
+</presentation>
+
+
+<axiom xml:id="Gsum-commutative">
+  <CMP>
+    For the geometric sum of multivectors  <OMOBJ xmlns="http://www.openmath.org/OpenMath"><OMV name="A"/></OMOBJ>, 
+    <OMOBJ xmlns="http://www.openmath.org/OpenMath"><OMV name="B"/></OMOBJ>, ... is communitive.
+  </CMP>
+  <FMP>
+    <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR>
+	  <OMATTR>
+	    <OMATP>
+               <OMS name="oftype" cd="simpletypes"/>
+	      <OMS name="G" cd="ring"/>
+	    </OMATP>
+	    <OMV name="A"/>
+	  </OMATTR>
+	 <OMATTR>
+	    <OMATP>
+               <OMS name="oftype" cd="simpletypes"/>
+	      <OMS name="G" cd="ring"/>
+	    </OMATP>
+	    <OMV name="B"/>
+	  </OMATTR> 
+	</OMBVAR>
+	<OMA id="communitive-prop">
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="ring" name="sum"/>
+	    <OMV name="A"/>
+	    <OMV name="B"/>
+	  </OMA>
+	  <OMA>
+	    <OMS cd="ring" name="sum"/>
+	    <OMV name="B"/>
+	    <OMV name="A"/>
+	  </OMA>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</axiom>
+
+<axiom xml:id="gsum-associative">
+  <CMP>
+    For the geometric sum of multivectors  <OMOBJ xmlns="http://www.openmath.org/OpenMath"><OMV name="A"/></OMOBJ>, 
+    <OMOBJ xmlns="http://www.openmath.org/OpenMath"><OMV name="B"/></OMOBJ>,<OMOBJ xmlns="http://www.openmath.org/OpenMath"><OMV name="C"/></OMOBJ> ... is associative.
+  </CMP>
+  <FMP>
+    <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR>
+	  <OMATTR>
+	    <OMATP>
+               <OMS name="oftype" cd="simpletypes"/>
+	      <OMS name="G" cd="ring"/>
+	    </OMATP>
+	    <OMV name="A"/>
+	  </OMATTR>
+	 <OMATTR>
+	    <OMATP>
+               <OMS name="oftype" cd="simpletypes"/>
+	      <OMS name="G" cd="ring"/>
+	    </OMATP>
+	    <OMV name="B"/>
+	  </OMATTR> 
+	 <OMATTR>
+	    <OMATP>
+               <OMS name="oftype" cd="simpletypes"/>
+	      <OMS name="G" cd="ring"/>
+	    </OMATP>
+	    <OMV name="C"/>
+	  </OMATTR> 
+	</OMBVAR>
+	<OMA id="gsum-associative">
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="ring" name="sum"/>
+	    <OMV name="A"/>
+	    <OMA> 
+	      <OMS cd="ring" name="sum"/>
+	      <OMV name="B"/>
+	      <OMV name="C"/> 
+	    </OMA> 
+	  </OMA>
+	  <OMA>
+	    <OMS cd="ring" name="sum"/>
+	    <OMA> 
+	      <OMS cd="ring" name="sum"/>
+	      <OMV name="A"/>
+	      <OMV name="B"/> 
+	    </OMA>
+	    <OMV name="C"/>
+	  </OMA>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</axiom>
+
+<axiom xml:id="gprod-associative">
+  <CMP>
+    For the geometric product of multivectors  <OMOBJ xmlns="http://www.openmath.org/OpenMath"><OMV name="A"/></OMOBJ>, 
+    <OMOBJ xmlns="http://www.openmath.org/OpenMath"><OMV name="B"/></OMOBJ>,<OMOBJ xmlns="http://www.openmath.org/OpenMath"><OMV name="C"/></OMOBJ> ... is associative.
+  </CMP>
+  <FMP>
+    <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+      <OMBIND>
+	<OMS cd="quant1" name="forall"/>
+	<OMBVAR>
+	  <OMATTR>
+	    <OMATP>
+               <OMS name="oftype" cd="simpletypes"/>
+	      <OMS name="G" cd="ring"/>
+	    </OMATP>
+	    <OMV name="A"/>
+	  </OMATTR>
+	 <OMATTR>
+	    <OMATP>
+               <OMS name="oftype" cd="simpletypes"/>
+	      <OMS name="G" cd="ring"/>
+	    </OMATP>
+	    <OMV name="B"/>
+	  </OMATTR> 
+	 <OMATTR>
+	    <OMATP>
+               <OMS name="oftype" cd="simpletypes"/>
+	      <OMS name="G" cd="ring"/>
+	    </OMATP>
+	    <OMV name="C"/>
+	  </OMATTR> 
+	</OMBVAR>
+	<OMA id="gprod-associative">
+	  <OMS cd="relation1" name="eq"/>
+	  <OMA>
+	    <OMS cd="ring" name="product"/>
+	    <OMV name="A"/>
+	    <OMA> 
+	      <OMS cd="ring" name="product"/>
+	      <OMV name="B"/>
+	      <OMV name="C"/> 
+	    </OMA> 
+	  </OMA>
+	  <OMA>
+	    <OMS cd="ring" name="product"/>
+	    <OMA> 
+	      <OMS cd="ring" name="product"/>
+	      <OMV name="A"/>
+	      <OMV name="B"/> 
+	    </OMA>
+	    <OMV name="C"/>
+	  </OMA>
+	</OMA>
+      </OMBIND>
+    </OMOBJ>
+  </FMP>
+</axiom>
+
+</theory>
+
+<theory xml:id="ga1">
+<import from="#ring"/>
+
+<!-- add the GA-specific axioms and definitions here -->
+</theory>
+
+</omdoc>

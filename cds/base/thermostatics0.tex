@@ -1,0 +1,78 @@
+\documentclass[twoside]{article}
+\usepackage{stex,physml}
+\usepackage[today,eso-foot]{svninfo}
+\svnInfo $Id: thermostatics0.tex 86 2008-11-11 07:46:25Z kohlhase $
+\svnKeyword $HeadURL: https://svn.omdoc.org/repos/physml/cds/base/thermostatics0.tex $
+\usepackage[show]{ed}
+
+\title{The Content Dictionary for Theormostatics}
+\author{Michael Kohlhase}
+
+
+\begin{document}
+\maketitle
+
+\begin{module}[id=thermostatics]
+\importmodule[units]{units}
+\symdef{red}{{\sf{red}}}
+
+\begin{observable}[name=temparature]
+  \begin{opdef}
+    Measure with a thermometer
+  \end{opdef}
+  \begin{refinement}
+Give a rule to iteratively improve the thermometer (exp. setup)
+  \end{refinement}
+  \symtype{dimensions}{$\temperature$}
+\end{observable}
+
+\begin{observable}[name=density]
+  \begin{opdef}
+    opdef
+  \end{opdef}
+  \begin{refinement}
+    give an iterative rule to improve stepwise the exp. setup
+  \end{refinement}
+  \symtype{dimensions}{$\mass/\volume$}
+\end{observable}
+
+\begin{system}[id=mercury-thermometer]
+  \begin{realization}
+    A thin glass tube with mercury in it.
+  \end{realization}
+  \obsref{temperature}
+\end{system}
+
+\begin{system}[id=gas-cylinder]
+  \begin{realization}
+    A gastight wooden box
+  \end{realization}
+  \obsref{pressure.obs}
+  \obsref{density.obs}
+  \obsref{color.obs}
+  \begin{preparation}We make the box red!\end{preparation}
+  \begin{state}
+    \statevalue{color}{$\red$}
+  \end{state}
+\end{system}
+\begin{experiment}[id=ex-pressure-vs-temp]
+  Measuring the pressure vs. temparature of a compressed gas cylinder.
+  \sysref{gas-cylinder}
+  \sysref{mercury-thermometer}
+  \begin{measurement}[id=m-213]
+    \begin{state}[of=gas-cylinder]
+      \statevalue{pressure}{$332.49586\cdot{\Newton\over\centimeter^2}$}
+      \statevalue{density}{$332.49586\cdot{\gram\over\liter}$}
+    \end{state}
+    \begin{state}[of=mercury-theormometer]
+      \statevalue{temparature}{$17.52\cdot\Kelvin$}
+    \end{state}
+  \end{measurement}
+\end{experiment}
+
+\begin{assertion}[id=kraftgleichung,type=natural-law]
+  $k=m*b$
+%should add that m, b, k are known from the observable Content dictionary
+\end{assertion}
+\end{module}
+\end{document}                  

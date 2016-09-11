@@ -1,0 +1,4 @@
+\requiremodules[exclude]{units}
+\begin{module}[id=thermostatics,uses=units]
+\symdef{red}{{\sf{red}}}
+\end{module}

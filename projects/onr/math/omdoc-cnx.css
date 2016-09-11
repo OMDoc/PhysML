@@ -1,0 +1,157 @@
+@namespace xlink url(http://www.w3.org/1999/xlink);
+
+html{
+    border: 0px #006699 solid;
+    border-left-width: 15px;
+    }
+	
+body {
+    margin: 15px;
+    padding: 0px;
+    background-color:#ffffff;
+    color:black;
+    font-family:helvetica;
+    font-size: 14px;
+    line-height: 1.4em;
+    }
+
+a.special:visited {color:black;text-decoration:none;}
+a.special:link {color:black;text-decoration:none;}
+a.special:active {color:black;text-decoration:none;}
+a.special:hover {color:black;text-decoration:none;}
+
+a{color: #660000; font-size: .8em;}    
+
+td {font-size:normal;font-family:helvetica;}
+h2 {color:blue}
+
+/* Module MOBJ */
+span.math{font-style:oblique; color: #006600;}
+div.displaymath {font-style:oblique; display:block; text-align:center; color: #006600;}
+
+math{color: #006600;}    
+
+*[xlink|href] { cursor: pointer; }
+
+/* Module DC */
+div.titleblock{width:80%;
+    font-size:medium;
+    border-style:inset;border-color:#222222;border-width:2pt;
+    margin: 0px;
+    margin-bottom: 20px;
+    border: 0px #cc9900 solid;
+    border-bottom-width: 2px;
+    padding-bottom: 12px;
+    line-height: normal;
+    }
+
+div.title{
+    background-color:#6699cc;
+    color: #ffffff;
+    display: block;
+    padding: 7px 70px 7px 15px;
+    margin: -15px -15px -15px -15px;
+    border: 0px #cc9900 solid;
+    border-bottom-width: 2px;
+    font-family: verdana, tahoma, century gothic, gothic l, arial, helvetica, sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: -2;
+    text-align: left;
+    }
+
+div.authors:before, div.date:before, div.description:before{
+	padding: 0px;
+	margin: 0px;
+	margin-left: -36px;
+	display: inline;
+	font-weight: bold;
+	}
+
+div.authors:before{
+	content: "Written by: ";
+	}
+
+div.date:before{
+	content: "Date: ";
+	}
+
+div.description:before{
+	content: "Description: ";
+	}
+
+div.authors, div.date, div.description{
+	display: block;
+	margin: 2px 15px;
+	margin-left: 36px;
+	}
+
+div.authors{
+	padding-top: 30px;
+	}
+
+div.titlebox{
+	font-weight: bold;
+	}
+
+div.counterexample, div.exercise{
+	display: block;
+	margin: 15px 72px;
+	padding: 10px;
+	border: 1px #000000 outset;
+	color: #000000;
+	}
+
+span.titleword{
+	color: #336699;
+	text-transform: uppercase;
+	font-size: 11px;
+	}
+
+    /* Module DOC */
+    div.omtext{width:100%;margin:5mm 5mm 5mm 5mm;margin-bottom:0pt;padding:pt}
+    div.quote{font-size:larger;width:80%;font-family:sans-serif}
+    div.caption{font-size:smaller;font-style:italic;align:right}
+    div.annotation{font-size:smaller;color:gray}
+    div.ednote{font-size:smaller;background-color:red}
+    
+    /* Module ST */
+    span.titleword{font-weight:bold}
+    span.titleword:after{content: ": "}
+    div.titlebox{padding:0pt}
+
+    div.assertion, div.definition, div.lemma,
+    div.proof, div.axiom, div.symbol, div.example{
+	display: block;
+	margin: 10px 0px 10px 0px;
+	}
+
+    div.FMP{margin: 5px 0px;}
+
+    /* Module RT */
+    span.noteref:before{content:"["}
+    span.noteref:after{content:"]"}
+    span.notenumber:before{content:"["}
+    span.notenumber:after{content:"]"}
+
+
+    /* Module PF */
+
+  div.proof{width:80%;margin-left:0.5em;fontsize:medium}
+  div.Fitch-box {border-left:2px solid black;margin-left:0.2em}
+  div.Fitch-flag
+    {margin-top:2px;margin-bottom:2px;
+     border-top:2px solid black;
+     border-right:2px solid black;
+     border-bottom:2px solid black;
+     padding-left:0.5em}
+  span.plineno {font-weight:bold;color:darkred}
+  span.justification {}
+  span.justification-method {padding-left:1em}
+  span.justification-premises {padding-left:1em}
+  div.derive {padding-left:1em}
+
+    /* Various */
+    div.migration{color:red;font-size:smaller}
+
+

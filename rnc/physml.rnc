@@ -1,0 +1,8 @@
+# A RelaxNG schema for Open Mathematical documents (OMDoc 1.2)           
+#   SYSTEM http://www.mathweb.org/omdoc/rnc/omdoc.rnc	  		 
+#   PUBLIC -//OMDoc//RNC OMDoc V1.2//EN					 
+# See the documentation and examples at http://www.mathweb.org/omdoc 	 
+# (c) 2004 Michael Kohlhase, released under the GNU Public License (GPL) 
+
+include "omdoc/omdoc.rnc"
+include "omdocphys.rnc"

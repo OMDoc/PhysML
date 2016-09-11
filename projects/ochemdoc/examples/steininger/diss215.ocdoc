@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ochemdoc xml:id="disstest" 
+  xmlns= "http://www.sciml.org/ochemdoc"
+  xmlns:c="http://www.xml-cml.org/schema">
+
+<!-- <symbol name="ester"/>
+<c:molecule for="ester">
+  <c:cml>....</c:cml>
+</c:molecule>-->
+
+
+<assertion>
+  <CMP>
+    Der erste Teil wird nicht wie in Kapitel 2.3.2 als konstante Hintergrundreaktion
+    angenommen, sondern die f&#xFC;r diese Reaktion verf&#xFC;gbare Esterkonzentration 
+    <math><share href="#esterconst"/></math>
+    nimmt durch die Bildung des Ester-Katalysator-Komplexes ab.
+    
+    The equation is:
+    r<sub>gas</sub> = k<sub>0</sub> &#xB7; [Ester] + k<sub>Kat</sub> &#xB7; [Ester &#xB7; Kat<sup>*</sup>]
+    read as 
+    "rate of change of concentration = 
+        rateConstant0 * concentration of Ester +
+        rateConstantkKat * concentration of Ester-Katalyst complex"
+        
+And in content representation the equation is:
+<math class="display">
+  <apply>
+    <eq/>
+    <csymbol cd="foundations">rgas</csymbol>
+    <apply>
+      <plus/>
+      <apply>
+	<times/>
+	<csymbol cd="rateconstants">O</csymbol>
+	<apply xml:id="esterconst">
+	  <csymbol cd="foundations">concentration</csymbol>
+	  <csymbol cd="cml">Ester</csymbol>
+	</apply>
+      </apply>
+      <apply>
+	<times/>
+	<csymbol cd="rateconstants">Kat</csymbol>
+	<apply>
+	  <csymbol cd="foundations">concentration</csymbol>
+	  <c:molecule>
+	    <compound>
+	      <csymbol cd="cml">Ester</csymbol>
+	      <csymbol cd="cml">Katstar</csymbol>
+	    </compound>
+	  </c:molecule>
+	</apply>
+      </apply>
+    </apply>
+  </apply>
+</math>
+
+  </CMP>
+</assertion>  
+</ochemdoc>
